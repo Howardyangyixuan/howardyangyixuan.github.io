@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>如何用hugo搭建个人博客 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="如何用hugo搭建个人博客" />
+<meta property="og:description" content="如何用hugo搭建个人博客 1.什么是Hugo Hugo是最快的博客生成器，由Go语言实现。 另外一个常用的生成器是Hexo 由Js实现，方方老师说" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+<meta property="article:published_time" content="2020-05-03T15:02:39+08:00" />
+<meta property="article:modified_time" content="2020-05-03T15:02:39+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何用hugo搭建个人博客"/>
+<meta name="twitter:description" content="如何用hugo搭建个人博客 1.什么是Hugo Hugo是最快的博客生成器，由Go语言实现。 另外一个常用的生成器是Hexo 由Js实现，方方老师说"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "如何用hugo搭建个人博客",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/"
+        },"genre": "posts","wordcount":  1082 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/","datePublished": "2020-05-03T15:02:39+08:00","dateModified": "2020-05-03T15:02:39+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">如何用hugo搭建个人博客</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-03>2020-05-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1082 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1什么是hugo">1.什么是Hugo</a></li>
+    <li><a href="#2hugo教程">2.Hugo教程</a>
+      <ul>
+        <li><a href="#21-建立本地站点生成器">2.1. 建立本地站点生成器</a></li>
+        <li><a href="#22-建立万维网www站点">2.2. 建立万维网（WWW）站点</a></li>
+      </ul>
+    </li>
+    <li><a href="#至此个人博客开通成功">至此，个人博客开通成功！</a>
+      <ul>
+        <li><a href="#23-购买并配置个人域名">2.3. 购买并配置个人域名</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="如何用hugo搭建个人博客">如何用hugo搭建个人博客</h1>
+<h2 id="1什么是hugo">1.什么是Hugo</h2>
+<p>Hugo是最快的博客生成器，由Go语言实现。</p>
+<p>另外一个常用的生成器是Hexo
+由Js实现，方方老师说有点难用，有空自己尝试下。</p>
+<blockquote>
+<p>前段时间看 Joint Embedding Space 和 PointNet 等论文时，有几个博客写的很好，令我茅塞顿开，而且用的都是同一个简约大方的主题，主题是<a href="https://theme-next.org/" target="_blank" rel="noopener noreffer">Next</a></p>
+</blockquote>
+<h2 id="2hugo教程">2.Hugo教程</h2>
+<p>参照Hugo快速开始教程即可快速上手</p>
+<blockquote>
+<p><a href="https://gohugo.io/getting-started/quick-start" target="_blank" rel="noopener noreffer">Hugo官方教程</a></p>
+</blockquote>
+<p>下面主要梳理一下每一步的逻辑和对应方法</p>
+<h3 id="21-建立本地站点生成器">2.1. 建立本地站点生成器</h3>
+<h4 id="211-创建一个空目录">2.1.1. 创建一个空目录</h4>
+<pre><code>hugo new site howardyangyixuan.github.io-creator
+
+cd howardyangyixuan.github.io-creator
+</code></pre>
+<p>注意：一定要cd进去！！！</p>
+<pre><code>git init
+</code></pre>
+<h4 id="212-建立并配置站点即博客生成器">2.1.2. 建立并配置站点（即博客生成器）</h4>
+<p>按说明<a href="https://gohugo.io/getting-started/quick-start" target="_blank" rel="noopener noreffer">Hugo官方教程</a>和命令行提示载入主题theme，下载很慢，最好给命令行加代理。</p>
+<p>这一步就是配置生成器要输出的格式，各个主题就是给生成器参考的配置文件，这部完成以后就可以开始写文章，并让生成器生成博文啦！</p>
+<h4 id="213-撰写文章预览">2.1.3. 撰写文章&amp;预览</h4>
+<p>1.新建文章：</p>
+<pre><code>hugo new posts/xxx.md
+</code></pre>
+<p>2.在本地server上查看（预览生成的文章）：</p>
+<pre><code>hugo server -D
+</code></pre>
+<p>3.生成博文到Public（Public中的文件后续要发布的内容）：</p>
+<pre><code>hugo
+hugo -D
+</code></pre>
+<h3 id="22-建立万维网www站点">2.2. 建立万维网（WWW）站点</h3>
+<p>本地的内容完成一后，我们如何让其他人看到我们的站点呢？</p>
+<p>核心思想就是用一个服务器存储我们的本地内容，当其他人想访问时，服务器来处理他们的请求，并让我们的页面传送给他们。</p>
+<p>自己搭建服务器不够方便，所以像Github就提供了托管的服务，Github Pages，我们只需建立一个与之对应的Github仓库即可交由Github来处理。</p>
+<p>下面是具体方法：</p>
+<h4 id="221-github中创建与github-id同名的仓库">2.2.1. Github中创建与github id同名的仓库！</h4>
+<p>形如 xxx.github.io</p>
+<p>例如我的就是howardyangyixuan.github.io</p>
+<p>然后将public推送到GitHub</p>
+<p>注意：是在public目录下操作</p>
+<pre><code>git remote add origin xxx.git 
+git push -u origin master
+</code></pre>
+<h4 id="222配置github-pages">2.2.2配置Github Pages</h4>
+<ul>
+<li>settings：GIthub Pages</li>
+<li>如果需要选，选master</li>
+</ul>
+<h2 id="至此个人博客开通成功">至此，个人博客开通成功！</h2>
+<p>通过 howardyangyixuan.github.io 即可查看到我们的博客啦！</p>
+<h3 id="23-购买并配置个人域名">2.3. 购买并配置个人域名</h3>
+<p>howardyangyixuan.github.io看上去不太好记，所以我们可以购买个人域名。
+.com这种顶级域名都被抢注了，那个好记还便宜我就买哪个了。</p>
+<p>.love的域名也挺吸引人的hhh我想买个hjx啥的哈哈哈哈</p>
+<p>这一部分网上教程就比较多了，不细说了～</p>
+<p>最后其实我纠结了一小下主题啥的，不过还是好好写内容吧，我最近都是在mac备忘录里记得，挺好的，有icloud，手机上ipad上也很方便，博客上还是主要放一些比较困难的想要分享的读书或者学习笔记吧，这种笔记感觉意义不是特别大，自己在备忘录里偶尔查一下就好了。</p>
+<p>啊啊啊不说了，还有好多事儿要做！加油呀hhhh！！
+2020.5.3</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-03 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="prev" rel="prev" title="第二篇博客"><i class="fas fa-angle-left fa-fw"></i>第二篇博客</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
