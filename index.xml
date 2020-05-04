@@ -3,13 +3,20 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 03 May 2020 15:02:39 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 04 May 2020 15:14:11 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>HTML入门笔记1</title>
+    <link>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B01/</link>
+    <pubDate>Mon, 04 May 2020 15:14:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B01/</guid>
+    <description><![CDATA[HTML 入门笔记 1 写在前面： “Hugo 是垃圾，请用平台！” 有点服方方了！！！ 确实把它征服了之后，不要再管它了，hugo 就是垃圾，麻烦，没有留言和分]]></description>
+</item><item>
     <title>如何用hugo搭建个人博客</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
     <pubDate>Sun, 03 May 2020 15:02:39 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-    <description><![CDATA[如何用hugo搭建个人博客 1.什么是Hugo Hugo是最快的博客生成器，由Go语言实现。 另外一个常用的生成器是Hexo 由Js实现，方方老师说]]></description>
+    <description><![CDATA[如何用 hugo 搭建个人博客 1.什么是 Hugo Hugo 是最快的博客生成器，由 Go 语言实现。 另外一个常用的生成器是 Hexo 由 Js 实现，方方老师说有点难用，有空自己尝试下。 前]]></description>
 </item><item>
     <title>第二篇博客</title>
     <link>http://howardyangyixuan.github.io/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</link>
