@@ -7,14 +7,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>CSS知识总结3 - Y-y_x&#39;s Blog</title>
         <meta name="Description" content=""><meta property="og:title" content="CSS知识总结3" />
-<meta property="og:description" content="1. CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 1.1. CSS定位 1.1.1. CSS的层叠顺序（由上到下）： 内联子元素/文字" />
+<meta property="og:description" content="CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 CSS 知识总结 3 1. CSS定位 1.1. CSS的层叠顺序（由上到下）： 1.2. po" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://howardyangyixuan.github.io/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933/" />
 <meta property="article:published_time" content="2020-05-10T15:16:18+08:00" />
 <meta property="article:modified_time" content="2020-05-10T15:16:18+08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="CSS知识总结3"/>
-<meta name="twitter:description" content="1. CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 1.1. CSS定位 1.1.1. CSS的层叠顺序（由上到下）： 内联子元素/文字"/>
+<meta name="twitter:description" content="CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 CSS 知识总结 3 1. CSS定位 1.1. CSS的层叠顺序（由上到下）： 1.2. po"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933\/"
-        },"genre": "posts","wordcount":  1862 ,
+        },"genre": "posts","wordcount":  2128 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933\/","datePublished": "2020-05-10T15:16:18+08:00","dateModified": "2020-05-10T15:16:18+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -76,8 +76,8 @@
         </div><article class="page single"><h1 class="single-title animated flipInX">CSS知识总结3</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-10>2020-05-10</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1862 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2128 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -85,36 +85,72 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#11-css定位">1.1. CSS定位</a>
+    <li><a href="#1-css定位">1. CSS定位</a>
       <ul>
-        <li><a href="#111-css的层叠顺序由上到下">1.1.1. CSS的层叠顺序（由上到下）：</a></li>
-        <li><a href="#112-position定位">1.1.2. position定位</a></li>
+        <li><a href="#11-css的层叠顺序由上到下">1.1. CSS的层叠顺序（由上到下）：</a></li>
+        <li><a href="#12-position定位">1.2. position定位</a></li>
       </ul>
     </li>
-    <li><a href="#12-css层叠上下文">1.2. CSS层叠上下文</a>
+    <li><a href="#2-css层叠上下文">2. CSS层叠上下文</a>
       <ul>
-        <li><a href="#121-层叠上下文顺序由上到下">1.2.1. 层叠上下文顺序（由上到下）：</a></li>
+        <li><a href="#21-层叠上下文顺序由上到下">2.1. 层叠上下文顺序（由上到下）：</a></li>
       </ul>
     </li>
-    <li><a href="#css动画">CSS动画</a>
+    <li><a href="#3-css动画">3. CSS动画</a>
       <ul>
-        <li><a href="#css渲染浏览器原理chrome微软firefox">CSS渲染：浏览器原理，chrome，微软，firefox</a></li>
-        <li><a href="#如何更新样式">如何更新样式</a></li>
-        <li><a href="#css动画优化">CSS动画优化</a></li>
-        <li><a href="#css动画制作">CSS动画制作</a></li>
-        <li><a href="#transition动画过渡">transition动画过渡:</a></li>
+        <li><a href="#31-css渲染浏览器原理chrome微软firefox">3.1. CSS渲染：浏览器原理，chrome，微软，firefox</a></li>
+        <li><a href="#32-如何更新样式">3.2. 如何更新样式</a></li>
+        <li><a href="#33-css动画优化">3.3. CSS动画优化</a></li>
+        <li><a href="#34-css动画制作">3.4. CSS动画制作</a></li>
+        <li><a href="#35-transition动画过渡">3.5. transition动画过渡:</a></li>
       </ul>
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="1-css-知识总结-3">1. CSS 知识总结 3</h1>
+            </div><div class="content" id="content"><h1 id="css-知识总结-3">CSS 知识总结 3</h1>
 <p>啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。</p>
 <hr>
-<h2 id="11-css定位">1.1. CSS定位</h2>
-<h3 id="111-css的层叠顺序由上到下">1.1.1. CSS的层叠顺序（由上到下）：</h3>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#css-%e7%9f%a5%e8%af%86%e6%80%bb%e7%bb%93-3" rel="">CSS 知识总结 3</a>
+<ul>
+<li><a href="#1-css%e5%ae%9a%e4%bd%8d" rel="">1. CSS定位</a>
+<ul>
+<li><a href="#11-css%e7%9a%84%e5%b1%82%e5%8f%a0%e9%a1%ba%e5%ba%8f%e7%94%b1%e4%b8%8a%e5%88%b0%e4%b8%8b" rel="">1.1. CSS的层叠顺序（由上到下）：</a></li>
+<li><a href="#12-position%e5%ae%9a%e4%bd%8d" rel="">1.2. position定位</a></li>
+</ul>
+</li>
+<li><a href="#2-css%e5%b1%82%e5%8f%a0%e4%b8%8a%e4%b8%8b%e6%96%87" rel="">2. CSS层叠上下文</a>
+<ul>
+<li><a href="#21-%e5%b1%82%e5%8f%a0%e4%b8%8a%e4%b8%8b%e6%96%87%e9%a1%ba%e5%ba%8f%e7%94%b1%e4%b8%8a%e5%88%b0%e4%b8%8b" rel="">2.1. 层叠上下文顺序（由上到下）：</a></li>
+</ul>
+</li>
+<li><a href="#3-css%e5%8a%a8%e7%94%bb" rel="">3. CSS动画</a>
+<ul>
+<li><a href="#31-css%e6%b8%b2%e6%9f%93%e6%b5%8f%e8%a7%88%e5%99%a8%e5%8e%9f%e7%90%86chrome%e5%be%ae%e8%bd%affirefox" rel="">3.1. CSS渲染：浏览器原理，chrome，微软，firefox</a></li>
+<li><a href="#32-%e5%a6%82%e4%bd%95%e6%9b%b4%e6%96%b0%e6%a0%b7%e5%bc%8f" rel="">3.2. 如何更新样式</a></li>
+<li><a href="#33-css%e5%8a%a8%e7%94%bb%e4%bc%98%e5%8c%96" rel="">3.3. CSS动画优化</a></li>
+<li><a href="#34-css%e5%8a%a8%e7%94%bb%e5%88%b6%e4%bd%9c" rel="">3.4. CSS动画制作</a>
+<ul>
+<li><a href="#341-transform%e5%8a%a8%e7%94%bb" rel="">3.4.1. transform动画</a></li>
+</ul>
+</li>
+<li><a href="#35-transition%e5%8a%a8%e7%94%bb%e8%bf%87%e6%b8%a1" rel="">3.5. transition动画过渡:</a>
+<ul>
+<li><a href="#351-animation" rel="">3.5.1. animation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="1-css定位">1. CSS定位</h2>
+<h3 id="11-css的层叠顺序由上到下">1.1. CSS的层叠顺序（由上到下）：</h3>
 <p>内联子元素/文字：后面的文字盖后面&gt;浮动元素：浮动里的文字与浮动同级&gt;块级子元素&gt;border&gt;背景</p>
 <p>背景：border外边沿围成的范围</p>
-<h3 id="112-position定位">1.1.2. position定位</h3>
+<h3 id="12-position定位">1.2. position定位</h3>
 <ol>
 <li>static：默认选项，在文档流中</li>
 <li>Relative：显示有偏移，实际位置不变
@@ -186,8 +222,8 @@
 </ol>
 </li>
 </ol>
-<h2 id="12-css层叠上下文">1.2. CSS层叠上下文</h2>
-<h3 id="121-层叠上下文顺序由上到下">1.2.1. 层叠上下文顺序（由上到下）：</h3>
+<h2 id="2-css层叠上下文">2. CSS层叠上下文</h2>
+<h3 id="21-层叠上下文顺序由上到下">2.1. 层叠上下文顺序（由上到下）：</h3>
 <ol>
 <li>Zindex0及以上/除static都是0&gt;内联子元素/文字&gt;浮动元素：文字同级&gt;块级子元素&gt;border&gt;背景&gt;zindex-&gt;html元素</li>
 <li>作用域
@@ -207,8 +243,8 @@
 </li>
 <li>负zindex不一定可以逃出div，因为可能有新的层叠上下文</li>
 </ol>
-<h2 id="css动画">CSS动画</h2>
-<h3 id="css渲染浏览器原理chrome微软firefox">CSS渲染：浏览器原理，chrome，微软，firefox</h3>
+<h2 id="3-css动画">3. CSS动画</h2>
+<h3 id="31-css渲染浏览器原理chrome微软firefox">3.1. CSS渲染：浏览器原理，chrome，微软，firefox</h3>
 <ol>
 <li>根据html构建html树：DOM</li>
 <li>根据css构建css树，CSSOM</li>
@@ -217,7 +253,7 @@
 <li>Paint绘制（颜色、阴影）</li>
 <li>Composite合成（根据层叠关系）</li>
 </ol>
-<h3 id="如何更新样式">如何更新样式</h3>
+<h3 id="32-如何更新样式">3.2. 如何更新样式</h3>
 <ol>
 <li>Js加样式
 <ol>
@@ -263,7 +299,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="css动画优化">CSS动画优化</h3>
+<h3 id="33-css动画优化">3.3. CSS动画优化</h3>
 <ol>
 <li>js优化：requestAnimationFrame代替setTimeout或setInterval
 <ol>
@@ -272,8 +308,8 @@
 </li>
 <li>css优化：will-change或translate</li>
 </ol>
-<h3 id="css动画制作">CSS动画制作</h3>
-<h4 id="transform动画">transform动画</h4>
+<h3 id="34-css动画制作">3.4. CSS动画制作</h3>
+<h4 id="341-transform动画">3.4.1. transform动画</h4>
 <ol>
 <li>位移translate(transform:translate())
 <ol>
@@ -327,7 +363,7 @@
 </ol>
 </li>
 </ol>
-<h3 id="transition动画过渡">transition动画过渡:</h3>
+<h3 id="35-transition动画过渡">3.5. transition动画过渡:</h3>
 <ol>
 <li>填充中间帧，补间动画</li>
 <li>transition: <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted -->;</li>
@@ -366,7 +402,7 @@
 </ol>
 </li>
 </ol>
-<h4 id="animation">animation</h4>
+<h4 id="351-animation">3.5.1. animation</h4>
 <ol>
 <li>@keyframes 名字 + animation: 名字 时间
 <ol>
@@ -404,6 +440,8 @@
         data-sizes="auto"
         alt="CSS跳动的心"
         title="CSS跳动的心" /></p>
+<p>开心呀hhh礼物也都弄好了，不过感觉怎么也要9月才能送出去吧&hellip;今天重量又📉啦哈哈，然后虽然知道其实大概率没结果的，但就是决定要做。</p>
+<p>最后提醒自己一下，以后博客还是不能拖，学完赶快写，不能一次写太多！！！</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
