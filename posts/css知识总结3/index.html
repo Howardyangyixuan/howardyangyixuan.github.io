@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>CSS知识总结3 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="CSS知识总结3" />
+<meta property="og:description" content="1. CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 1.1. CSS定位 1.1.1. CSS的层叠顺序（由上到下）： 内联子元素/文字" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933/" />
+<meta property="article:published_time" content="2020-05-10T15:16:18+08:00" />
+<meta property="article:modified_time" content="2020-05-10T15:16:18+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSS知识总结3"/>
+<meta name="twitter:description" content="1. CSS 知识总结 3 啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。 1.1. CSS定位 1.1.1. CSS的层叠顺序（由上到下）： 内联子元素/文字"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%932/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "CSS知识总结3",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933\/"
+        },"genre": "posts","wordcount":  1862 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933\/","datePublished": "2020-05-10T15:16:18+08:00","dateModified": "2020-05-10T15:16:18+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">CSS知识总结3</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-10>2020-05-10</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1862 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#11-css定位">1.1. CSS定位</a>
+      <ul>
+        <li><a href="#111-css的层叠顺序由上到下">1.1.1. CSS的层叠顺序（由上到下）：</a></li>
+        <li><a href="#112-position定位">1.1.2. position定位</a></li>
+      </ul>
+    </li>
+    <li><a href="#12-css层叠上下文">1.2. CSS层叠上下文</a>
+      <ul>
+        <li><a href="#121-层叠上下文顺序由上到下">1.2.1. 层叠上下文顺序（由上到下）：</a></li>
+      </ul>
+    </li>
+    <li><a href="#css动画">CSS动画</a>
+      <ul>
+        <li><a href="#css渲染浏览器原理chrome微软firefox">CSS渲染：浏览器原理，chrome，微软，firefox</a></li>
+        <li><a href="#如何更新样式">如何更新样式</a></li>
+        <li><a href="#css动画优化">CSS动画优化</a></li>
+        <li><a href="#css动画制作">CSS动画制作</a></li>
+        <li><a href="#transition动画过渡">transition动画过渡:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="1-css-知识总结-3">1. CSS 知识总结 3</h1>
+<p>啊还有定位，这篇CSS定位和动画一起总结下，然后贴一些做的小练习。</p>
+<hr>
+<h2 id="11-css定位">1.1. CSS定位</h2>
+<h3 id="111-css的层叠顺序由上到下">1.1.1. CSS的层叠顺序（由上到下）：</h3>
+<p>内联子元素/文字：后面的文字盖后面&gt;浮动元素：浮动里的文字与浮动同级&gt;块级子元素&gt;border&gt;背景</p>
+<p>背景：border外边沿围成的范围</p>
+<h3 id="112-position定位">1.1.2. position定位</h3>
+<ol>
+<li>static：默认选项，在文档流中</li>
+<li>Relative：显示有偏移，实际位置不变
+<ol>
+<li>和top/left配合使用</li>
+<li>和absolute结合使用，做absolute的爸爸</li>
+<li>配合z-index
+<ol>
+<li>默认auto，计算出来是0，但不能写0</li>
+<li>大的盖住小的</li>
+<li>Z-index管理</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Absolute
+<ol>
+<li>根据relative来定位
+<ol>
+<li>相对于祖先元素中，最近的一个定位元素，即不是static都是定位元素。</li>
+</ol>
+</li>
+<li>脱离原来场景
+<ol>
+<li>对话框关闭按钮，top:0;right:0;</li>
+<li>鼠标提示，white-space：nowrap文字内容不换行</li>
+</ol>
+</li>
+<li>配合z-index</li>
+<li>经验：
+<ol>
+<li>Top/left都要写，否则有些浏览器会错乱</li>
+<li>善用left：100%</li>
+<li>善用left：50%+负margin</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Fixed
+<ol>
+<li>相对于适口定位：viewport
+<ol>
+<li>适口：能看到的区域</li>
+<li>如果在所属的元素有特殊属性就不是相对适口
+<ol>
+<li>transform:</li>
+</ol>
+</li>
+<li>使用场景
+<ol>
+<li>广告</li>
+<li>回到顶部按钮</li>
+</ol>
+</li>
+<li>配合z-index</li>
+</ol>
+</li>
+<li>经验
+<ol>
+<li>手机上不要用</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Sticky
+<ol>
+<li>2019.9兼容性差</li>
+<li>粘滞定位：快要看不见，就黏在这里，做导航</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-css层叠上下文">1.2. CSS层叠上下文</h2>
+<h3 id="121-层叠上下文顺序由上到下">1.2.1. 层叠上下文顺序（由上到下）：</h3>
+<ol>
+<li>Zindex0及以上/除static都是0&gt;内联子元素/文字&gt;浮动元素：文字同级&gt;块级子元素&gt;border&gt;背景&gt;zindex-&gt;html元素</li>
+<li>作用域
+<ol>
+<li>上述中的一级中，index</li>
+</ol>
+</li>
+<li>创建层叠上下文
+<ol>
+<li>html元素</li>
+<li>zindex=值，不为auto</li>
+<li>position：fixed</li>
+<li>opacity&lt;1:影响所有元素</li>
+<li>tranform</li>
+<li>Flex</li>
+</ol>
+</li>
+<li>负zindex不一定可以逃出div，因为可能有新的层叠上下文</li>
+</ol>
+<h2 id="css动画">CSS动画</h2>
+<h3 id="css渲染浏览器原理chrome微软firefox">CSS渲染：浏览器原理，chrome，微软，firefox</h3>
+<ol>
+<li>根据html构建html树：DOM</li>
+<li>根据css构建css树，CSSOM</li>
+<li>合并DOM和CSSOM，得到渲染树render tree(用户看到的)</li>
+<li>Layout布局(文档流，盒模型，计算大小，位置)</li>
+<li>Paint绘制（颜色、阴影）</li>
+<li>Composite合成（根据层叠关系）</li>
+</ol>
+<h3 id="如何更新样式">如何更新样式</h3>
+<ol>
+<li>Js加样式
+<ol>
+<li>div.style.background=‘red’</li>
+</ol>
+</li>
+<li>Js直接加类
+<ol>
+<li>div.classList.add</li>
+</ol>
+</li>
+<li>更新过程
+<ol>
+<li>Js-&gt;style-&gt;layout&gt;paint-&gt;composite
+<ol>
+<li>div.remove,其他relayout</li>
+</ol>
+</li>
+<li>Js-&gt;style-&gt;paint-&gt;composite未改layout
+<ol>
+<li>改背景颜色</li>
+</ol>
+</li>
+<li>Js-&gt;style-&gt;composite：transform</li>
+</ol>
+</li>
+<li>性能
+<ol>
+<li>更新过程决定性能</li>
+<li><a href="https://csstriggers.com/">https://csstriggers.com/</a>
+<ol>
+<li>blink 谷歌</li>
+<li>gecko ie</li>
+<li>webkit safari</li>
+<li>edgehtml Edge</li>
+</ol>
+</li>
+<li>高手不用left，因为性能差
+<ol>
+<li>用transform，不用repaint和payout，性能好</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="css动画优化">CSS动画优化</h3>
+<ol>
+<li>js优化：requestAnimationFrame代替setTimeout或setInterval
+<ol>
+<li>setTimeout(()=&gt;{demo.remove()},1000)</li>
+</ol>
+</li>
+<li>css优化：will-change或translate</li>
+</ol>
+<h3 id="css动画制作">CSS动画制作</h3>
+<h4 id="transform动画">transform动画</h4>
+<ol>
+<li>位移translate(transform:translate())
+<ol>
+<li>Xy：translateX，translateY</li>
+<li>Z:需要有视点，perspective</li>
+<li>translate(x,y)</li>
+<li>translate3d(x,y,z)</li>
+<li>百分号：为自己的宽度的百分比</li>
+<li>用绝对定位居中
+<ol>
+<li>top：50%</li>
+<li>left：50%</li>
+<li>tranform(-50%,-50%)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>尺寸scale
+<ol>
+<li>transform：scale(2,2);</li>
+<li>用的少，因为容易模糊</li>
+</ol>
+</li>
+<li>旋转rotate
+<ol>
+<li>默认顺时针</li>
+<li>transform: rotate(180deg/0.5turn);沿着z轴旋转，即垂直平面</li>
+<li>rotateX，rotateY</li>
+<li>rotate3d</li>
+</ol>
+</li>
+<li>倾斜skew
+<ol>
+<li>Xy轴偏移角度</li>
+</ol>
+</li>
+<li>变化时间transition
+<ol>
+<li>Transition:all 1s;</li>
+</ol>
+</li>
+<li>用空格隔开即可，重复写transform会覆盖
+<ol>
+<li>none</li>
+</ol>
+</li>
+<li>调试
+<ol>
+<li>点数字+shift+上/下：10个移动</li>
+<li>点数字+option+上/下：0.1移动</li>
+</ol>
+</li>
+</ol>
+<h3 id="transition动画过渡">transition动画过渡:</h3>
+<ol>
+<li>填充中间帧，补间动画</li>
+<li>transition: <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted -->;</li>
+<li><!-- raw HTML omitted -->
+<ol>
+<li>淡入ease-in</li>
+<li>淡出ease-out</li>
+<li>step-start</li>
+</ol>
+</li>
+<li><!-- raw HTML omitted -->延迟
+<ol>
+<li>秒数</li>
+</ol>
+</li>
+<li>单位
+<ol>
+<li>秒s</li>
+<li>毫秒ms</li>
+</ol>
+</li>
+<li>不能过渡
+<ol>
+<li>display:none=&gt;block</li>
+<li>可见到不可见：visibility：visiable=&gt;hiddne;</li>
+<li>颜色可以</li>
+<li>透明度，但不推荐</li>
+<li>#xxx=&gt;#xxx.end</li>
+</ol>
+</li>
+<li>两次动画
+<ol>
+<li>先到b</li>
+<li>再到c</li>
+<li>setTimeout.add()+div.classList.add</li>
+</ol>
+</li>
+</ol>
+<h4 id="animation">animation</h4>
+<ol>
+<li>@keyframes 名字 + animation: 名字 时间
+<ol>
+<li>0%{transform:none;}</li>
+<li>静帧：24%，73%{}</li>
+</ol>
+</li>
+<li>最后停止
+<ol>
+<li>animation: 名字 时间 forwards</li>
+</ol>
+</li>
+<li>Animation：时长｜过度方式｜延迟｜次数｜方向｜填充模式｜是否暂停｜动画名；
+<ol>
+<li>方向：alternative交替，前后动画</li>
+<li>填充模式：forwards</li>
+<li>暂停：animationPlayState：running/pause</li>
+</ol>
+</li>
+</ol>
+<p>最后贴上制作的跳动的心❤️，这里是<a href="http://js.jirengu.com/fodop/1/" target="_blank" rel="noopener noreffer">效果</a>还有<a href="http://js.jirengu.com/fodop/1/edit" target="_blank" rel="noopener noreffer">源码</a>
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/css_hearts.png"
+        data-srcset="/css_hearts.png, /css_hearts.png 1.5x, /css_hearts.png 2x"
+        data-sizes="auto"
+        alt="CSS跳动的心"
+        title="CSS跳动的心" />
+<img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/css%e8%b7%b3%e5%8a%a8%e7%9a%84%e5%bf%83.gif"
+        data-srcset="/css%e8%b7%b3%e5%8a%a8%e7%9a%84%e5%bf%83.gif, /css%e8%b7%b3%e5%8a%a8%e7%9a%84%e5%bf%83.gif 1.5x, /css%e8%b7%b3%e5%8a%a8%e7%9a%84%e5%bf%83.gif 2x"
+        data-sizes="auto"
+        alt="CSS跳动的心"
+        title="CSS跳动的心" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-10 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%932/" class="prev" rel="prev" title="CSS知识总结2"><i class="fas fa-angle-left fa-fw"></i>CSS知识总结2</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
