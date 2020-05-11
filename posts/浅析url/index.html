@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>浅析URL - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="浅析URL" />
+<meta property="og:description" content="浅析URL 昨天先一口气把小后端搭起来了，用的阿里云服务器，然后node.js配的一个很简单的http响应。因为这部分之前已经比较了解了就先放" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90url/" />
+<meta property="article:published_time" content="2020-05-11T12:21:45+08:00" />
+<meta property="article:modified_time" content="2020-05-11T12:21:45+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅析URL"/>
+<meta name="twitter:description" content="浅析URL 昨天先一口气把小后端搭起来了，用的阿里云服务器，然后node.js配的一个很简单的http响应。因为这部分之前已经比较了解了就先放"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90url/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅析URL",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90url\/"
+        },"genre": "posts","wordcount":  1150 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90url\/","datePublished": "2020-05-11T12:21:45+08:00","dateModified": "2020-05-11T12:21:45+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">浅析URL</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-11>2020-05-11</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1150 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#urluniform-resource-locator统一资源定位服务">URL(Uniform Resource Locator)：统一资源定位服务</a>
+      <ul>
+        <li><a href="#url的组成">URL的组成</a></li>
+        <li><a href="#url的作用">URL的作用</a></li>
+        <li><a href="#域名-与-dns">域名 与 DNS</a></li>
+        <li><a href="#域名">域名</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="浅析url">浅析URL</h1>
+<p>昨天先一口气把小后端搭起来了，用的阿里云服务器，然后node.js配的一个很简单的http响应。因为这部分之前已经比较了解了就先放了一下，现在总结一下。</p>
+<hr>
+<h2 id="urluniform-resource-locator统一资源定位服务">URL(Uniform Resource Locator)：统一资源定位服务</h2>
+<h3 id="url的组成">URL的组成</h3>
+<ol>
+<li>URL = 协议 + 域名 + 路径 + 查询参数 + 锚点 + （端口：默认 http80/https443）</li>
+<li>以本文的url为例
+<ol>
+<li>协议：http://</li>
+<li>域名：<a href="yangyixuan.icu" rel="">yangyixuan.icu</a></li>
+<li>路径：/浅析URL</li>
+<li>查询参数：唔这个我们还没有</li>
+<li>锚点：#URL的组成</li>
+<li>端口：80，因为我们是http协议，所以默认80，可以在浏览器检查器里的request看到这个参数，应该是ip:80，如<a href="http://39.107.252.247:8888/" target="_blank" rel="noopener noreffer">39.107.252.247:8888/</a>，因为我的服务器没有备案，用80可能会被封，所以这里用了8888</li>
+</ol>
+</li>
+<li>其中需要注意锚点不支持中文，且功能只是定位，只和浏览器有关，<strong>不会发给服务器！！！</strong></li>
+</ol>
+<h3 id="url的作用">URL的作用</h3>
+<p>之前的介绍万维网WWW时提到:</p>
+<blockquote>
+<p>1990左右李爵士发明：为了上网冲浪，让每个人输入网址（URL），看到网页（HTML），看不见的就是HTTP
+所以URL名字中已经很清楚，就是为了帮助我们定位网址和内容，但同样是网址，有的我们很容易记住，如<a href="https://www.baidu.com/s?wd=yangyixuan.icu" target="_blank" rel="noopener noreffer">https://www.baidu.com/s?wd=hi</a>，而有的像上面提到的<a href="http://39.107.252.247:8888/hearts" target="_blank" rel="noopener noreffer">39.107.252.247:8888/hearts</a>，则很难记住，其实可以发现，主要的差别就在域名的部分。说到域名就要提到DNS了。</p>
+</blockquote>
+<h3 id="域名-与-dns">域名 与 DNS</h3>
+<p>DNS(Domain Name System)：域名系统，其实它的作用就是一张大表，帮我们记住不好记的域名。IP地址是互联网定位的基石，有了IP地址，我们就能够找到服务器，然后服务器再为我们返回我们需要的网页或数据，而DNS就为我们提供将url中的域名，转换为IP地址的服务。</p>
+<p>用一个简单的例子看看DNS</p>
+<pre><code>nslookup baidu.com
+</code></pre>
+<p>在终端输入这行命令你会看到</p>
+<pre><code>Server:		2408:8000:1010:2::8
+Address:	2408:8000:1010:2::8#53
+
+Non-authoritative answer:
+Name:	baidu.com
+Address: 220.181.38.148
+Name:	baidu.com
+Address: 39.156.69.79
+</code></pre><p>啊哈，底下的两个Address就是IP地址，这下我们就知道如何向百度发送请求了。我们ping一下试试</p>
+<pre><code>ping baidu.com
+</code></pre><p>可以看到，我们自动选择了一个IP，去尝试连接，并且成功。</p>
+<pre><code>PING baidu.com (220.181.38.148): 56 data bytes
+64 bytes from 220.181.38.148: icmp_seq=0 ttl=50 time=7.258 ms
+64 bytes from 220.181.38.148: icmp_seq=1 ttl=50 time=7.340 ms
+64 bytes from 220.181.38.148: icmp_seq=2 ttl=50 time=13.424 ms
+</code></pre><h3 id="域名">域名</h3>
+<p>最后，域名之间的区别是什么呢？
+<a href="http://www.baidu.com">www.baidu.com</a> 和 baidu.com 一样吗？</p>
+<p>其实 .com是顶级域名，baidu.com是二级域名，www.baidu.com是三级域名，这也是DNS服务的方式——逐级解析。</p>
+<p>我们先得到问解析.com的服务器(一般是网络运营商的服务器)baidu.com的ip存在哪儿，然后再到那里去问，最后得到www.baidu.com的ip地址，与该网站进行通信。</p>
+<p>而这个过程又分为，递归式和迭代式，递归式，就像找个人问问题，他知道xxx会，就向xxx去学，学会了告诉你。而迭代式呢，还是你找他问问题，他说xxx会，让你自己找他去。这里面的具体细节我就不太了解了。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-11 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/css%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%933/" class="prev" rel="prev" title="CSS知识总结3"><i class="fas fa-angle-left fa-fw"></i>CSS知识总结3</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
