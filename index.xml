@@ -3,7 +3,14 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 May 2020 12:21:45 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 May 2020 19:54:16 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>JavaScript入门</title>
+    <link>http://howardyangyixuan.github.io/posts/javascript%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Mon, 11 May 2020 19:54:16 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/javascript%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[JavaScript入门 继续前进！ JavaScript入门 JS的诞生 JS 的 Prototype JS的诞生 阮一峰：1994年，网景公司（Netscape）发布了N]]></description>
+</item><item>
     <title>浅析URL</title>
     <link>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90url/</link>
     <pubDate>Mon, 11 May 2020 12:21:45 &#43;0800</pubDate>
