@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>大话设计模式：0.面向对象基础 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式：0.面向对象基础" />
+<meta property="og:description" content="大话设计模式：0.面向对象基础 去年软工课上张老师苦口婆心：多线程&#43;设计模式，没有总结性的博客和笔记，拖了快一年了。终于找到了合适的方式重新开" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" />
+<meta property="article:published_time" content="2020-05-14T22:24:58+08:00" />
+<meta property="article:modified_time" content="2020-05-14T22:24:58+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大话设计模式：0.面向对象基础"/>
+<meta name="twitter:description" content="大话设计模式：0.面向对象基础 去年软工课上张老师苦口婆心：多线程&#43;设计模式，没有总结性的博客和笔记，拖了快一年了。终于找到了合适的方式重新开"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/javascript%E5%85%A5%E9%97%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "大话设计模式：0.面向对象基础",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/"
+        },"genre": "posts","wordcount":  1282 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/","datePublished": "2020-05-14T22:24:58+08:00","dateModified": "2020-05-14T22:24:58+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式：0.面向对象基础</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-14>2020-05-14</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1282 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-类--对象">1. 类 &amp; 对象</a></li>
+    <li><a href="#2-重载overload--重写override">2. 重载(overload) &amp; 重写(override)</a></li>
+    <li><a href="#3-字段--属性">3. 字段 &amp; 属性</a></li>
+    <li><a href="#4-oo三大特性">4. OO三大特性：</a>
+      <ul>
+        <li><a href="#41-封装">4.1. 封装</a></li>
+        <li><a href="#42-继承">4.2. 继承</a></li>
+        <li><a href="#43-多态">4.3. 多态</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-抽象类--接口">5. 抽象类 &amp; 接口：</a>
+      <ul>
+        <li><a href="#51-抽象类自底向上">5.1. 抽象类：自底向上</a></li>
+        <li><a href="#52-接口自顶向下">5.2. 接口：自顶向下</a></li>
+        <li><a href="#53-抽象类-vs-接口">5.3. 抽象类 vs 接口</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="大话设计模式0面向对象基础">大话设计模式：0.面向对象基础</h1>
+<p>去年软工课上张老师苦口婆心：多线程+设计模式，没有总结性的博客和笔记，拖了快一年了。终于找到了合适的方式重新开始了。</p>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%e5%a4%a7%e8%af%9d%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f0%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1%e5%9f%ba%e7%a1%80" rel="">大话设计模式：0.面向对象基础</a>
+<ul>
+<li><a href="#1-%e7%b1%bb--%e5%af%b9%e8%b1%a1" rel="">1. 类 &amp; 对象</a></li>
+<li><a href="#2-%e9%87%8d%e8%bd%bdoverload--%e9%87%8d%e5%86%99override" rel="">2. 重载(overload) &amp; 重写(override)</a></li>
+<li><a href="#3-%e5%ad%97%e6%ae%b5--%e5%b1%9e%e6%80%a7" rel="">3. 字段 &amp; 属性</a></li>
+<li><a href="#4-oo%e4%b8%89%e5%a4%a7%e7%89%b9%e6%80%a7" rel="">4. OO三大特性：</a>
+<ul>
+<li><a href="#41-%e5%b0%81%e8%a3%85" rel="">4.1. 封装</a></li>
+<li><a href="#42-%e7%bb%a7%e6%89%bf" rel="">4.2. 继承</a></li>
+<li><a href="#43-%e5%a4%9a%e6%80%81" rel="">4.3. 多态</a></li>
+</ul>
+</li>
+<li><a href="#5-%e6%8a%bd%e8%b1%a1%e7%b1%bb--%e6%8e%a5%e5%8f%a3" rel="">5. 抽象类 &amp; 接口：</a>
+<ul>
+<li><a href="#51-%e6%8a%bd%e8%b1%a1%e7%b1%bb%e8%87%aa%e5%ba%95%e5%90%91%e4%b8%8a" rel="">5.1. 抽象类：自底向上</a></li>
+<li><a href="#52-%e6%8e%a5%e5%8f%a3%e8%87%aa%e9%a1%b6%e5%90%91%e4%b8%8b" rel="">5.2. 接口：自顶向下</a></li>
+<li><a href="#53-%e6%8a%bd%e8%b1%a1%e7%b1%bb-vs-%e6%8e%a5%e5%8f%a3" rel="">5.3. 抽象类 vs 接口</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="1-类--对象">1. 类 &amp; 对象</h2>
+<p>一切事物都是对象，每一个实例都是一个对象，而类是对象的抽象，类是一个具有共同属性或特征的事物的集合，一般通过对不同对象的观察，进行总结而得出，类的抽象是一个自底向上的过程。</p>
+<blockquote>
+<ol>
+<li>对象：一个自包含的实体，可以用一组特性和行为来标识（自包含：无需其他组件，即可被独立使用）</li>
+<li>类： 具有相同属性和功能对象的抽象的集合。</li>
+<li>实例：真实的对象</li>
+<li>实例化： 创建对象的过程</li>
+<li>构造方法：类的初始化，也是实例化</li>
+</ol>
+</blockquote>
+<h2 id="2-重载overload--重写override">2. 重载(overload) &amp; 重写(override)</h2>
+<p>重载：<strong>一个类的每一个实例</strong>都可以有多个同名函数，只需参数类型或个数不同即可。</p>
+<p>重写：<strong>父类与子类的实例间</strong>子类重新实现父类的方法</p>
+<h2 id="3-字段--属性">3. 字段 &amp; 属性</h2>
+<p>字段是类内数据/变量，属性不等于字段，属性是一个（get）或一对（get&amp;set）用于获取/改变字段的方法。</p>
+<h2 id="4-oo三大特性">4. OO三大特性：</h2>
+<h3 id="41-封装">4.1. 封装</h3>
+<p>封装是对象的特性，封装是指对象本身已经具备所有需要的信息并可以自己完成操作。</p>
+<p>封装的优点：减少耦合/类内独立修改/清晰的对外接口。其实是从三个角度描述同一件事儿。</p>
+<h3 id="42-继承">4.2. 继承</h3>
+<p>继承是类间的is-a关系，且不可逆，派生类is-a基类，子类is-a父类。</p>
+<ol>
+<li>子类具有父类非private的属性和方法</li>
+<li>子类具有自己的属性和方法</li>
+<li>子类可以重写(override)父类方法</li>
+</ol>
+<p>注意构造函数，只能被调用，不能被继承。has-a关系，不应用继承，而应该用组合/聚合。</p>
+<p>继承的优点：代码共享/避免重复/便于修改。</p>
+<p>继承的缺点：1.高耦合，父类变，子类自动变 2.父类暴露细节(protected的方法和变量/数据)，破坏了封装，这点理解还不充分。</p>
+<h3 id="43-多态">4.3. 多态</h3>
+<p>多态指<strong>父类与子类的实例间/有相同接口的实例间</strong>可以有同名方法，但实现不同。从子类角度，子类间同名方法，效果也不同。只有对象继承链最末端方法会被调用。</p>
+<ol>
+<li>子类以父类身份出现，即对象声明必须为父类</li>
+<li>子类调用自己的方法</li>
+<li>子类的特有属性和方法不可用</li>
+</ol>
+<h2 id="5-抽象类--接口">5. 抽象类 &amp; 接口：</h2>
+<p>类是对实例抽象
+抽象类是对类的抽象
+接口是对方法/行为的抽象</p>
+<h3 id="51-抽象类自底向上">5.1. 抽象类：自底向上</h3>
+<p>抽象类：实例化没有意义的类，只作为父类出现。继承关系树中，抽象类树枝节点，类是叶子结点。</p>
+<ol>
+<li>抽象类不能实例化</li>
+<li>抽象方法必须被子类重写</li>
+<li>类中有抽象方法，类必须被定义为抽象类</li>
+</ol>
+<h3 id="52-接口自顶向下">5.2. 接口：自顶向下</h3>
+<p>接口：隐式组合方法和属性，封装特定功能。接口与类是多对多的关系。</p>
+<ol>
+<li>接口不能实例化</li>
+<li>实现接口的类必须实现接口所有方法和属性</li>
+</ol>
+<h3 id="53-抽象类-vs-接口">5.3. 抽象类 vs 接口</h3>
+<ol>
+<li>抽象类可以有一些成员的实现，接口不能包含成员实现。反过来说，抽象类可被子类部分实现，接口必须被实现类完全实现。</li>
+<li>相似的类间对象，用继承抽象类。跨类间的对象，使用接口。</li>
+<li>设计角度：抽象类现有对象，后总结出抽象类，自底向上，一般是重构得到的。接口不知子类存在，预先定义方法，自顶向下。</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-14 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/javascript%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="JavaScript入门"><i class="fas fa-angle-left fa-fw"></i>JavaScript入门</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
