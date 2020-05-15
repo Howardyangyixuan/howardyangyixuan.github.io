@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>大话设计模式：1.简单工厂模式&amp;UML类图 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式：1.简单工厂模式&amp;UML类图" />
+<meta property="og:description" content="大话设计模式：1.简单工厂模式 &amp; UML类图 前几章应该比较简单，快速推进！ 大话设计模式：1.简单工厂模式 &amp; UML类图 1. 设计一个计算器：基本的面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-05-15T20:15:05+08:00" />
+<meta property="article:modified_time" content="2020-05-15T20:15:05+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大话设计模式：1.简单工厂模式&amp;UML类图"/>
+<meta name="twitter:description" content="大话设计模式：1.简单工厂模式 &amp; UML类图 前几章应该比较简单，快速推进！ 大话设计模式：1.简单工厂模式 &amp; UML类图 1. 设计一个计算器：基本的面"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "大话设计模式：1.简单工厂模式\u0026UML类图",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","wordcount":  858 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-05-15T20:15:05+08:00","dateModified": "2020-05-15T20:15:05+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式：1.简单工厂模式&amp;UML类图</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-15>2020-05-15</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 858 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-设计一个计算器基本的面向对象">1. 设计一个计算器：基本的面向对象</a></li>
+    <li><a href="#2-简单工厂模式">2. 简单工厂模式</a></li>
+    <li><a href="#3-uml类图">3. UML类图</a>
+      <ul>
+        <li><a href="#31-类--抽象类">3.1. 类 &amp; 抽象类</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-接口">4. 接口</a></li>
+    <li><a href="#5-继承--实现接口">5. 继承 &amp; 实现接口</a></li>
+    <li><a href="#6-关联--组合--聚合">6. 关联 &amp; 组合 &amp; 聚合</a></li>
+    <li><a href="#7-依赖">7. 依赖</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="大话设计模式1简单工厂模式--uml类图">大话设计模式：1.简单工厂模式 &amp; UML类图</h1>
+<p>前几章应该比较简单，快速推进！</p>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%e5%a4%a7%e8%af%9d%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f1%e7%ae%80%e5%8d%95%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f--uml%e7%b1%bb%e5%9b%be" rel="">大话设计模式：1.简单工厂模式 &amp; UML类图</a>
+<ul>
+<li><a href="#1-%e8%ae%be%e8%ae%a1%e4%b8%80%e4%b8%aa%e8%ae%a1%e7%ae%97%e5%99%a8%e5%9f%ba%e6%9c%ac%e7%9a%84%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1" rel="">1. 设计一个计算器：基本的面向对象</a></li>
+<li><a href="#2-%e7%ae%80%e5%8d%95%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f" rel="">2. 简单工厂模式</a></li>
+<li><a href="#3-uml%e7%b1%bb%e5%9b%be" rel="">3. UML类图</a>
+<ul>
+<li><a href="#31-%e7%b1%bb--%e6%8a%bd%e8%b1%a1%e7%b1%bb" rel="">3.1. 类 &amp; 抽象类</a></li>
+</ul>
+</li>
+<li><a href="#4-%e6%8e%a5%e5%8f%a3" rel="">4. 接口</a></li>
+<li><a href="#5-%e7%bb%a7%e6%89%bf--%e5%ae%9e%e7%8e%b0%e6%8e%a5%e5%8f%a3" rel="">5. 继承 &amp; 实现接口</a></li>
+<li><a href="#6-%e5%85%b3%e8%81%94--%e7%bb%84%e5%90%88--%e8%81%9a%e5%90%88" rel="">6. 关联 &amp; 组合 &amp; 聚合</a></li>
+<li><a href="#7-%e4%be%9d%e8%b5%96" rel="">7. 依赖</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<hr>
+<h2 id="1-设计一个计算器基本的面向对象">1. 设计一个计算器：基本的面向对象</h2>
+<ol>
+<li>界面逻辑 和 业务逻辑 分离</li>
+<li>双目运算符类：Operation
+<ol>
+<li>两个操作数，私有字段</li>
+<li>操作数的属性（get和set方法）</li>
+<li>（虚）运算方法：供子类实现</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-简单工厂模式">2. 简单工厂模式</h2>
+<p>如果业务中可能增加或删除实例化的对象，可以用单独的类来做创建实例的过程，所谓工厂即创建实例的工厂。在计算器的例子中，运算操作就是需要增加或删除的，除加减乘除外，还有可能增加开方，指数等运算。
+简单工厂类</p>
+<ol>
+<li>根据传入参数创建对应子类，并返回</li>
+</ol>
+<p>客户端</p>
+<ol>
+<li>声明父类Operation oper</li>
+<li>通过简单工厂类创建所需子类，赋值给oper</li>
+<li>给操作数赋值</li>
+<li>通过多态，调用oper的方法，返回运算结果</li>
+</ol>
+<h2 id="3-uml类图">3. UML类图</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/images/UML%e7%b1%bb%e5%9b%be.jpg"
+        data-srcset="/images/UML%e7%b1%bb%e5%9b%be.jpg, /images/UML%e7%b1%bb%e5%9b%be.jpg 1.5x, /images/UML%e7%b1%bb%e5%9b%be.jpg 2x"
+        data-sizes="auto"
+        alt="UML类图"
+        title="UML类图" /></p>
+<h3 id="31-类--抽象类">3.1. 类 &amp; 抽象类</h3>
+<p>eg.动物</p>
+<ol>
+<li>第一行：类名</li>
+<li>第二行：属性/字段</li>
+<li>第三行：操作/方法</li>
+<li><em>类名斜体：抽象类</em></li>
+</ol>
+<h2 id="4-接口">4. 接口</h2>
+<p>eg.飞(接口) &amp; 讲人话（接口棒棒糖表示法）</p>
+<ol>
+<li>第一行：接口名称</li>
+<li>第二行：接口方法</li>
+<li>棒棒糖表示法：接口在实现类中出现，类名在圆圈旁</li>
+</ol>
+<h2 id="5-继承--实现接口">5. 继承 &amp; 实现接口</h2>
+<p>继承：——▶️，即空心三角形+实线
+实线接口：···▶️，即空心三角形+虚线</p>
+<h2 id="6-关联--组合--聚合">6. 关联 &amp; 组合 &amp; 聚合</h2>
+<p>eg.雁群里有大雁(聚合)，鸟有翅膀(组合)，企鹅知道环境(关联)</p>
+<p>本质都是类间关系都是has-a关系</p>
+<ol>
+<li>组合：强的拥有关系，体现在初始化时，同时实例化（构造函数中），严格的整体与部分关系，整体和部分生命周期一样</li>
+<li>聚合：弱的拥有关系，体现在A对象中包含B对象，但B对象不是A对象的一部分，即仅以字段/属性方式存在</li>
+<li>关联：了解/知道，体现在有联系但没有明显的整体与部分的关联</li>
+<li>组合 vs 聚合：组合关系，整体与部分生命周期相同，聚合关系，整体与部分生命周期不同</li>
+<li>关联 vs 聚合：聚合关系，强调整体与部分，关联关系，多用于个体与环境，实现上都以字段的形式存在。</li>
+</ol>
+<h2 id="7-依赖">7. 依赖</h2>
+<p>表示类在某些方面需要依靠其他类，实现上，子类的方法需要其他类作为参数。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-15 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="prev" rel="prev" title="大话设计模式：0.面向对象基础"><i class="fas fa-angle-left fa-fw"></i>大话设计模式：0.面向对象基础</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

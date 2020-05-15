@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 14 May 2020 22:24:58 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 May 2020 20:15:05 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式：1.简单工厂模式&amp;UML类图</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Fri, 15 May 2020 20:15:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：1.简单工厂模式 &amp; UML类图 前几章应该比较简单，快速推进！ 大话设计模式：1.简单工厂模式 &amp; UML类图 1. 设计一个计算器：基本的面]]></description>
+</item><item>
     <title>大话设计模式：0.面向对象基础</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
     <pubDate>Thu, 14 May 2020 22:24:58 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
     <description><![CDATA[如何用 hugo 搭建个人博客 1.什么是 Hugo Hugo 是最快的博客生成器，由 Go 语言实现。 另外一个常用的生成器是 Hexo 由 Js 实现，方方老师说有点难用，有空自己尝试下。 前]]></description>
-</item><item>
-    <title>第二篇博客</title>
-    <link>http://howardyangyixuan.github.io/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</link>
-    <pubDate>Sun, 03 May 2020 10:03:35 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</guid>
-    <description><![CDATA[购买并配置了自己的域名，yangyixuan.icu GitHub Pages 和 域名 还没有搞清GitHub Pages 和 域名的关系，好像Github Pages就是一个公共免]]></description>
 </item></channel>
 </rss>
