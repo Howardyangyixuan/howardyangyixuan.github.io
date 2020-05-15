@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>HTML - 分类 - Y-y_x&#39;s Blog</title>
+        <link>http://howardyangyixuan.github.io/categories/html/</link>
+        <description>HTML - 分类 - Y-y_x&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 06 May 2020 11:42:13 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/categories/html/" rel="self" type="application/rss+xml" /><item>
+    <title>HTML入门笔记2 HTML常用标签</title>
+    <link>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B02-html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</link>
+    <pubDate>Wed, 06 May 2020 11:42:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B02-html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</guid>
+    <description><![CDATA[HTML 入门笔记 2 - HTML 常用标签 1.如何预览 HTML 永远不要双击打开 html！要以普通用户身份打开，即输入网址 下面列举两种构建本地服务器的例子 1.1. 使用 Http-server 命令]]></description>
+</item><item>
+    <title>HTML入门笔记1</title>
+    <link>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B01/</link>
+    <pubDate>Mon, 04 May 2020 15:14:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B01/</guid>
+    <description><![CDATA[HTML 入门笔记 1 写在前面： “Hugo 是垃圾，请用平台！” 有点服方方了！！！ 确实把它征服了之后，不要再管它了，hugo 就是垃圾，麻烦，没有留言和分]]></description>
+</item></channel>
+</rss>
