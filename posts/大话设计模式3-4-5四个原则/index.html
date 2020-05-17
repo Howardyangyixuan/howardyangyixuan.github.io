@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>大话设计模式3/4/5：四个设计原则 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式3/4/5：四个设计原则" />
+<meta property="og:description" content="大话设计模式3/4/5：四个设计原则 大话设计模式3/4/5：四个设计原则 1. 单一职责原则(SRP: Single Responsibility Principle)： 2. 开放-封闭原则(" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-4-5%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99/" />
+<meta property="article:published_time" content="2020-05-18T00:12:16+08:00" />
+<meta property="article:modified_time" content="2020-05-18T00:12:16+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="大话设计模式3/4/5：四个设计原则"/>
+<meta name="twitter:description" content="大话设计模式3/4/5：四个设计原则 大话设计模式3/4/5：四个设计原则 1. 单一职责原则(SRP: Single Responsibility Principle)： 2. 开放-封闭原则("/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-4-5%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F2%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "大话设计模式3/4/5：四个设计原则",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-4-5%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99\/"
+        },"genre": "posts","wordcount":  710 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F3-4-5%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99\/","datePublished": "2020-05-18T00:12:16+08:00","dateModified": "2020-05-18T00:12:16+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式3/4/5：四个设计原则</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-18>2020-05-18</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 710 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-单一职责原则srp-single-responsibility-principle">1. 单一职责原则(SRP: Single Responsibility Principle)：</a></li>
+    <li><a href="#2-开放-封闭原则ocp-open-closure-principle">2. 开放-封闭原则(OCP: Open Closure Principle)：</a></li>
+    <li><a href="#3-依赖倒转原则dip-dependence-inversion-principle">3. 依赖倒转原则(DIP: Dependence Inversion Principle):</a></li>
+    <li><a href="#4-里氏代换原则lsp-liskov-substitution-principle">4. 里氏代换原则(LSP: Liskov Substitution Principle):</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="大话设计模式345四个设计原则">大话设计模式3/4/5：四个设计原则</h1>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%e5%a4%a7%e8%af%9d%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f345%e5%9b%9b%e4%b8%aa%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99" rel="">大话设计模式3/4/5：四个设计原则</a>
+<ul>
+<li><a href="#1-%e5%8d%95%e4%b8%80%e8%81%8c%e8%b4%a3%e5%8e%9f%e5%88%99srp-single-responsibility-principle" rel="">1. 单一职责原则(SRP: Single Responsibility Principle)：</a></li>
+<li><a href="#2-%e5%bc%80%e6%94%be-%e5%b0%81%e9%97%ad%e5%8e%9f%e5%88%99ocp-open-closure-principle" rel="">2. 开放-封闭原则(OCP: Open Closure Principle)：</a></li>
+<li><a href="#3-%e4%be%9d%e8%b5%96%e5%80%92%e8%bd%ac%e5%8e%9f%e5%88%99dip-dependence-inversion-principle" rel="">3. 依赖倒转原则(DIP: Dependence Inversion Principle):</a></li>
+<li><a href="#4-%e9%87%8c%e6%b0%8f%e4%bb%a3%e6%8d%a2%e5%8e%9f%e5%88%99lsp-liskov-substitution-principle" rel="">4. 里氏代换原则(LSP: Liskov Substitution Principle):</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="1-单一职责原则srp-single-responsibility-principle">1. 单一职责原则(SRP: Single Responsibility Principle)：</h2>
+<p>对一个类而言，引起它变化的原因应该只有一个。</p>
+<p>一个类承担过多职责，会导致紧耦合，一个职责的变化会限制类完成其他职责。有多余一个动机改变一个类，那么这个类就多余一个职责。</p>
+<p>eg.界面变化和游戏逻辑</p>
+<h2 id="2-开放-封闭原则ocp-open-closure-principle">2. 开放-封闭原则(OCP: Open Closure Principle)：</h2>
+<p>软件实体（类、模块、函数等），应当对扩展开放，对修改封闭。</p>
+<p>虽然无法做到完全对修改封闭，但是可以选择模块对哪种变化封闭。一种策略是最初版本假设变化不会发生，一旦变化发生，立即行动通过抽象隔离同类变化，避免之后的重复修改，使得之后的同类修改可以通过增加新代码，而不是更改旧代码来实现。并且要在方法被广泛使用之前，尽早发现可能发生的变化。</p>
+<p>eg.计算器运算的扩充，首先实现加法，在减法需求提出后，抽象出运算类，后续增加运算即可只增加新代码，而不修改旧代码。</p>
+<h2 id="3-依赖倒转原则dip-dependence-inversion-principle">3. 依赖倒转原则(DIP: Dependence Inversion Principle):</h2>
+<ol>
+<li>高层模块不应该依赖底层模块，两者都应该依赖抽象</li>
+<li>抽象不应该依赖细节，细节应该依赖抽象</li>
+</ol>
+<p>抽象不依赖细节，细节依赖抽象，实际上，就是要针对接口编程，而不要对实现编程。</p>
+<h2 id="4-里氏代换原则lsp-liskov-substitution-principle">4. 里氏代换原则(LSP: Liskov Substitution Principle):</h2>
+<p>子类型必须能够替换掉它们的父类型</p>
+<p>如果软件实体一个父类的话，也可以使用它的子类，并且它察觉不出父类对象和子类对象的区别。这使得开放-封闭原则成为可能。</p>
+<hr>
+<p>今天打了kick start虽然运气好遇到了刚做的类型，不过进步还是不小，开心！</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-05-18 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F2%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式：2.策略模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式：2.策略模式</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
