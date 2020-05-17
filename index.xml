@@ -3,7 +3,14 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 May 2020 20:15:05 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 16 May 2020 23:59:52 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式：2.策略模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F2%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sat, 16 May 2020 23:59:52 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F2%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：2.策略模式 策略模式：定义了算法家族，分别封装，相互之间可以替换，使算法的变换不会影响使用算法的客户。 TL;DR：策略模式就是]]></description>
+</item><item>
     <title>大话设计模式：1.简单工厂模式&amp;UML类图</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F1%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Fri, 15 May 2020 20:15:05 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/html%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B01/</guid>
     <description><![CDATA[HTML 入门笔记 1 写在前面： “Hugo 是垃圾，请用平台！” 有点服方方了！！！ 确实把它征服了之后，不要再管它了，hugo 就是垃圾，麻烦，没有留言和分]]></description>
-</item><item>
-    <title>如何用hugo搭建个人博客</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-    <pubDate>Sun, 03 May 2020 15:02:39 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A6%82%E4%BD%95%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-    <description><![CDATA[如何用 hugo 搭建个人博客 1.什么是 Hugo Hugo 是最快的博客生成器，由 Go 语言实现。 另外一个常用的生成器是 Hexo 由 Js 实现，方方老师说有点难用，有空自己尝试下。 前]]></description>
 </item></channel>
 </rss>
