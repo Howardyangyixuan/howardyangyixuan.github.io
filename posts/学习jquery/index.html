@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>学习jQuery - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="学习jQuery" />
+<meta property="og:description" content="学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/" />
+<meta property="article:published_time" content="2020-06-12T20:28:15+08:00" />
+<meta property="article:modified_time" content="2020-06-12T20:28:15+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="学习jQuery"/>
+<meta name="twitter:description" content="学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "学习jQuery",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%AD%A6%E4%B9%A0jquery\/"
+        },"genre": "posts","keywords": "DOM, 前端","wordcount":  778 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%AD%A6%E4%B9%A0jquery\/","datePublished": "2020-06-12T20:28:15+08:00","dateModified": "2020-06-12T20:28:15+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">学习jQuery</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-06-12>2020-06-12</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 778 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-jquery-如何获取元素">1. jQuery 如何获取元素</a></li>
+    <li><a href="#2-jquery-的链式操作是怎样的">2. jQuery 的链式操作是怎样的</a></li>
+    <li><a href="#3-jquery-如何创建元素">3. jQuery 如何创建元素</a></li>
+    <li><a href="#4-jquery-如何移动元素">4. jQuery 如何移动元素</a></li>
+    <li><a href="#5-jquery-如何修改元素的属性">5. jQuery 如何修改元素的属性</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><!-- raw HTML omitted -->
+<ul>
+<li><a href="#%e5%ad%a6%e4%b9%a0-jquery" rel="">学习 jQuery</a>
+<ul>
+<li><a href="#1-jquery-%e5%a6%82%e4%bd%95%e8%8e%b7%e5%8f%96%e5%85%83%e7%b4%a0" rel="">1. jQuery 如何获取元素</a></li>
+<li><a href="#2-jquery-%e7%9a%84%e9%93%be%e5%bc%8f%e6%93%8d%e4%bd%9c%e6%98%af%e6%80%8e%e6%a0%b7%e7%9a%84" rel="">2. jQuery 的链式操作是怎样的</a></li>
+<li><a href="#3-jquery-%e5%a6%82%e4%bd%95%e5%88%9b%e5%bb%ba%e5%85%83%e7%b4%a0" rel="">3. jQuery 如何创建元素</a></li>
+<li><a href="#4-jquery-%e5%a6%82%e4%bd%95%e7%a7%bb%e5%8a%a8%e5%85%83%e7%b4%a0" rel="">4. jQuery 如何移动元素</a></li>
+<li><a href="#5-jquery-%e5%a6%82%e4%bd%95%e4%bf%ae%e6%94%b9%e5%85%83%e7%b4%a0%e7%9a%84%e5%b1%9e%e6%80%a7" rel="">5. jQuery 如何修改元素的属性</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h1 id="学习-jquery">学习 jQuery</h1>
+<h2 id="1-jquery-如何获取元素">1. jQuery 如何获取元素</h2>
+<pre><code>$(document) //选择整个文档对象
+$('#xxx') //选择id为xxx的元素
+$('.xxx') // 选择class为xxx的div元素
+$('div').filter('.xxx'); //选择class等于xxx的div元素
+</code></pre><h2 id="2-jquery-的链式操作是怎样的">2. jQuery 的链式操作是怎样的</h2>
+<p>jQuery 链式操作风格：使用全局函数获取对应元素，不返回元素，而是返回构造对象，这个对象可以用于操作对应元素。</p>
+<p>这种风格使得所有操作可以连接在一起，以链条的形式写出来</p>
+<pre><code>jQuery('#xxx').find('.red').parent()
+</code></pre><h2 id="3-jquery-如何创建元素">3. jQuery 如何创建元素</h2>
+<p>直接写 html 语句，jQuery 的构造函数就会自动生成对应元素</p>
+<pre><code>$('&lt;p&gt;Hello&lt;/p&gt;');
+
+$('&lt;li class=&quot;new&quot;&gt;new list item&lt;/li&gt;');
+
+$('ul').append('&lt;li&gt;list item&lt;/li&gt;');
+</code></pre><h2 id="4-jquery-如何移动元素">4. jQuery 如何移动元素</h2>
+<p>jQuery 提供两组方法来移动元素。一组方法是直接移动该元素，另一组方法是移动其他元素，使得目标元素达到我们想要的位置。</p>
+<p>eg.将一个 div 元素，移动到 p 元素后面
+直接法：把 div 元素移动 p 元素后面</p>
+<pre><code>$('div').insertAfter($('p'));
+</code></pre><p>间接法：把 p 元素加到 div 元素前面</p>
+<pre><code>$('p').after($('div'));
+</code></pre><p>这两组操作共有 4 对</p>
+<ol>
+<li>
+<p>外前：.insertBefore()和.before()：在现存元素的外部，从前面插入元素</p>
+</li>
+<li>
+<p>外后：.insertAfter()和.after()：在现存元素的外部，从后面插入元素</p>
+</li>
+<li>
+<p>内前：.prependTo()和.prepend()：在现存元素的内部，从前面插入元素</p>
+</li>
+<li>
+<p>内后：.appendTo()和.append()：在现存元素的内部，从后面插入元素</p>
+</li>
+</ol>
+<h2 id="5-jquery-如何修改元素的属性">5. jQuery 如何修改元素的属性</h2>
+<pre><code>
+class 属性
+.addClass('xxx')//添加指定类名
+.removeClass('xxx')//删除指定类名
+
+css属性
+.css()//获取css或设置
+.height()//获取高度或设置
+.width()//获取宽度或设置
+
+</code></pre><hr>
+<p>这周毕设答辩弄完了，哎学校学院还是太宠我们，真的觉得还没组会压力大呢,这两天再弄一个多路视频拼接的项目，昨天憋的难受，刚好出去小聚一下，北京又有新疫情，开学返校遥遥无期，最近还是有些懈怠，不可以呀，要努力呀呀呀</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-06-12 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/dom/">DOM</a>,&nbsp;<a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式8工厂模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式8工厂模式</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

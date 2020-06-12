@@ -3,7 +3,14 @@
         <title>前端 - 标签 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
         <description>前端 - 标签 - Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 May 2020 00:15:26 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/" rel="self" type="application/rss+xml" /><item>
+    <title>学习jQuery</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</link>
+    <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</guid>
+    <description><![CDATA[学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对]]></description>
+</item><item>
     <title>JS对象基本用法</title>
     <link>http://howardyangyixuan.github.io/posts/js%E5%AF%B9%E8%B1%A1%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
     <pubDate>Wed, 20 May 2020 00:15:26 &#43;0800</pubDate>

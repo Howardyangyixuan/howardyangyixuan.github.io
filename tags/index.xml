@@ -3,7 +3,21 @@
         <title>Tags - 标签 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/tags/</link>
         <description>Tags - 标签 - Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2020 17:54:17 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>DOM</title>
+    <link>http://howardyangyixuan.github.io/tags/dom/</link>
+    <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/tags/dom/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>前端</title>
+    <link>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+    <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>设计原则</title>
     <link>http://howardyangyixuan.github.io/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/</link>
     <pubDate>Fri, 05 Jun 2020 17:54:17 &#43;0800</pubDate>
@@ -30,13 +44,6 @@
     <pubDate>Wed, 20 May 2020 00:15:26 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/tags/js/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>前端</title>
-    <link>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
-    <pubDate>Wed, 20 May 2020 00:15:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>CSS</title>

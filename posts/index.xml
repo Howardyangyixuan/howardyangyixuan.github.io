@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 05 Jun 2020 17:54:17 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>学习jQuery</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</link>
+    <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</guid>
+    <description><![CDATA[学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对]]></description>
+</item><item>
     <title>大话设计模式8工厂模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Fri, 05 Jun 2020 17:54:17 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/javascript%E5%85%A5%E9%97%A8/</guid>
     <description><![CDATA[JavaScript入门 继续前进！ JavaScript入门 1. JS的诞生 2. JS 的 Prototype 3. JS 的设计缺陷 4. JS 基本语法tips 4.1. &amp;&amp; 和 || 4.2. fn &amp;&amp; fn() 4.3. label 4.4. setTimeout 1. J]]></description>
-</item><item>
-    <title>浅析URL</title>
-    <link>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90url/</link>
-    <pubDate>Mon, 11 May 2020 12:21:45 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90url/</guid>
-    <description><![CDATA[浅析URL 昨天先一口气把小后端搭起来了，用的阿里云服务器，然后node.js配的一个很简单的http响应。因为这部分之前已经比较了解了就先放]]></description>
 </item></channel>
 </rss>
