@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MVC - 分类 - Y-y_x&#39;s Blog</title>
+        <link>http://howardyangyixuan.github.io/categories/mvc/</link>
+        <description>MVC - 分类 - Y-y_x&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 02 Jul 2020 19:56:18 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/categories/mvc/" rel="self" type="application/rss+xml" /><item>
+    <title>浅谈MVC</title>
+    <link>http://howardyangyixuan.github.io/posts/%E6%B5%85%E8%B0%88mvc/</link>
+    <pubDate>Thu, 02 Jul 2020 19:56:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E6%B5%85%E8%B0%88mvc/</guid>
+    <description><![CDATA[浅谈 MVC 第一次了解 MVC 是老韩上 EJB 那门课的时候讨论的，View 由 CSS 和 JSP 控制，Controller 是 Servlet 来做，Model 由会话 Bean 和数据库交互处理，没实]]></description>
+</item></channel>
+</rss>

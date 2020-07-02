@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象","wordcount":  1282 ,
+        },"genre": "posts","keywords": "设计模式, 面向对象","wordcount":  1265 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/","datePublished": "2020-05-14T22:24:58+08:00","dateModified": "2020-05-14T22:24:58+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -79,7 +79,7 @@
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-05-14>2020-05-14</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1282 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1265 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 3 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -91,7 +91,7 @@
     <li><a href="#1-类--对象">1. 类 &amp; 对象</a></li>
     <li><a href="#2-重载overload--重写override">2. 重载(overload) &amp; 重写(override)</a></li>
     <li><a href="#3-字段--属性">3. 字段 &amp; 属性</a></li>
-    <li><a href="#4-oo三大特性">4. OO三大特性：</a>
+    <li><a href="#4-oo-三大特性">4. OO 三大特性：</a>
       <ul>
         <li><a href="#41-封装">4.1. 封装</a></li>
         <li><a href="#42-继承">4.2. 继承</a></li>
@@ -116,7 +116,7 @@
 <li><a href="#1-%e7%b1%bb--%e5%af%b9%e8%b1%a1" rel="">1. 类 &amp; 对象</a></li>
 <li><a href="#2-%e9%87%8d%e8%bd%bdoverload--%e9%87%8d%e5%86%99override" rel="">2. 重载(overload) &amp; 重写(override)</a></li>
 <li><a href="#3-%e5%ad%97%e6%ae%b5--%e5%b1%9e%e6%80%a7" rel="">3. 字段 &amp; 属性</a></li>
-<li><a href="#4-oo%e4%b8%89%e5%a4%a7%e7%89%b9%e6%80%a7" rel="">4. OO三大特性：</a>
+<li><a href="#4-oo%e4%b8%89%e5%a4%a7%e7%89%b9%e6%80%a7" rel="">4. OO 三大特性：</a>
 <ul>
 <li><a href="#41-%e5%b0%81%e8%a3%85" rel="">4.1. 封装</a></li>
 <li><a href="#42-%e7%bb%a7%e6%89%bf" rel="">4.2. 继承</a></li>
@@ -150,20 +150,20 @@
 <p>重写：<strong>父类与子类的实例间</strong>子类重新实现父类的方法</p>
 <h2 id="3-字段--属性">3. 字段 &amp; 属性</h2>
 <p>字段是类内数据/变量，属性不等于字段，属性是一个（get）或一对（get&amp;set）用于获取/改变字段的方法。</p>
-<h2 id="4-oo三大特性">4. OO三大特性：</h2>
+<h2 id="4-oo-三大特性">4. OO 三大特性：</h2>
 <h3 id="41-封装">4.1. 封装</h3>
 <p>封装是对象的特性，封装是指对象本身已经具备所有需要的信息并可以自己完成操作。</p>
 <p>封装的优点：减少耦合/类内独立修改/清晰的对外接口。其实是从三个角度描述同一件事儿。</p>
 <h3 id="42-继承">4.2. 继承</h3>
-<p>继承是类间的is-a关系，且不可逆，派生类is-a基类，子类is-a父类。</p>
+<p>继承是类间的 is-a 关系，且不可逆，派生类 is-a 基类，子类 is-a 父类。</p>
 <ol>
-<li>子类具有父类非private的属性和方法</li>
+<li>子类具有父类非 private 的属性和方法</li>
 <li>子类具有自己的属性和方法</li>
 <li>子类可以重写(override)父类方法</li>
 </ol>
-<p>注意构造函数，只能被调用，不能被继承。has-a关系，不应用继承，而应该用组合/聚合。</p>
+<p>注意构造函数，只能被调用，不能被继承。has-a 关系，不应用继承，而应该用组合/聚合。</p>
 <p>继承的优点：代码共享/避免重复/便于修改。</p>
-<p>继承的缺点：1.高耦合，父类变，子类自动变 2.父类暴露细节(protected的方法和变量/数据)，破坏了封装，这点理解还不充分。</p>
+<p>继承的缺点：1.高耦合，父类变，子类自动变 2.父类暴露细节(protected 的方法和变量/数据)，破坏了封装，这点理解还不充分。</p>
 <h3 id="43-多态">4.3. 多态</h3>
 <p>多态指<strong>父类与子类的实例间/有相同接口的实例间</strong>可以有同名方法，但实现不同。从子类角度，子类间同名方法，效果也不同。只有对象继承链最末端方法会被调用。</p>
 <ol>
