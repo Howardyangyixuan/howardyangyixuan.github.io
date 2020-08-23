@@ -3,7 +3,21 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 13 Jul 2020 22:28:57 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 Aug 2020 22:51:55 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式14观察者模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 23 Aug 2020 22:51:55 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：14.观察者模式 观察者模式：定义了一对多的依赖关系，让多个观察者对象同时监听某一主题对象。这个主题对象在状态发生变化时，会通知]]></description>
+</item><item>
+    <title>大话设计模式13建造者模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 23 Aug 2020 22:12:27 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：13.建造者模式 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示 TL;DR：分离具体构建代]]></description>
+</item><item>
     <title>Vim复习</title>
     <link>http://howardyangyixuan.github.io/posts/vim%E5%A4%8D%E4%B9%A0/</link>
     <pubDate>Mon, 13 Jul 2020 22:28:57 &#43;0800</pubDate>
@@ -59,19 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：8.工厂模式 工厂模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。 TL;DR：]]></description>
-</item><item>
-    <title>大话设计模式7：代理模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F7%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Fri, 05 Jun 2020 16:34:45 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F7%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：7.代理模式 代理模式：为其他对象提供一种代理，以控制对这个对象的访问 TL;DR：通过共用接口，使得实体可以随时使用代理。 应用场]]></description>
-</item><item>
-    <title>大话设计模式6：装饰模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F6%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Fri, 05 Jun 2020 13:37:27 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F6%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：6.装饰模式 装饰模式：动态地给一个对象，添加额外的职责。这种方式比生成子类更加灵活 TL;DR：装饰模式通过包装，分离核心职责和]]></description>
 </item></channel>
 </rss>
