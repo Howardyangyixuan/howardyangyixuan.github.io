@@ -18,6 +18,13 @@
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：13.建造者模式 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示 TL;DR：分离具体构建代]]></description>
 </item><item>
+    <title>大话设计模式12外观模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F12%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 23 Aug 2020 22:10:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F12%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：12.外观模式 外观模式：为子系统提供一个一致的界面，此模式定义了一个高层的借口，使得子系统更容易使用 TL;DR：封装子系统，对]]></description>
+</item><item>
     <title>Vim复习</title>
     <link>http://howardyangyixuan.github.io/posts/vim%E5%A4%8D%E4%B9%A0/</link>
     <pubDate>Mon, 13 Jul 2020 22:28:57 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</guid>
     <description><![CDATA[学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对]]></description>
-</item><item>
-    <title>大话设计模式8：工厂模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Fri, 05 Jun 2020 17:54:17 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F8%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：8.工厂模式 工厂模式：定义一个用于创建对象的接口，让子类决定实例化哪一个类。工厂方法使一个类的实例化延迟到其子类。 TL;DR：]]></description>
 </item></channel>
 </rss>
