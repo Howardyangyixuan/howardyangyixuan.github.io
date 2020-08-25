@@ -3,7 +3,14 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 23 Aug 2020 22:51:55 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 25 Aug 2020 16:00:06 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式15抽象工厂模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Tue, 25 Aug 2020 16:00:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：15.抽象工厂模式 抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类 TL;DR：工厂方法模式的]]></description>
+</item><item>
     <title>大话设计模式14：观察者模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Sun, 23 Aug 2020 22:51:55 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F9%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：9.原型模式 原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型实例创建新的对象（实例）。 TL;DR：原型模式通过复制]]></description>
-</item><item>
-    <title>学习jQuery</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</link>
-    <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%AD%A6%E4%B9%A0jquery/</guid>
-    <description><![CDATA[学习 jQuery 1. jQuery 如何获取元素 2. jQuery 的链式操作是怎样的 3. jQuery 如何创建元素 4. jQuery 如何移动元素 5. jQuery 如何修改元素的属性 学习 jQuery 1. jQuery 如何获取元素 $(document) //选择整个文档对]]></description>
 </item></channel>
 </rss>
