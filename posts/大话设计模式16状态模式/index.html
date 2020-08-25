@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>大话设计模式15：抽象工厂模式 - Y-y_x&#39;s Blog</title>
-        <meta name="Description" content=""><meta property="og:title" content="大话设计模式15：抽象工厂模式" />
-<meta property="og:description" content="大话设计模式：15.抽象工厂模式 抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类 TL;DR：工厂方法模式的" />
+        <title>大话设计模式16：状态模式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式16：状态模式" />
+<meta property="og:description" content="大话设计模式：16.状态模式 状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类 TL;DR：当控制一个对象状态" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-08-25T16:00:06+08:00" />
-<meta property="article:modified_time" content="2020-08-25T16:00:06+08:00" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-08-25T16:56:21+08:00" />
+<meta property="article:modified_time" content="2020-08-25T16:56:21+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大话设计模式15：抽象工厂模式"/>
-<meta name="twitter:description" content="大话设计模式：15.抽象工厂模式 抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类 TL;DR：工厂方法模式的"/>
+<meta name="twitter:title" content="大话设计模式16：状态模式"/>
+<meta name="twitter:description" content="大话设计模式：16.状态模式 状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类 TL;DR：当控制一个对象状态"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "大话设计模式15：抽象工厂模式",
+        "headline": "大话设计模式16：状态模式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  333 ,
-        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-25T16:00:06+08:00","dateModified": "2020-08-25T16:00:06+08:00","author": {
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  345 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-25T16:56:21+08:00","dateModified": "2020-08-25T16:56:21+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
             },"description": ""
@@ -73,13 +73,13 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式15：抽象工厂模式</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式16：状态模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
                     <span class="post-category">收录于<a href="/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-25>2020-08-25</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 333 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 345 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -88,38 +88,35 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#优点--缺点">优点 &amp; 缺点：</a></li>
-    <li><a href="#改进方案">改进方案：</a></li>
-    <li><a href="#tips">Tips：</a></li>
+    <li><a href="#1优点">1.优点</a></li>
+    <li><a href="#2实现细节">2.实现细节</a></li>
+    <li><a href="#3使用场景">3.使用场景</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="大话设计模式15抽象工厂模式">大话设计模式：15.抽象工厂模式</h1>
+            </div><div class="content" id="content"><h1 id="大话设计模式16状态模式">大话设计模式：16.状态模式</h1>
 <blockquote>
-<p>抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类</p>
+<p>状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类</p>
 </blockquote>
 <blockquote>
-<p>TL;DR：工厂方法模式的扩展,工厂方法只用于生成一种产品，而抽象工厂模式可以生成多个产品系列</p>
+<p>TL;DR：当控制一个对象状态转换的条件表达式过于复杂时，把状态的判断逻辑，转移到表示不同状态的一系列类当中，可以把复杂的判断逻辑简化</p>
 </blockquote>
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/images/%e6%8a%bd%e8%b1%a1%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f.png"
-        data-srcset="/images/%e6%8a%bd%e8%b1%a1%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f.png, /images/%e6%8a%bd%e8%b1%a1%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f.png 1.5x, /images/%e6%8a%bd%e8%b1%a1%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f.png 2x"
+        data-src="/images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg"
+        data-srcset="/images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg, /images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg 2x"
         data-sizes="auto"
-        alt="抽象工厂模式模式结构图"
-        title="抽象工厂模式模式结构图" /></p>
-<h2 id="优点--缺点">优点 &amp; 缺点：</h2>
+        alt="状态模式结构图"
+        title="状态模式结构图" /></p>
+<h2 id="1优点">1.优点</h2>
 <ol>
-<li>优点：易于更换产品系列，只需更改初始化即可</li>
-<li>缺点：像工厂模式一样，增加工厂功能时，需要修改抽象工厂接口及所有具体工厂</li>
+<li>避免出现 Long Method，分解代码责任，将与特定状态相关的行为局部化，并且将不同状态的行为分割开来</li>
+<li>易于增加新的状态和转换，因为特定的状态相关的行为都放在一个对象中，所有与状态相关的代码都存在于一个 ConcreteState 中，定义新的子类即可增加新的状态</li>
 </ol>
-<h2 id="改进方案">改进方案：</h2>
-<ol>
-<li>方案一：使用简单工厂模式，在工厂中，通过字符串和 switch，生成产品，但这种方式存在太多条件判断</li>
-<li>方案二：使用依赖注入的编程方式，一般由 IoC 容器提供，.NET 技术中可以用反射解决，通过字符串变量和配置文件，即可将程序由编译时转为运行时</li>
-</ol>
-<h2 id="tips">Tips：</h2>
-<p>所有在用简单工厂的地方，都可以考虑用反射技术去除 switch 和 if，解除分支判断带来的耦合</p>
+<h2 id="2实现细节">2.实现细节</h2>
+<p>Context 中保存一个 State，在 ConcreteState 中，一旦状态不再符合当前 State，就更改 Context 的 State 并重新运行方法</p>
+<h2 id="3使用场景">3.使用场景</h2>
+<p>当一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为时，可以考虑使用状态模式</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -143,8 +140,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式14：观察者模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式14：观察者模式</a>
-            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式16：状态模式">大话设计模式16：状态模式<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式15：抽象工厂模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式15：抽象工厂模式</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
