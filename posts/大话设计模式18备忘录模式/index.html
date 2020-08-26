@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>大话设计模式16：状态模式 - Y-y_x&#39;s Blog</title>
-        <meta name="Description" content=""><meta property="og:title" content="大话设计模式16：状态模式" />
-<meta property="og:description" content="大话设计模式：16.状态模式 状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类 TL;DR：当控制一个对象状态" />
+        <title>大话设计模式18备忘录模式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式18备忘录模式" />
+<meta property="og:description" content="大话设计模式：18.备忘录模式 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-08-25T16:56:21+08:00" />
-<meta property="article:modified_time" content="2020-08-25T16:56:21+08:00" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-08-26T16:21:31+08:00" />
+<meta property="article:modified_time" content="2020-08-26T16:21:31+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大话设计模式16：状态模式"/>
-<meta name="twitter:description" content="大话设计模式：16.状态模式 状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类 TL;DR：当控制一个对象状态"/>
+<meta name="twitter:title" content="大话设计模式18备忘录模式"/>
+<meta name="twitter:description" content="大话设计模式：18.备忘录模式 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "大话设计模式16：状态模式",
+        "headline": "大话设计模式18备忘录模式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  345 ,
-        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-25T16:56:21+08:00","dateModified": "2020-08-25T16:56:21+08:00","author": {
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  387 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-26T16:21:31+08:00","dateModified": "2020-08-26T16:21:31+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
             },"description": ""
@@ -73,13 +73,13 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式16：状态模式</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式18备忘录模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
                     <span class="post-category">收录于<a href="/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-25>2020-08-25</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 345 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-26>2020-08-26</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 387 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -93,35 +93,42 @@
     <li><a href="#3使用场景">3.使用场景</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="大话设计模式16状态模式">大话设计模式：16.状态模式</h1>
+            </div><div class="content" id="content"><h1 id="大话设计模式18备忘录模式">大话设计模式：18.备忘录模式</h1>
 <blockquote>
-<p>状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类</p>
+<p>备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态</p>
 </blockquote>
 <blockquote>
-<p>TL;DR：当控制一个对象状态转换的条件表达式过于复杂时，把状态的判断逻辑，转移到表示不同状态的一系列类当中，可以把复杂的判断逻辑简化</p>
+<p>TL;DR：通过外部的类将类的状态存储起来，配合记录和读取的方法，封装存取细节</p>
 </blockquote>
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg"
-        data-srcset="/images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg, /images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e7%8a%b6%e6%80%81%e6%a8%a1%e5%bc%8f.jpg 2x"
+        data-src="/images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg"
+        data-srcset="/images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg, /images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg 2x"
         data-sizes="auto"
-        alt="状态模式结构图"
-        title="状态模式结构图" /></p>
+        alt="备忘录模式结构图"
+        title="备忘录模式结构图" /></p>
 <h2 id="1优点">1.优点</h2>
 <ol>
-<li>避免出现 Long Method，分解代码责任，将与特定状态相关的行为局部化，并且将不同状态的行为分割开来</li>
-<li>易于增加新的状态和转换，因为特定的状态相关的行为都放在一个对象中，所有与状态相关的代码都存在于一个 ConcreteState 中，定义新的子类即可增加新的状态</li>
+<li>将复杂对象的内部信息对其他的对象屏蔽起来</li>
+<li>当对象的状态改变时，如果状态无效，可以使用暂存的备忘录将状态恢复</li>
 </ol>
 <h2 id="2实现细节">2.实现细节</h2>
-<p>Context 中保存一个 State，在 ConcreteState 中，一旦状态不再符合当前 State，就更改 Context 的 State 并重新运行方法</p>
+<ol>
+<li>Originator：负责创建备忘录，用以记录当前时刻的内部状态，并可使用备忘录恢复内部状态</li>
+<li>Memento：负责存储 Originator 对象的内部状态，并防止 Originator 以外的对象访问被备忘录</li>
+<li>Caretaker：负责保存备忘录，不能对备忘录内容进行操作或检查</li>
+</ol>
 <h2 id="3使用场景">3.使用场景</h2>
-<p>当一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为时，可以考虑使用状态模式</p>
+<ol>
+<li>适用于功能比较复杂的，但需要维护或者记录属性历史的类</li>
+<li>或者需要保存的属性只是众多属性中的一小部分，无需用相同的实例保存，而又不想使用 Clone 的方式保存，以避免对上层应用开放 Originator 的接口</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>本文于 2020-08-25 更新</span>
+                <span>本文于 2020-08-26 更新</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -140,8 +147,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式15：抽象工厂模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式15：抽象工厂模式</a>
-            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式17适配器模式">大话设计模式17适配器模式<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式17适配器模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式17适配器模式</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
