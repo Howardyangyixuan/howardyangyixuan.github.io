@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>大话设计模式18：备忘录模式 - Y-y_x&#39;s Blog</title>
-        <meta name="Description" content=""><meta property="og:title" content="大话设计模式18：备忘录模式" />
-<meta property="og:description" content="大话设计模式：18.备忘录模式 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢" />
+        <title>大话设计模式20：迭代器模式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式20：迭代器模式" />
+<meta property="og:description" content="大话设计模式：20.迭代器模式 迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露该对象的内部表示 TL;DR：C&#43;&#43;、Jav" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-08-26T16:21:31+08:00" />
-<meta property="article:modified_time" content="2020-08-26T16:21:31+08:00" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F20%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-08-27T16:41:35+08:00" />
+<meta property="article:modified_time" content="2020-08-27T16:41:35+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大话设计模式18：备忘录模式"/>
-<meta name="twitter:description" content="大话设计模式：18.备忘录模式 备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢"/>
+<meta name="twitter:title" content="大话设计模式20：迭代器模式"/>
+<meta name="twitter:description" content="大话设计模式：20.迭代器模式 迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露该对象的内部表示 TL;DR：C&#43;&#43;、Jav"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F19%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F20%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F19%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "大话设计模式18：备忘录模式",
+        "headline": "大话设计模式20：迭代器模式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  387 ,
-        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F18%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-26T16:21:31+08:00","dateModified": "2020-08-26T16:21:31+08:00","author": {
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F20%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  389 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F20%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-27T16:41:35+08:00","dateModified": "2020-08-27T16:41:35+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
             },"description": ""
@@ -73,13 +73,13 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式18：备忘录模式</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式20：迭代器模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
                     <span class="post-category">收录于<a href="/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-26>2020-08-26</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 387 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-27>2020-08-27</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 389 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -93,42 +93,41 @@
     <li><a href="#3使用场景">3.使用场景</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="大话设计模式18备忘录模式">大话设计模式：18.备忘录模式</h1>
+            </div><div class="content" id="content"><h1 id="大话设计模式20迭代器模式">大话设计模式：20.迭代器模式</h1>
 <blockquote>
-<p>备忘录模式：在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态</p>
+<p>迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露该对象的内部表示</p>
 </blockquote>
 <blockquote>
-<p>TL;DR：通过外部的类将类的状态存储起来，配合记录和读取的方法，封装存取细节</p>
+<p>TL;DR：C++、Java 中的迭代器，通过一个类定义迭代的方法，从而封装需要迭代对象的内部表示</p>
 </blockquote>
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg"
-        data-srcset="/images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg, /images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e5%a4%87%e5%bf%98%e5%bd%95%e6%a8%a1%e5%bc%8f.jpg 2x"
+        data-src="/images/%e8%bf%ad%e4%bb%a3%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg"
+        data-srcset="/images/%e8%bf%ad%e4%bb%a3%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg, /images/%e8%bf%ad%e4%bb%a3%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e8%bf%ad%e4%bb%a3%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg 2x"
         data-sizes="auto"
-        alt="备忘录模式结构图"
-        title="备忘录模式结构图" /></p>
+        alt="迭代器模式结构图"
+        title="迭代器模式结构图" /></p>
 <h2 id="1优点">1.优点</h2>
 <ol>
-<li>将复杂对象的内部信息对其他的对象屏蔽起来</li>
-<li>当对象的状态改变时，如果状态无效，可以使用暂存的备忘录将状态恢复</li>
+<li>分离集合对象的遍历行为，抽象出一个迭代器类来负责，即不暴露内部结构，又可让外部代码透明地访问集合内部的数据</li>
 </ol>
 <h2 id="2实现细节">2.实现细节</h2>
 <ol>
-<li>Originator：负责创建备忘录，用以记录当前时刻的内部状态，并可使用备忘录恢复内部状态</li>
-<li>Memento：负责存储 Originator 对象的内部状态，并防止 Originator 以外的对象访问被备忘录</li>
-<li>Caretaker：负责保存备忘录，不能对备忘录内容进行操作或检查</li>
+<li>Aggregate：抽象集合对象类，其中定义一个创造迭代器的方法</li>
+<li>ConcreteAggregate：具体集合对象类，具体实现集合对象</li>
+<li>Iterator：抽象迭代类，定义迭代所需的方法，如 First、Next、Current</li>
+<li>ConcreteIterator：具体迭代类，实现迭代方法，在使用时，定义 Iterator 而使用某一个 ConcreteIterator，可以使用不同的迭代方法，顺序、倒序等</li>
 </ol>
 <h2 id="3使用场景">3.使用场景</h2>
 <ol>
-<li>适用于功能比较复杂的，但需要维护或者记录属性历史的类</li>
-<li>或者需要保存的属性只是众多属性中的一小部分，无需用相同的实例保存，而又不想使用 Clone 的方式保存，以避免对上层应用开放 Originator 的接口</li>
+<li>对一个集合对象进行遍历，而不关心这些对象是什么的时候</li>
 </ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>本文于 2020-08-26 更新</span>
+                <span>本文于 2020-08-27 更新</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -147,8 +146,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式17：适配器模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式17：适配器模式</a>
-            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F19%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式19：组合模式">大话设计模式19：组合模式<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F19%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式19：组合模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式19：组合模式</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
