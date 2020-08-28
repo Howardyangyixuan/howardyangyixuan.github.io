@@ -3,7 +3,21 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Aug 2020 16:41:35 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 28 Aug 2020 10:51:13 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式22：合成/聚合复用原则 &amp; 桥接模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Fri, 28 Aug 2020 10:51:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式 合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合]]></description>
+</item><item>
+    <title>大话设计模式21单例模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Fri, 28 Aug 2020 10:48:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：21.单例模式 单例模式：保证一个类只有一个实例，并提供一个访问它的全局访问点 TL;DR：通过私有化构造方法和私有变量，让类自身]]></description>
+</item><item>
     <title>大话设计模式20：迭代器模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F20%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Thu, 27 Aug 2020 16:41:35 &#43;0800</pubDate>
@@ -59,19 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：13.建造者模式 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示 TL;DR：分离具体构建代]]></description>
-</item><item>
-    <title>大话设计模式12：外观模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F12%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Sun, 23 Aug 2020 22:10:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F12%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：12.外观模式 外观模式：为子系统提供一个一致的界面，此模式定义了一个高层的借口，使得子系统更容易使用 TL;DR：封装子系统，对]]></description>
-</item><item>
-    <title>Vim复习</title>
-    <link>http://howardyangyixuan.github.io/posts/vim%E5%A4%8D%E4%B9%A0/</link>
-    <pubDate>Mon, 13 Jul 2020 22:28:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/vim%E5%A4%8D%E4%B9%A0/</guid>
-    <description><![CDATA[Vim 复习 第一次学习 Vim 大约是在两年前，刚刚接触 Linux，必须使用 vim 进行文本编辑，当时觉得挺反人类的，但随着代码量的增加，产生了对编码速度的追求]]></description>
 </item></channel>
 </rss>
