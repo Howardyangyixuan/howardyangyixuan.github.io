@@ -3,7 +3,21 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 28 Aug 2020 10:51:13 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 29 Aug 2020 08:08:11 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式24：职责链模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sat, 29 Aug 2020 08:08:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：24.职责链模式 迭代器模式：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这个对象连成一条链，并沿]]></description>
+</item><item>
+    <title>大话设计模式23：命令模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sat, 29 Aug 2020 08:07:51 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：23.命令模式 命令模式：将一个请求封装为一个对象，从而使用户可以用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支]]></description>
+</item><item>
     <title>大话设计模式22：合成/聚合复用原则 &amp; 桥接模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Fri, 28 Aug 2020 10:51:13 &#43;0800</pubDate>
@@ -11,7 +25,7 @@
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式 合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合]]></description>
 </item><item>
-    <title>大话设计模式21单例模式</title>
+    <title>大话设计模式21：单例模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Fri, 28 Aug 2020 10:48:15 &#43;0800</pubDate>
     <author>作者</author>
@@ -59,19 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：15.抽象工厂模式 抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类 TL;DR：工厂方法模式的]]></description>
-</item><item>
-    <title>大话设计模式14：观察者模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Sun, 23 Aug 2020 22:51:55 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F14%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：14.观察者模式 观察者模式：定义了一对多的依赖关系，让多个观察者对象同时监听某一主题对象。这个主题对象在状态发生变化时，会通知]]></description>
-</item><item>
-    <title>大话设计模式13：建造者模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Sun, 23 Aug 2020 22:12:27 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F13%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：13.建造者模式 建造者模式：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示 TL;DR：分离具体构建代]]></description>
 </item></channel>
 </rss>

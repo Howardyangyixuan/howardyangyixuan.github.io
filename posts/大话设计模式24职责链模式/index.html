@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>大话设计模式22：合成/聚合复用原则 &amp; 桥接模式 - Y-y_x&#39;s Blog</title>
-        <meta name="Description" content=""><meta property="og:title" content="大话设计模式22：合成/聚合复用原则 &amp; 桥接模式" />
-<meta property="og:description" content="大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式 合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合" />
+        <title>大话设计模式24：职责链模式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式24：职责链模式" />
+<meta property="og:description" content="大话设计模式：24.职责链模式 迭代器模式：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这个对象连成一条链，并沿" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-08-28T10:51:13+08:00" />
-<meta property="article:modified_time" content="2020-08-28T10:51:13+08:00" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-08-29T08:08:11+08:00" />
+<meta property="article:modified_time" content="2020-08-29T08:08:11+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大话设计模式22：合成/聚合复用原则 &amp; 桥接模式"/>
-<meta name="twitter:description" content="大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式 合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合"/>
+<meta name="twitter:title" content="大话设计模式24：职责链模式"/>
+<meta name="twitter:description" content="大话设计模式：24.职责链模式 迭代器模式：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这个对象连成一条链，并沿"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "大话设计模式22：合成/聚合复用原则 \u0026 桥接模式",
+        "headline": "大话设计模式24：职责链模式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象, 设计原则","wordcount":  531 ,
-        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-28T10:51:13+08:00","dateModified": "2020-08-28T10:51:13+08:00","author": {
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","keywords": "设计模式, 面向对象","wordcount":  380 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-29T08:08:11+08:00","dateModified": "2020-08-29T08:08:11+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
             },"description": ""
@@ -73,14 +73,14 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式22：合成/聚合复用原则 &amp; 桥接模式</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式24：职责链模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
                     <span class="post-category">收录于<a href="/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-28>2020-08-28</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 531 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-29>2020-08-29</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 380 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -88,60 +88,45 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1-组合合成-vs-聚合">1. 组合（合成） vs 聚合</a></li>
-    <li><a href="#2-优点">2. 优点</a></li>
     <li><a href="#1优点">1.优点</a></li>
     <li><a href="#2实现细节">2.实现细节</a></li>
     <li><a href="#3使用场景">3.使用场景</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="大话设计模式22合成聚合复用原则--桥接模式">大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式</h1>
+            </div><div class="content" id="content"><h1 id="大话设计模式24职责链模式">大话设计模式：24.职责链模式</h1>
 <blockquote>
-<p>合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合的结构）</p>
-</blockquote>
-<h2 id="1-组合合成-vs-聚合">1. 组合（合成） vs 聚合</h2>
-<ol>
-<li>组合：强的拥有关系，体现严格的整体与部分的关系，部分和整体的生命周期一样，大雁和翅膀</li>
-<li>聚合：弱的拥有关系，体现的 A 对象可以包含 B 对象，但 B 对象不是 A 对象的一部分，雁群和大雁</li>
-</ol>
-<h2 id="2-优点">2. 优点</h2>
-<ol>
-<li>保持每个类被封装，并被集中在单个任务上，这样类和类继承的层次会保持较小的规模</li>
-</ol>
-<blockquote>
-<p>桥接模式：将抽象部分与它的实现部分分离，使它们都可以独立的变化</p>
+<p>迭代器模式：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止</p>
 </blockquote>
 <blockquote>
-<p>TL;DR：实现系统可能有多种角度分类，每一种分类都有可能变化，把多角度分离出来，让它们独立变化，减少它们之间的耦合</p>
+<p>TL;DR：在请求处理结构中，通过保存后继者引用，而无需保存所有候选者接受者引用，大大降低耦合度</p>
 </blockquote>
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/images/%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f.png"
-        data-srcset="/images/%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f.png, /images/%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f.png 1.5x, /images/%e6%a1%a5%e6%8e%a5%e6%a8%a1%e5%bc%8f.png 2x"
+        data-src="/images/%e8%81%8c%e8%b4%a3%e9%93%be%e6%a8%a1%e5%bc%8f.png"
+        data-srcset="/images/%e8%81%8c%e8%b4%a3%e9%93%be%e6%a8%a1%e5%bc%8f.png, /images/%e8%81%8c%e8%b4%a3%e9%93%be%e6%a8%a1%e5%bc%8f.png 1.5x, /images/%e8%81%8c%e8%b4%a3%e9%93%be%e6%a8%a1%e5%bc%8f.png 2x"
         data-sizes="auto"
-        alt="桥接模式结构图"
-        title="桥接模式结构图" /></p>
+        alt="职责链模式结构图"
+        title="职责链模式结构图" /></p>
 <h2 id="1优点">1.优点</h2>
 <ol>
-<li>即组合/聚合复用原则的优点，解耦，使得代码满足开放-封闭原则</li>
+<li>当客户提交一个请求时，请求是沿链传递直至有一个 ConcreteHandler 对象负责处理它，使得接受者和发送者都没有对方的明确信息，且链中的对象也不知道链的结构，简化了对象的相互连接</li>
+<li>可以随时增加或修改处理一个请求的结构，增强对象指派职责的灵活性</li>
 </ol>
 <h2 id="2实现细节">2.实现细节</h2>
 <ol>
-<li>Abstraction：抽象，抽象类，含有若干实现，通过组合/聚合的方式，解耦</li>
-<li>RefinedAbstraction：被提炼的抽象，具体使用某一实现</li>
-<li>Implementor：实现，抽象类，定义 Implementor 的方法的接口</li>
-<li>ConcreteImplementor：具体实现，具体实现 Implementor 的方法</li>
+<li>Handler:抽象处理者类，包含一个继任者 Handler，并定义处理请求的接口</li>
+<li>ConcreteHandler：具体处理者类，处理它所负责的请求，可访问它的后继者，如果可处理该请求就处理，否则将请求转发给继任者</li>
 </ol>
 <h2 id="3使用场景">3.使用场景</h2>
 <ol>
-<li>实现系统可能有多种角度分类，每一种分类都有可能变化，把多角度分离出来，让它们独立变化，减少它们之间的耦合</li>
+<li>请求处理存在层次结构时</li>
 </ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>本文于 2020-08-28 更新</span>
+                <span>本文于 2020-08-29 更新</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -154,14 +139,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>,&nbsp;<a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>,&nbsp;<a href="/tags/%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/">设计原则</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>,&nbsp;<a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式21：单例模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式21：单例模式</a>
-            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式23：命令模式">大话设计模式23：命令模式<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F23%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式23：命令模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式23：命令模式</a></div>
 </div>
 </article></div>
             </main><footer class="footer">
