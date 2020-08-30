@@ -5,30 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>大话设计模式26：享元模式 - Y-y_x&#39;s Blog</title>
-        <meta name="Description" content=""><meta property="og:title" content="大话设计模式26：享元模式" />
-<meta property="og:description" content="大话设计模式：26.享元模式 享元模式：运用共享技术有效地支持大量细粒度的对象 TL;DR：通过将可共享的内部状态保留在类内，外部状态在调用时传" />
+        <title>大话设计模式27：解释器模式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="大话设计模式27：解释器模式" />
+<meta property="og:description" content="大话设计模式：27.解释器模式 解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，给这个解释器使用该表示来解释语言中的句子 T" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" />
-<meta property="article:published_time" content="2020-08-30T08:07:46+08:00" />
-<meta property="article:modified_time" content="2020-08-30T08:07:46+08:00" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" />
+<meta property="article:published_time" content="2020-08-30T11:28:19+08:00" />
+<meta property="article:modified_time" content="2020-08-30T11:28:19+08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="大话设计模式26：享元模式"/>
-<meta name="twitter:description" content="大话设计模式：26.享元模式 享元模式：运用共享技术有效地支持大量细粒度的对象 TL;DR：通过将可共享的内部状态保留在类内，外部状态在调用时传"/>
+<meta name="twitter:title" content="大话设计模式27：解释器模式"/>
+<meta name="twitter:description" content="大话设计模式：27.解释器模式 解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，给这个解释器使用该表示来解释语言中的句子 T"/>
 <meta name="application-name" content="Y-y_x&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F28%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "大话设计模式26：享元模式",
+        "headline": "大话设计模式27：解释器模式",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F\/"
-        },"genre": "posts","keywords": "设计模式, 面向对象","wordcount":  358 ,
-        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-30T08:07:46+08:00","dateModified": "2020-08-30T08:07:46+08:00","author": {
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F\/"
+        },"genre": "posts","keywords": "设计模式, 面向对象","wordcount":  550 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F\/","datePublished": "2020-08-30T11:28:19+08:00","dateModified": "2020-08-30T11:28:19+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
             },"description": ""
@@ -73,14 +73,14 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式26：享元模式</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">大话设计模式27：解释器模式</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
                     <span class="post-category">收录于<a href="/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/">
                                 <i class="far fa-folder fa-fw"></i>大话设计模式笔记
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-08-30>2020-08-30</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 358 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>预计阅读 1 分钟&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>约 550 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -88,41 +88,50 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#1优点">1.优点</a></li>
+    <li><a href="#1优缺点">1.优缺点</a></li>
     <li><a href="#2实现细节">2.实现细节</a></li>
     <li><a href="#3使用场景">3.使用场景</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="大话设计模式26享元模式">大话设计模式：26.享元模式</h1>
+            </div><div class="content" id="content"><h1 id="大话设计模式27解释器模式">大话设计模式：27.解释器模式</h1>
 <blockquote>
-<p>享元模式：运用共享技术有效地支持大量细粒度的对象</p>
+<p>解释器模式：给定一个语言，定义它的文法的一种表示，并定义一个解释器，给这个解释器使用该表示来解释语言中的句子</p>
 </blockquote>
 <blockquote>
-<p>TL;DR：通过将可共享的内部状态保留在类内，外部状态在调用时传入，实现大幅度较少实例数量，降低开销</p>
+<p>TL;DR：如果一种特定类型的问题发生的频率足够高，那么可能就值得将该问题的各个实例表述为一个简单语言中的句子。这样就可以构建一个解释器，该解释器通过解释这些句子来解决该问题</p>
 </blockquote>
 <p><img
         class="lazyload"
         src="/svg/loading/small.min.svg"
-        data-src="/images/%e4%ba%ab%e5%85%83%e6%a8%a1%e5%bc%8f.jpg"
-        data-srcset="/images/%e4%ba%ab%e5%85%83%e6%a8%a1%e5%bc%8f.jpg, /images/%e4%ba%ab%e5%85%83%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e4%ba%ab%e5%85%83%e6%a8%a1%e5%bc%8f.jpg 2x"
+        data-src="/images/%e8%a7%a3%e9%87%8a%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg"
+        data-srcset="/images/%e8%a7%a3%e9%87%8a%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg, /images/%e8%a7%a3%e9%87%8a%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg 1.5x, /images/%e8%a7%a3%e9%87%8a%e5%99%a8%e6%a8%a1%e5%bc%8f.jpg 2x"
         data-sizes="auto"
-        alt="享元模式结构图"
-        title="享元模式结构图" /></p>
-<h2 id="1优点">1.优点</h2>
+        alt="解释器模式结构图"
+        title="解释器模式结构图" /></p>
+<h2 id="1优缺点">1.优缺点</h2>
 <ol>
-<li>避免大量非常相似的开销</li>
+<li>优点
+<ol>
+<li>易于改变和拓展文法，因为该模式使用类来表示文法规则，可以使用继承来改变或拓展文法</li>
+<li>易于实现文法，因为定义抽象语法树中各个节点的类的实现大体相似，并且易于直接编写</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>文法中的每一条规则至少定义了一个类，因此许多规则的文法可能难以管理和维护，当文法非常复杂时，需要使用语法分析程序或编译器生成器俩处理</li>
+</ol>
+</li>
 </ol>
 <h2 id="2实现细节">2.实现细节</h2>
 <ol>
-<li>Flyweight 类：所有具体享元类的超类/接口，通过这个接口，Flyweight 可以接受并作用于外部状态</li>
-<li>ConcreteFlyweight 类：继承/实现 Flyweight，为内部状态增加存储空间</li>
-<li>UnsharedConcreteFlyweight 类：指那些不需要共享的 Flyweight 子类</li>
-<li>FlyweightFactory 类：享元工厂，创建并管理 Flyweight 对象，确保合理地共享 Flyweight，当用户请求一个 Flyweight 时，工厂为其提供一个已创建的实例，如果不存在则创建一个</li>
+<li>AbstractExpression 类：抽象表达式类，声明一个抽象的解释操作，解释操作接收一个 Context 全局信息，这个接口为抽象语法树中所有的节点所共享</li>
+<li>TerminalExpression 类：终结符表达式类，实现与文法中的终结符相关联的解释操作，实现抽象表达式中所要求的接口，文法中的每一个终结符都有一个具体终结表达式与之相对应</li>
+<li>UnsharedConcreteFlyweight 类：非终结符表达式类，文法中的非终结符实现解释操作，对文法中每一条规则都需要一个具体的非终结表达式类</li>
+<li>Context 类：包含解释器外的一些全局信息</li>
 </ol>
 <h2 id="3使用场景">3.使用场景</h2>
 <ol>
-<li>如果一个应用程序使用了大量的对象，而大量的这些对象造成了很大的存储开销时</li>
-<li>对象的大多数状态是外部状态，如果将对象的外部状态移出类内，可以用相对较少的共享对象代替很多组对象时</li>
+<li>当一个语言需要解释执行，并且你可将该语言中的句子表示为一个抽象语法树时</li>
 </ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
@@ -147,8 +156,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式25：中介者模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式25：中介者模式</a>
-            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F27%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式27：解释器模式">大话设计模式27：解释器模式<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="大话设计模式26：享元模式"><i class="fas fa-angle-left fa-fw"></i>大话设计模式26：享元模式</a>
+            <a href="/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F28%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/" class="next" rel="next" title="大话设计模式28：访问者模式">大话设计模式28：访问者模式<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
