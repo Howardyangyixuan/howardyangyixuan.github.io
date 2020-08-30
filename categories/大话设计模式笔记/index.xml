@@ -3,7 +3,21 @@
         <title>大话设计模式笔记 - 分类 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/</link>
         <description>大话设计模式笔记 - 分类 - Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 29 Aug 2020 08:08:11 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 30 Aug 2020 08:07:46 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/categories/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AC%94%E8%AE%B0/" rel="self" type="application/rss+xml" /><item>
+    <title>大话设计模式26：享元模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 30 Aug 2020 08:07:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：26.享元模式 享元模式：运用共享技术有效地支持大量细粒度的对象 TL;DR：通过将可共享的内部状态保留在类内，外部状态在调用时传]]></description>
+</item><item>
+    <title>大话设计模式25：中介者模式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 30 Aug 2020 08:07:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[大话设计模式：25.中介者模式 中介者模式：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可]]></description>
+</item><item>
     <title>大话设计模式24：职责链模式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F24%E8%81%8C%E8%B4%A3%E9%93%BE%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Sat, 29 Aug 2020 08:08:11 &#43;0800</pubDate>
@@ -59,19 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F17%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：17.适配器模式 适配器模式：将一个类的接口转换成客户希望的另外一个接口，使原本由于接口不兼容而不能一起工作的那些类可以一起工作]]></description>
-</item><item>
-    <title>大话设计模式16：状态模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Tue, 25 Aug 2020 16:56:21 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F16%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：16.状态模式 状态模式：当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了其类 TL;DR：当控制一个对象状态]]></description>
-</item><item>
-    <title>大话设计模式15：抽象工厂模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Tue, 25 Aug 2020 16:00:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F15%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：15.抽象工厂模式 抽象工厂模式：提供了一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类 TL;DR：工厂方法模式的]]></description>
 </item></channel>
 </rss>
