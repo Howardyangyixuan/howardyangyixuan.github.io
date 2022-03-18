@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>软件工程3：设计也可以按图索骥 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="软件工程3：设计也可以按图索骥" />
+<meta property="og:description" content="软件工程：3.设计也可以按图索骥 1. 前言： 如果说需求分析是画饼，设计分析就是把我们画的这个饼的制作过程细化，最起码也是让它看起来是能做出来，可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5/" />
+<meta property="article:published_time" content="2021-01-07T17:59:13+08:00" />
+<meta property="article:modified_time" content="2021-01-07T17:59:13+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="软件工程3：设计也可以按图索骥"/>
+<meta name="twitter:description" content="软件工程：3.设计也可以按图索骥 1. 前言： 如果说需求分析是画饼，设计分析就是把我们画的这个饼的制作过程细化，最起码也是让它看起来是能做出来，可"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B2%E4%BB%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9C%8B%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%8C%91%E6%88%98/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "软件工程3：设计也可以按图索骥",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5\/"
+        },"genre": "posts","keywords": "软件工程","wordcount":  996 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5\/","datePublished": "2021-01-07T17:59:13+08:00","dateModified": "2021-01-07T17:59:13+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">软件工程3：设计也可以按图索骥</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+                                <i class="far fa-folder fa-fw"></i>软件工程
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2021-01-07>2021-01-07</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 996 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 2 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-前言">1. 前言：</a></li>
+    <li><a href="#2-心路历程">2. 心路历程：</a>
+      <ul>
+        <li><a href="#21-设计思路">2.1. 设计思路：</a></li>
+        <li><a href="#22-细化分析">2.2 细化分析：</a></li>
+        <li><a href="#23-进入开发">2.3 进入开发：</a></li>
+        <li><a href="#24-项目管理">2.4 项目管理</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-感想">3. 感想</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="软件工程3设计也可以按图索骥">软件工程：3.设计也可以按图索骥</h1>
+<h2 id="1-前言">1. 前言：</h2>
+<p>如果说需求分析是画饼，设计分析就是把我们画的这个饼的制作过程细化，最起码也是让它看起来是能做出来，可以吃到的。</p>
+<h2 id="2-心路历程">2. 心路历程：</h2>
+<h3 id="21-设计思路">2.1. 设计思路：</h3>
+<p>设计分析三步走：抽象、分解、协议</p>
+<p>抽象和分解的关键在于粒度的把握，可以从数据流或是从控制出发，把握抽象和分解。</p>
+<p>最后协议的部分，用不变式和OCL来细化约束，执行协议。</p>
+<p>我们在设计部分主要抓住这两个工具来进行设计，在已有的类图基础上，抓主要流程，继续细化分析、迭代</p>
+<h3 id="22-细化分析">2.2 细化分析：</h3>
+<p>核心业务，主要流程，系统价值。</p>
+<p>仍然是这一阶段不断在脑海里浮现的提示。</p>
+<p>在不断细化的过程中，一些问题也暴露出来，而我们甚至已经习以为常，细化修改、在细化再修改。</p>
+<p>小组合作让迭代和重构的魅力充分展现，如果是我自己一个人的话，很难坚持这么多的改动。不过确实一个有经验的人带领一些没有经验的人，将模块清晰的划分会让任务更加明确，降低沟通的成本和工作的耦合，这在大家都没什么经验的时候，不可避免的需要集中讨论，否则很容易出现理解偏差。这也就老师常提到的经验传递和教授的困难性吧，即使从我们从原理上明白应该划分，但对于划分的正确性和目标的产出在没有经验指导之下是不明确的，因此需要不断和团队同步以确保思路的正确。耦合还是没有充分解开。</p>
+<h3 id="23-进入开发">2.3 进入开发：</h3>
+<p>负责的前端不是实际上不是核心业务，不实现我们主要设计的部分，因此对于设计分析的结果还是有距离感。</p>
+<p>另外设计可能更多的是需要有一定开发经验后，对整个流程有个完整把控之后才会设计的部分，首先如果基础不扎实就会导致开发的进展举步维艰，如果仅仅是实现基本功能都已经比较困难，按照设计实现可能仍存在一定的难度，主要难度还是在于没有参考的示例。其次对于技术栈本质的把握，即将设计对应到开发框架，也是需要经指导的。</p>
+<h3 id="24-项目管理">2.4 项目管理</h3>
+<p>在整个项目过程中，充分到了一个好的管理方法在项目进展中的作用，我们在这一点上只能说是运气比较好，大家都积极参与、作为，融入感和参与感都很强，投入了120%的时间和力量克服了很多困难才发挥体现了团队大于个体的力量，但实际中如果没有这样的自觉性，很难到达有效的合作，进入这样一个小组是相当幸运的，但在实际中应当是有严格的规定和制度以确保合作的基准线的。</p>
+<h2 id="3-感想">3. 感想</h2>
+<p>到了尾声，大家也都很忙压力很大，但群里大家还是互相鼓励，不论结果如何，我们坚持到底，纵使课程就应当是以设计和项目去评估，但我的收获远远不止课上所学和项目经验。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2021-01-07 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">软件工程</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B2%E4%BB%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9C%8B%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%8C%91%E6%88%98/" class="prev" rel="prev" title="软件工程2：从需求分析看软件开发的挑战"><i class="fas fa-angle-left fa-fw"></i>软件工程2：从需求分析看软件开发的挑战</a>
+            <a href="/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/" class="next" rel="next" title="软件工程4：课程总结">软件工程4：课程总结<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
