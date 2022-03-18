@@ -3,7 +3,21 @@
         <title>Tags - 标签 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/tags/</link>
         <description>Tags - 标签 - Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 20 Oct 2020 08:29:25 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>JS</title>
+    <link>http://howardyangyixuan.github.io/tags/js/</link>
+    <pubDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/tags/js/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>前端</title>
+    <link>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+    <pubDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>软件工程</title>
     <link>http://howardyangyixuan.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</link>
     <pubDate>Tue, 20 Oct 2020 08:29:25 &#43;0800</pubDate>
@@ -46,25 +60,11 @@
     <guid>http://howardyangyixuan.github.io/tags/vue/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>前端</title>
-    <link>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
-    <pubDate>Mon, 13 Jul 2020 19:31:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
     <title>DOM</title>
     <link>http://howardyangyixuan.github.io/tags/dom/</link>
     <pubDate>Fri, 12 Jun 2020 20:28:15 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/tags/dom/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>JS</title>
-    <link>http://howardyangyixuan.github.io/tags/js/</link>
-    <pubDate>Wed, 20 May 2020 00:15:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/tags/js/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>CSS</title>

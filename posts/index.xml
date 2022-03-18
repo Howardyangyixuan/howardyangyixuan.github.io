@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 05 Apr 2021 23:14:00 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>理解JS中如何实现继承</title>
+    <link>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/</link>
+    <pubDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/</guid>
+    <description><![CDATA[理解JS中如何实现继承 很多面向对象语言都支持两种继承:接口继承和实现继承。 前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，]]></description>
+</item><item>
     <title>TS泛型的使用</title>
     <link>http://howardyangyixuan.github.io/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Mon, 05 Apr 2021 23:14:00 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F22%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：22.合成/聚合复用原则 &amp; 桥接模式 合成/聚合复用原则（CARP）：尽量使用合成/聚合，尽量不要使用类继承（因为继承是一种强耦合]]></description>
-</item><item>
-    <title>大话设计模式21：单例模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Fri, 28 Aug 2020 10:48:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F21%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：21.单例模式 单例模式：保证一个类只有一个实例，并提供一个访问它的全局访问点 TL;DR：通过私有化构造方法和私有变量，让类自身]]></description>
 </item></channel>
 </rss>

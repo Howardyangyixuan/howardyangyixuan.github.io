@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>理解JS中如何实现继承 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="理解JS中如何实现继承" />
+<meta property="og:description" content="理解JS中如何实现继承 很多面向对象语言都支持两种继承:接口继承和实现继承。 前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/" />
+<meta property="article:published_time" content="2022-01-01T13:50:09+08:00" />
+<meta property="article:modified_time" content="2022-01-01T13:50:09+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解JS中如何实现继承"/>
+<meta name="twitter:description" content="理解JS中如何实现继承 很多面向对象语言都支持两种继承:接口继承和实现继承。 前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "理解JS中如何实现继承",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/"
+        },"genre": "posts","keywords": "JS, 前端","wordcount":  3103 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/","datePublished": "2022-01-01T13:50:09+08:00","dateModified": "2022-01-01T13:50:09+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">理解JS中如何实现继承</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/js/">
+                                <i class="far fa-folder fa-fw"></i>JS
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-01-01>2022-01-01</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 3103 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 7 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1基本概念">1.基本概念</a>
+      <ul>
+        <li><a href="#11-为什么需要继承">1.1 为什么需要继承</a></li>
+        <li><a href="#12-js中的原型">1.2 JS中的原型</a></li>
+        <li><a href="#13-js中创建对象的模式">1.3 JS中创建对象的模式</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-js中实现继承的6种模式">2. JS中实现继承的6种模式</a>
+      <ul>
+        <li><a href="#21-原型链">2.1 原型链</a></li>
+        <li><a href="#22-盗用构造函数经典继承">2.2 盗用构造函数——经典继承</a></li>
+        <li><a href="#23-组合式继承原型链盗用构造函数">2.3 组合式继承——原型链+盗用构造函数</a></li>
+        <li><a href="#24-原型式继承">2.4 原型式继承</a></li>
+        <li><a href="#25-寄生式继承">2.5 寄生式继承</a></li>
+        <li><a href="#26-寄生组合式继承">2.6 寄生组合式继承</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="理解js中如何实现继承">理解JS中如何实现继承</h1>
+<blockquote>
+<p>很多面向对象语言都支持两种继承:接口继承和实现继承。 前者只继承方法签名，后者继承实际的方法。接口继承在 ECMAScript 中是不可能的，因为函数没有签名。实现继承是 ECMAScript 唯一支持的继承方式，而这主要是通过原型链实现的。</p>
+</blockquote>
+<blockquote>
+<p>TLDR: JS中继承终极方法即寄生组合式，组合式继承模式的核心就是产生一个__proto__指向父类原型的对象，两种方法1.组合式：使用父类型构造函数，但性能差，2.寄生组合式：生成一个prototype指向父类原型的轻量构造函数，使用该构造函数生成对象</p>
+</blockquote>
+<ul>
+<li><a href="#%e7%90%86%e8%a7%a3js%e4%b8%ad%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e7%bb%a7%e6%89%bf" rel="">理解JS中如何实现继承</a>
+<ul>
+<li><a href="#1%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" rel="">1.基本概念</a>
+<ul>
+<li><a href="#11-%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e8%a6%81%e7%bb%a7%e6%89%bf" rel="">1.1 为什么需要继承</a></li>
+<li><a href="#12-js%e4%b8%ad%e7%9a%84%e5%8e%9f%e5%9e%8b" rel="">1.2 JS中的原型</a></li>
+<li><a href="#13-js%e4%b8%ad%e5%88%9b%e5%bb%ba%e5%af%b9%e8%b1%a1%e7%9a%84%e6%a8%a1%e5%bc%8f" rel="">1.3 JS中创建对象的模式</a>
+<ul>
+<li><a href="#131-%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f" rel="">1.3.1 工厂模式</a></li>
+<li><a href="#132-%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e5%ae%9e%e7%8e%b0%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f" rel="">1.3.2 构造函数实现工厂模式</a></li>
+<li><a href="#133-%e8%a7%a3%e5%86%b3%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e6%a8%a1%e5%bc%8f%e6%97%a0%e6%b3%95%e5%a4%8d%e7%94%a8%e5%87%bd%e6%95%b0" rel="">1.3.3 解决构造函数模式,无法复用函数;</a></li>
+<li><a href="#134-%e5%8e%9f%e5%9e%8b%e6%a8%a1%e5%bc%8f" rel="">1.3.4 原型模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-js%e4%b8%ad%e5%ae%9e%e7%8e%b0%e7%bb%a7%e6%89%bf%e7%9a%846%e7%a7%8d%e6%a8%a1%e5%bc%8f" rel="">2. JS中实现继承的6种模式</a>
+<ul>
+<li><a href="#21-%e5%8e%9f%e5%9e%8b%e9%93%be" rel="">2.1 原型链</a></li>
+<li><a href="#22-%e7%9b%97%e7%94%a8%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e7%bb%8f%e5%85%b8%e7%bb%a7%e6%89%bf" rel="">2.2 盗用构造函数——经典继承</a></li>
+<li><a href="#23-%e7%bb%84%e5%90%88%e5%bc%8f%e7%bb%a7%e6%89%bf%e5%8e%9f%e5%9e%8b%e9%93%be%e7%9b%97%e7%94%a8%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0" rel="">2.3 组合式继承——原型链+盗用构造函数</a></li>
+<li><a href="#24-%e5%8e%9f%e5%9e%8b%e5%bc%8f%e7%bb%a7%e6%89%bf" rel="">2.4 原型式继承</a></li>
+<li><a href="#25-%e5%af%84%e7%94%9f%e5%bc%8f%e7%bb%a7%e6%89%bf" rel="">2.5 寄生式继承</a></li>
+<li><a href="#26-%e5%af%84%e7%94%9f%e7%bb%84%e5%90%88%e5%bc%8f%e7%bb%a7%e6%89%bf" rel="">2.6 寄生组合式继承</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1基本概念">1.基本概念</h2>
+<h3 id="11-为什么需要继承">1.1 为什么需要继承</h3>
+<blockquote>
+<p>使用继承可以复用并扩展原有代码，减少重复性工作。</p>
+</blockquote>
+<h3 id="12-js中的原型">1.2 JS中的原型</h3>
+<blockquote>
+<p>核心三点：</p>
+<ol>
+<li>每个构造函数有prototype指针指向原型对象：F.prototype = 原型对象</li>
+<li>原型对象有指针constructor指回构造函数： 原型对象.constructor = F</li>
+<li>由构造函数生成的实例,有指针__proto__指向原型对象: f.__ proto__ = 原型对象</li>
+</ol>
+</blockquote>
+<h3 id="13-js中创建对象的模式">1.3 JS中创建对象的模式</h3>
+<p>构造对象是JS实现继承的基石，使用Object 构造函数（如Object.defineProperty）或对象字面量可以方便地创建对象，但这些方式也有明显不足:创建具有同样接口的多个对象需要重复编写很多代码。下面介绍几种在继承中常用的构造对象模式。</p>
+<h4 id="131-工厂模式">1.3.1 工厂模式</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;1.工厂模式&#39;</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">createPerson</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object();
+        <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+        <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+        <span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- I am&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+        };
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">obj</span>;
+    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">factoryPerson</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createPerson</span>(<span style="color:#e6db74">&#39;factory&#39;</span>,<span style="color:#ae81ff">1</span>);
+    <span style="color:#a6e22e">factoryPerson</span>.<span style="color:#a6e22e">sayName</span>();
+</code></pre></div><h4 id="132-构造函数实现工厂模式">1.3.2 构造函数实现工厂模式</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;2.构造函数实现工厂模式&#39;</span>);
+    <span style="color:#75715e">// function PersonFactory(name,age){
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">PersonFactory</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- I am&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+        }
+        <span style="color:#75715e">//默认return this
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">factoryPerson</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PersonFactory</span>(<span style="color:#e6db74">&#39;factoryByNew&#39;</span>,<span style="color:#ae81ff">2</span>)
+    <span style="color:#a6e22e">factoryPerson</span>.<span style="color:#a6e22e">sayName</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">factoryPerson</span>.<span style="color:#a6e22e">__proto__</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">PersonFactory</span>.<span style="color:#a6e22e">prototype</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- factoryPerson.__proto__ === PersonFactory.prototype&#39;</span>,<span style="color:#a6e22e">bool</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 问题: 函数会重复声明,无法复用&#39;</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">factoryPerson1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">PersonFactory</span>(<span style="color:#e6db74">&#39;factoryByNew1&#39;</span>,<span style="color:#ae81ff">2</span>);
+    <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">factoryPerson</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">factoryPerson1</span>.<span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- factoryPerson.sayName === factoryPerson1.sayName&#39;</span>,<span style="color:#a6e22e">bool</span>);
+</code></pre></div><h4 id="133-解决构造函数模式无法复用函数">1.3.3 解决构造函数模式,无法复用函数;</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;3.解决构造函数模式,无法复用函数&#39;</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- I am&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">ShareFactory</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">shareFactory1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ShareFactory</span>(<span style="color:#e6db74">&#39;shareFactory1&#39;</span>,<span style="color:#ae81ff">3</span>)
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">shareFactory2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ShareFactory</span>(<span style="color:#e6db74">&#39;shareFactory2&#39;</span>,<span style="color:#ae81ff">3</span>)
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">shareFactory1</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">shareFactory2</span>.<span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- shareFactory1.sayName === shareFactory2.sayName&#39;</span>,<span style="color:#a6e22e">bool</span>);
+</code></pre></div><h4 id="134-原型模式">1.3.4 原型模式</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">proto</span>(){}
+    <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;proto&#39;</span>;
+    <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>;
+    <span style="color:#a6e22e">proto</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">protoPerson1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">proto</span>(); 
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">protoPerson2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">proto</span>(); 
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">protoPerson1</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">protoPerson2</span>.<span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- protoPerson1.sayName === protoPerson2.sayName&#39;</span>,<span style="color:#a6e22e">bool</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 问题: 属性也会复用,没有独立的实例属性&#39;</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">protoPerson1</span>.<span style="color:#a6e22e">friend</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">protoPerson2</span>.<span style="color:#a6e22e">friend</span>;
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- protoPerson1.friend === protoPerson2.friend&#39;</span>,<span style="color:#a6e22e">bool</span>);
+
+</code></pre></div><p>下面结合示例代码，JS中实现继承的6种模式。</p>
+<h2 id="2-js中实现继承的6种模式">2. JS中实现继承的6种模式</h2>
+<blockquote>
+<p>JS中实现继承的具体目标就是：实现子类型实例能够访问父类原型上的方法和属性，同时有希望具有自己独享的实例属性。</p>
+</blockquote>
+<h3 id="21-原型链">2.1 原型链</h3>
+<p>原型链是实现继承的一种方式，具体思路如下：A和B是两个构造函数,通过让一个对象同时拥有两个身份,既是B的原型对象,又是A的实例对象,连接两个构造函数,实现B的实例继承A原型上的属性和方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">Father</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;father&#34;</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]; 
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">other</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">arguments</span>;
+
+    };
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- I am&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- Hi, my name is:&#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+    }
+    <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">Son</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+    };
+    <span style="color:#a6e22e">Son</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Father</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>();
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">sayName</span>();
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">son2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>()
+</code></pre></div><p>但该方式存在两个问题</p>
+<ol>
+<li>问题1: 实例属性变成了原型属性,产生错误的共享数据</li>
+<li>问题2: 无法向父类型传参生成独享的属性,传参都会使子类型所有实例发生改变</li>
+</ol>
+<h3 id="22-盗用构造函数经典继承">2.2 盗用构造函数——经典继承</h3>
+<p>原型链是实现继承的一种方式，具体思路如下：A和B是两个构造函数,通过让一个对象同时拥有两个身份,既是B的原型对象,又是A的实例对象,连接两个构造函数,实现B的实例继承A原型上的属性和方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;2.盗用构造函数——经典继承&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 在子类型构造函数中，调用父类型构造函数，实现继承并独享父类型的实例对象属性&#39;</span>);
+    <span style="color:#a6e22e">Grandpa</span> <span style="color:#f92672">=</span>  <span style="color:#66d9ef">function</span>(){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">money</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+    }
+    <span style="color:#a6e22e">Father</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>){
+        <span style="color:#a6e22e">Grandpa</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>);
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>];
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+    }
+    <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">Son</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>,<span style="color:#a6e22e">name</span>);
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayHi</span>;
+    }
+    <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>(<span style="color:#e6db74">&#39;son1&#39;</span>);
+    <span style="color:#a6e22e">son2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>(<span style="color:#e6db74">&#39;son2&#39;</span>);
+    <span style="color:#a6e22e">father1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Father</span>(<span style="color:#e6db74">&#39;father&#39;</span>);
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">friends</span>.<span style="color:#a6e22e">push</span>(<span style="color:#ae81ff">3</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- son1.friends === son2.friends&#39;</span>,<span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">son2</span>.<span style="color:#a6e22e">friends</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 并且可以传递参数&#39;</span>);
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">sayHi</span>();
+    <span style="color:#a6e22e">son2</span>.<span style="color:#a6e22e">sayHi</span>();
+</code></pre></div><p>但该方式存在两个问题</p>
+<ol>
+<li>问题1: 无法在保持代码紧凑的同时重用函数（和构造函数模式问题相同）</li>
+<li>问题2: 无法访问父类原型上的方法,只能逐层使用构造函数模式</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;问题1: 无法在保持代码紧凑的同时重用函数（和构造函数模式问题相同）&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;问题2: 无法访问父类原型上的方法,只能逐层使用构造函数模式&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- sayName in father1&#39;</span>,<span style="color:#e6db74">&#39;sayName&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">father1</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- sayName in son1&#39;</span>,<span style="color:#e6db74">&#39;sayName&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">son1</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- money in son1 &#39;</span>,<span style="color:#e6db74">&#39;money&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">son1</span>);
+</code></pre></div><h3 id="23-组合式继承原型链盗用构造函数">2.3 组合式继承——原型链+盗用构造函数</h3>
+<p>融合前两种方式的优点，组合式继承通过原型链继承原型上的方法和属性，通过构造函数继承实例属性</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;3.组合继承——原型链+盗用构造函数&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;通过原型链继承原型上的方法和属性，通过构造函数继承实例属性（可独享）&#39;</span>);
+    <span style="color:#a6e22e">Father</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>];
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+    }
+    <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">lastName</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Yang&#39;</span>;
+    <span style="color:#a6e22e">Son</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>,<span style="color:#a6e22e">name</span>);
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+    }
+    <span style="color:#a6e22e">Son</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Father</span>();
+    <span style="color:#a6e22e">Son</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayHi</span>;
+    <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>(<span style="color:#e6db74">&#39;mixin-son&#39;</span>);
+    <span style="color:#a6e22e">father1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Father</span>(<span style="color:#e6db74">&#39;father&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- sayName in father1&#39;</span>,<span style="color:#e6db74">&#39;sayName&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">father1</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- sayName in son1&#39;</span>,<span style="color:#e6db74">&#39;sayName&#39;</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">son1</span>);
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">sayHi</span>();
+</code></pre></div><p>然而组合式继承仍有两个问题</p>
+<ol>
+<li>问题1: 两次调用父类构造函数会产生的效率问题</li>
+<li>问题2: 第一滴调用时，子类原型对象上增加了不必要的，由父类型构造函数产生的属性</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 第1次Son.prototype = new Father()&#39;</span>);
+	<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 第2次Father.call(this)&#39;</span>)
+</code></pre></div><p>组合式继承在功能上已经满足了大部分要求，为了解决其性能问题和不必要的副作用，通过“原型式继承”-&gt;“寄生式继承”-&gt;最终得到“寄生组合式继承”解决了该问题。</p>
+<h3 id="24-原型式继承">2.4 原型式继承</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;4.原型式继承&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;不自定义类型，即不通过构造函数生成原型对象，而是直接将需要共享信息的对象作为原型对象，实现继承&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;实际上是一种创建对象的方式，与原型模式相同&#39;</span>);
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">o</span>){
+        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">F</span>(){};
+        <span style="color:#a6e22e">F</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">o</span>;
+        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">F</span>();
+    }
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">father</span> <span style="color:#f92672">=</span> {
+        <span style="color:#a6e22e">fisrtname</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Yang&#39;</span>,
+        <span style="color:#a6e22e">name</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;father&#39;</span>,
+        <span style="color:#a6e22e">friends</span> <span style="color:#f92672">:</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
+    };
+    <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">father</span>);
+    <span style="color:#a6e22e">son2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">father</span>);
+    <span style="color:#a6e22e">son3</span> <span style="color:#f92672">=</span> Object.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">father</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- objectson1.friends === son2.friends&#39;</span>,<span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">son2</span>.<span style="color:#a6e22e">friends</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- Object.create() son3.friends === son1.friends&#39;</span>,<span style="color:#a6e22e">son3</span>.<span style="color:#a6e22e">friends</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">friends</span>);
+</code></pre></div><h3 id="25-寄生式继承">2.5 寄生式继承</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;5.寄生式继承&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;同样直接将需要被继承/共享信息的对象作为原型对象，融合工厂模式，直接返回一个增加了方法的对象&#39;</span>);
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">createSon</span>(<span style="color:#a6e22e">father</span>){
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">clone</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">father</span>);<span style="color:#75715e">//原型式继承
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">clone</span>.<span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(){
+            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- I am &#39;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span>);
+        }
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">clone</span>;
+    }
+    <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSon</span>(<span style="color:#a6e22e">father</span>);
+    <span style="color:#a6e22e">son2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createSon</span>(<span style="color:#a6e22e">father</span>);
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">sayHi</span>();
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;问题: 无法在保持代码紧凑的同时重用函数（和构造函数模式问题相同）&#39;</span>);
+</code></pre></div><h3 id="26-寄生组合式继承">2.6 寄生组合式继承</h3>
+<p>寄生组合式继承 vs 组合式继承：
+组合式继承模式的核心就是产生一个__proto__指向父类原型的对象
+两种方法</p>
+<ol>
+<li>组合式：使用父类型构造函数，但性能差</li>
+<li>寄生组合式：生成一个prototype指向父类原型的轻量构造函数，使用该构造函数生成对象</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;6.寄生组合式继承——组合式继承优化&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;避免组合式继承，两次调用父类构造函数产生的效率问题&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;避免子类原型对象上不必要的，由父类型构造函数产生的属性&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 第1次Son.prototype = new Father()&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 第2次Father.call(this)&#39;</span>);
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;避免第一次，通过调用父类构造函数给子类原型赋值，而是使用寄生式继承，使用父类原型对象产生赋值给子类原，实现继承父类原型&#39;</span>);
+    <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">Son</span>, <span style="color:#a6e22e">Father</span>){
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">object</span>(<span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>);
+        <span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">constructor</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Son</span>;
+        <span style="color:#a6e22e">Son</span>.<span style="color:#a6e22e">prototype</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">prototype</span>;
+    }
+    <span style="color:#a6e22e">Father</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+    }
+    <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">Son</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#a6e22e">Father</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>,<span style="color:#a6e22e">name</span>);
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+    }
+    <span style="color:#a6e22e">inheritPrototype</span>(<span style="color:#a6e22e">Son</span>,<span style="color:#a6e22e">Father</span>);
+    <span style="color:#a6e22e">Son</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayHi</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayHi</span>;
+    <span style="color:#a6e22e">son1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>(<span style="color:#e6db74">&#39;son1&#39;</span>,<span style="color:#ae81ff">1</span>);
+    <span style="color:#a6e22e">son2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Son</span>(<span style="color:#e6db74">&#39;son2&#39;</span>,<span style="color:#ae81ff">2</span>);
+    <span style="color:#a6e22e">son1</span>.<span style="color:#a6e22e">sayName</span>();
+    <span style="color:#a6e22e">son2</span>.<span style="color:#a6e22e">sayName</span>();
+    <span style="color:#a6e22e">son2</span>.<span style="color:#a6e22e">sayHi</span>();
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2022-01-01 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/js/">JS</a>,&nbsp;<a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/" class="prev" rel="prev" title="TS泛型的使用"><i class="fas fa-angle-left fa-fw"></i>TS泛型的使用</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
