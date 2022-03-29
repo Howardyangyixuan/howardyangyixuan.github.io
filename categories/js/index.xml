@@ -18,6 +18,20 @@
     <guid>http://howardyangyixuan.github.io/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[TS范型的使用 软件工程中，我们不仅要创建一致的定义良好的 API，同时也要考虑可重用性。 组件不仅能够支持当前的数据类型，同时也能支持未来的数据]]></description>
 </item><item>
+    <title>Promise异步编程模型</title>
+    <link>http://howardyangyixuan.github.io/posts/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/</link>
+    <pubDate>Tue, 30 Jun 2020 00:13:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/promise%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%9E%8B/</guid>
+    <description><![CDATA[Promise异步编程模型 Promise优点 规定回调的名字或顺序 拒绝回调地狱 便于捕获错误 初始化一个Promise let promise = new Promise((resolve,reject)=&gt;{ //最初为pend]]></description>
+</item><item>
+    <title>AJAX实用指南</title>
+    <link>http://howardyangyixuan.github.io/posts/ajax%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+    <pubDate>Mon, 15 Jun 2020 00:15:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/ajax%E5%AE%9E%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+    <description><![CDATA[AJAX实用指南 AJAX实用指南 1. AJAX技术及其背景 1.1. 什么是AJAX技术？ 1.2. 背景 2. 如何使用AJAX 2.1. AJAX四步走 2.2. 注意 1. AJAX技术及其]]></description>
+</item><item>
     <title>JS对象基本用法</title>
     <link>http://howardyangyixuan.github.io/posts/js%E5%AF%B9%E8%B1%A1%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</link>
     <pubDate>Wed, 20 May 2020 00:15:26 &#43;0800</pubDate>
