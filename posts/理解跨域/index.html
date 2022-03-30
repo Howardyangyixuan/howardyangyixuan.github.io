@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>理解跨域 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="理解跨域" />
+<meta property="og:description" content="理解跨域 TLDR： 在响应头中加入CORS即可解决跨域问题。 request.setRequestHeader(&#39;Access-Control-Allow-Origin&#39;, 源); 不能使用CORS的场景下，JSONP方案也可，即前端引用不同源的js，后端" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3%E8%B7%A8%E5%9F%9F/" />
+<meta property="article:published_time" content="2020-07-03T00:13:28+08:00" />
+<meta property="article:modified_time" content="2020-07-03T00:13:28+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="理解跨域"/>
+<meta name="twitter:description" content="理解跨域 TLDR： 在响应头中加入CORS即可解决跨域问题。 request.setRequestHeader(&#39;Access-Control-Allow-Origin&#39;, 源); 不能使用CORS的场景下，JSONP方案也可，即前端引用不同源的js，后端"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3%E8%B7%A8%E5%9F%9F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E6%B5%85%E8%B0%88mvc/" /><link rel="next" href="http://howardyangyixuan.github.io/posts/%E5%85%A5%E9%97%A8vue/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "理解跨域",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3%E8%B7%A8%E5%9F%9F\/"
+        },"genre": "posts","keywords": "JS, 前端","wordcount":  1573 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3%E8%B7%A8%E5%9F%9F\/","datePublished": "2020-07-03T00:13:28+08:00","dateModified": "2020-07-03T00:13:28+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">理解跨域</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span>&nbsp;
+                    <span class="post-category">收录于<a href="/categories/js/">
+                                <i class="far fa-folder fa-fw"></i>JS
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-07-03>2020-07-03</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1573 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-跨域与同源策略">1. 跨域与同源策略</a>
+      <ul>
+        <li><a href="#11-源与同源">1.1. 源与同源：</a></li>
+        <li><a href="#12-同源策略及其目的">1.2. 同源策略及其目的</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-跨域技术方案">2. 跨域技术方案</a>
+      <ul>
+        <li><a href="#21-corscross-origin-resource-sharing跨域资源共享">2.1. CORS：Cross-origin resource sharing跨域资源共享</a></li>
+        <li><a href="#22-jsonp">2.2. JSONP</a></li>
+        <li><a href="#23-其他跨域方式">2.3. 其他跨域方式</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="理解跨域">理解跨域</h1>
+<blockquote>
+<p>TLDR：</p>
+<ol>
+<li>在响应头中加入CORS即可解决跨域问题。</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">setRequestHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Origin&#39;</span>, <span style="color:#a6e22e">源</span>);
+</code></pre></div><ol start="2">
+<li>不能使用CORS的场景下，JSONP方案也可，即前端引用不同源的js，后端返回一个包含了数据的js代码（可以是将数据写在window上或是按照前端要求使用约定的回调函数），实现跨域共享数据</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//JSONP简化示意
+</span><span style="color:#75715e">//前端
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>)
+<span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">跨域的某个js</span>
+document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">append</span>(<span style="color:#a6e22e">script</span>);
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//后端
+</span><span style="color:#75715e"></span> window.<span style="color:#a6e22e">xxx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">数据</span>
+</code></pre></div></blockquote>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%e7%90%86%e8%a7%a3%e8%b7%a8%e5%9f%9f" rel="">理解跨域</a>
+<ul>
+<li><a href="#1-%e8%b7%a8%e5%9f%9f%e4%b8%8e%e5%90%8c%e6%ba%90%e7%ad%96%e7%95%a5" rel="">1. 跨域与同源策略</a>
+<ul>
+<li><a href="#11-%e6%ba%90%e4%b8%8e%e5%90%8c%e6%ba%90" rel="">1.1. 源与同源：</a></li>
+<li><a href="#12-%e5%90%8c%e6%ba%90%e7%ad%96%e7%95%a5%e5%8f%8a%e5%85%b6%e7%9b%ae%e7%9a%84" rel="">1.2. 同源策略及其目的</a></li>
+</ul>
+</li>
+<li><a href="#2-%e8%b7%a8%e5%9f%9f%e6%8a%80%e6%9c%af%e6%96%b9%e6%a1%88" rel="">2. 跨域技术方案</a>
+<ul>
+<li><a href="#21-corscross-origin-resource-sharing%e8%b7%a8%e5%9f%9f%e8%b5%84%e6%ba%90%e5%85%b1%e4%ba%ab" rel="">2.1. CORS：Cross-origin resource sharing跨域资源共享</a></li>
+<li><a href="#22-jsonp" rel="">2.2. JSONP</a></li>
+<li><a href="#23-%e5%85%b6%e4%bb%96%e8%b7%a8%e5%9f%9f%e6%96%b9%e5%bc%8f" rel="">2.3. 其他跨域方式</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="1-跨域与同源策略">1. 跨域与同源策略</h2>
+<p>同源策略就是禁止跨域访问，而跨域技术就是为突破同源策略而出现的。</p>
+<h3 id="11-源与同源">1.1. 源与同源：</h3>
+<ol>
+<li>源=协议+域名+端口号，端口号默认80</li>
+<li>window.origin或location.origin获取当前源</li>
+<li>同源：源相同，即协议、域名、端口号都相同
+<ol>
+<li>注意：要完全相同</li>
+<li><a href="https://www.baidu.com/">https://www.baidu.com/</a> 和 <a href="https://baidu.com/">https://baidu.com/</a> 不同源</li>
+</ol>
+</li>
+</ol>
+<h3 id="12-同源策略及其目的">1.2. 同源策略及其目的</h3>
+<ol>
+<li>同源策略：浏览区故意设置的功能限制，不用源的页面之间，不准互相访问数据，主要有以下三种行为收到限制
+<ol>
+<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>DOM 无法获得</li>
+<li>AJAX 请求不能发送</li>
+</ol>
+</li>
+<li>同源策略（即禁止跨域访问）的目的：保护用户隐私
+<ol>
+<li>问题根源：黑客和正常的请求只有一个不同，就是请求的referrer(历史遗留问题，HTTP请求头中为referer，是错误拼写)</li>
+<li>如果后端忘记检查源，那么用户数据就会被拿走，所以浏览器要主动防御这种行为</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-跨域技术方案">2. 跨域技术方案</h2>
+<h3 id="21-corscross-origin-resource-sharing跨域资源共享">2.1. CORS：Cross-origin resource sharing跨域资源共享</h3>
+<ol>
+<li>简单请求（不会触发CORS预检preflight的请求）
+<ol>
+<li>判定条件：需全部满足，这里只列出部分日常使用需注意的
+<ol>
+<li>GET/HEAD/POST</li>
+<li>Content-Type 的值仅限于下列三者之一：
+<ol>
+<li>text/plain</li>
+<li>multipart/form-data</li>
+<li>application/x-www-form-urlencoded</li>
+</ol>
+</li>
+<li>其他要求详见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS" target="_blank" rel="noopener noreffer">MDN CORS部分</a></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//后端，添加响应头
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>( <span style="color:#a6e22e">Access</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Control</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">Allow</span><span style="color:#f92672">-</span><span style="color:#a6e22e">Origin</span><span style="color:#960050;background-color:#1e0010">&#39;</span>, <span style="color:#a6e22e">源</span>);
+</code></pre></div><ol start="2">
+<li>预检请求
+<ol>
+<li>需要预检的请求：需要使用OPTIONS方法发起预检请求到服务器以获知服务器是否允许该实际请求</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//后端，添加响应头
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Origin&#39;</span>, <span style="color:#e6db74">&#39;http://yangyixuan.icu&#39;</span><span style="color:#75715e">/*源，默认80端口*/</span>)
+<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Methods&#39;</span>,  <span style="color:#e6db74">&#39;GET, POST, OPTIONS, PUT, PATCH, DELETE&#39;</span><span style="color:#75715e">/*允许的方法*/</span>)
+<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Headers&#39;</span>, <span style="color:#e6db74">&#39;X&#39;</span><span style="color:#75715e">/*自定义头部*/</span>)
+<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Max-Age&#39;</span>, <span style="color:#ae81ff">86400</span><span style="color:#75715e">/* 86400=24*3600即一天 缓存时间*/</span>)
+</code></pre></div><ol start="3">
+<li>附带身份凭证的CORS
+<ol>
+<li>当响应的是附带身份凭证的请求时，服务端必须明确 Access-Control-Allow-Origin 的值，而不能使用通配符“*”。</li>
+<li>CORS 预检请求不能包含凭据。预检请求的响应必须指定 Access-Control-Allow-Credentials: true 来表明可以携带凭据进行实际的请求。</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//后端，添加响应头
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Origin&#39;</span>, 
+<span style="color:#e6db74">&#39;http://yangyiuxan.icu&#39;</span><span style="color:#75715e">/*不能使用&#39;*&#39;*/</span>)
+<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#39;Access-Control-Allow-Credentials&#39;</span>, <span style="color:#66d9ef">true</span>);
+</code></pre></div><h3 id="22-jsonp">2.2. JSONP</h3>
+<ol>
+<li>JSONP是不支持cors情况下（IE），使用的另一种跨域方式，即前端引用不同源的js，后端返回一个包含了数据的js代码（可以是将数据写在window上或是按照前端要求使用约定的回调函数），实现跨域共享数据</li>
+<li>思路：
+<ol>
+<li>前端与后端约定回调函数/变量名</li>
+<li>前端引用JS文件（通过script标签）</li>
+<li>后端按照约定将数据放入相应的JS中</li>
+<li>JS文件下载并执行回调后</li>
+</ol>
+</li>
+<li>优点
+<ol>
+<li>兼容IE</li>
+</ol>
+</li>
+<li>缺点
+<ol>
+<li>script标签，读不到状态码，只知道成功或失败，没有AJAX精细</li>
+<li>只能发GET，不支持POST</li>
+</ol>
+</li>
+<li>注意：
+<ol>
+<li>为防止函数名冲突，回调名字随机生成，以callback为键的参数，随机值为值，放在请求的查询参数中</li>
+<li>JSONP约定，query中的callback对应的值为JSONP回调函数</li>
+</ol>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//JSONP Promise封装
+</span><span style="color:#75715e">//前端
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">jsonp</span>(<span style="color:#a6e22e">url</span>) {
+ <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise((<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) =&gt; {
+   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">random</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;frankJSONCALLbackName=&#34;</span> <span style="color:#f92672">+</span> Math.<span style="color:#a6e22e">random</span>()
+   window[<span style="color:#a6e22e">random</span>] <span style="color:#f92672">=</span> (<span style="color:#a6e22e">data</span>) =&gt; <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">data</span>)
+   <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">script</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;script&#34;</span>)
+   <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">url</span><span style="color:#e6db74">}</span><span style="color:#e6db74">?callback=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">random</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+   <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+     <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">remove</span>()
+   }
+   <span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">onerror</span> <span style="color:#f92672">=</span> () =&gt; {
+     <span style="color:#a6e22e">reject</span>()
+   }
+   document.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">script</span>)
+ })
+<span style="color:#a6e22e">jsonp</span>(<span style="color:#e6db74">&#34;http://yangyixuan.icu/data.js&#34;</span>)
+.<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">data</span> =&gt; { <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>) })
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">//后端
+</span><span style="color:#75715e">// ....省略部分代码...
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">path</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;/data.js&#34;</span>) {
+	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>;
+	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;text/javascript;charset=utf-8&#34;</span>);
+	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">string</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`window[&#39;{{xxx}}&#39;]({{data}}) `</span>
+	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#34;./public/friends.json&#34;</span>).<span style="color:#a6e22e">toString</span>();
+	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">string2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#34;{{data}}&#34;</span>, <span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;{{xxx}}&#39;</span>, <span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">callback</span>);
+	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">write</span>(<span style="color:#a6e22e">string2</span>);
+	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">end</span>();
+}
+</code></pre></div><h3 id="23-其他跨域方式">2.3. 其他跨域方式</h3>
+<ol>
+<li>postMessage（ie不支持，主要用于网页间通信）</li>
+<li>websocket太重了</li>
+<li>cors中间件</li>
+<li>iframe过时</li>
+<li>后端
+<ol>
+<li>nodejs中间件</li>
+<li>nginx反向代理</li>
+</ol>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2020-07-03 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/js/">JS</a>,&nbsp;<a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%B5%85%E8%B0%88mvc/" class="prev" rel="prev" title="浅谈MVC"><i class="fas fa-angle-left fa-fw"></i>浅谈MVC</a>
+            <a href="/posts/%E5%85%A5%E9%97%A8vue/" class="next" rel="next" title="入门Vue">入门Vue<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
