@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 04 Apr 2022 19:13:28 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Cookie全解</title>
+    <link>http://howardyangyixuan.github.io/posts/cookie%E5%85%A8%E8%A7%A3/</link>
+    <pubDate>Mon, 04 Apr 2022 19:13:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/cookie%E5%85%A8%E8%A7%A3/</guid>
+    <description><![CDATA[Cookie全解 TLDR： Cookie是服务器为了区分请求是否来自同一浏览器（记录用户状态）而发给浏览器的一段字符串，浏览器会将其保存在本地]]></description>
+</item><item>
     <title>理解JS中如何实现继承</title>
     <link>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF/</link>
     <pubDate>Sat, 01 Jan 2022 13:50:09 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F26%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[大话设计模式：26.享元模式 享元模式：运用共享技术有效地支持大量细粒度的对象 TL;DR：通过将可共享的内部状态保留在类内，外部状态在调用时传]]></description>
-</item><item>
-    <title>大话设计模式25：中介者模式</title>
-    <link>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Sun, 30 Aug 2020 08:07:32 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E5%A4%A7%E8%AF%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F25%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[大话设计模式：25.中介者模式 中介者模式：用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可]]></description>
 </item></channel>
 </rss>
