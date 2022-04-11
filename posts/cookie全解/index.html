@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/cookie%E5%85%A8%E8%A7%A3\/"
-        },"genre": "posts","keywords": "JS, 前端","wordcount":  4873 ,
+        },"genre": "posts","keywords": "JS, 前端","wordcount":  4882 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/cookie%E5%85%A8%E8%A7%A3\/","datePublished": "2022-04-04T19:13:28+08:00","dateModified": "2022-04-04T19:13:28+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -79,7 +79,7 @@
                                 <i class="far fa-folder fa-fw"></i>JS
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-04-04>2022-04-04</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 4873 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 4882 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 10 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -196,8 +196,8 @@
 <li>Domain：哪些Host（主机/域名）可以接受cookie。默认值为当前访问地址的Host，<strong>注意：使用默认值时，不包含子域名，指定时一般默认包含子域名。</strong></li>
 <li>Path：Host下的哪些路径可以接受cookie。<strong>注意：目录的下级目录也满足匹配的条件（例如，如果 path=/docs，那么 &ldquo;/docs&rdquo; 和 &ldquo;/docs/Web/HTTP&rdquo; 都满足条件）。</strong></li>
 <li>Secure：Cookie 只有在请求使用SSL和HTTPS协议的时候才会被发送到服务器。</li>
-<li>HttpOnly：限制 Cookie 通过 JavaScript 经由  Document.cookie 属性、XMLHttpRequest 和  Request APIs 进行访问，以防范<a href="#32-%e4%bc%9a%e8%af%9d%e5%8a%ab%e6%8c%81%e5%92%8cxss" rel="">跨站脚本攻击（XSS）</a></li>
-<li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05" target="_blank" rel="noopener noreffer">【新属性】</a>SameSite：限制第三方Cookie与跨域请求一起发送，这样可以在一定程度上防范跨站<a href="#33-%e8%b7%a8%e7%ab%99%e8%af%b7%e6%b1%82%e4%bc%aa%e9%80%a0csrf" rel="">请求伪造攻击（CSRF）</a>。默认是Lax，只允许导航到目标网址的GET请求，Strict完全禁止跨域时携带第三方Cookie。对于没有实现该属性的浏览器，其行为等同于 None，Cookies 会被包含在任何请求中。</li>
+<li>HttpOnly：限制 Cookie 通过 JavaScript 经由  Document.cookie 属性、XMLHttpRequest 和  Request APIs 进行访问，以防范<a href="#31-%e8%b7%a8%e7%ab%99%e8%84%9a%e6%9c%ac%e6%94%bb%e5%87%bb-xsscross-site-scripting" rel="">跨站脚本攻击（XSS）</a></li>
+<li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-rfc6265bis-05" target="_blank" rel="noopener noreffer">【新属性】</a>SameSite：限制第三方Cookie与跨域请求一起发送，这样可以在一定程度上防范跨站<a href="#33-%e8%b7%a8%e7%ab%99%e8%af%b7%e6%b1%82%e4%bc%aa%e9%80%a0-csrfcross-site-request-forgery" rel="">请求伪造攻击（CSRF）</a>。默认是Lax，只允许导航到目标网址的GET请求携带Cookie，而Strict完全禁止跨域时携带<a href="#34-%e8%b7%9f%e8%b8%aa%e5%92%8c%e9%9a%90%e7%a7%81" rel="">第三方Cookie</a>。对于没有实现该属性的浏览器，其行为等同于 None，Cookies 会被包含在任何请求中。</li>
 <li>cookie-name(Cookie 前缀)：对于支持 Cookie 前缀的浏览器来说，以 <strong>__Secure-</strong> 或 <strong>__Host-</strong> 为前缀的 Cookie，必须设置 Secure 属性，即必须在HTTPS安全连接中使设置cookie。并且，以 __Host- 为前缀的Cookie，path 属性的值必须为 &ldquo;/&rdquo; ，且不能含有 domain 属性（表示整个站点该cookie由该域独享，不与下级域名共享），否则无法成功设置Cookie。 而不支持 cookie 前缀的浏览器则并不检查相应的cookie属性是否合规，总是能成功设置cookie。</li>
 </ol>
 <h3 id="13-cookie作用域与非法域设置限制">1.3. Cookie作用域与非法域(设置限制）</h3>
@@ -213,7 +213,7 @@
 </code></pre></div><h3 id="14-cookie注意事项">1.4. Cookie注意事项</h3>
 <ol>
 <li>无论使用任何安全措施，敏感信息都不应该通过 Cookie 传输，因为 Cookie 本质上无法保证安全，可以访问客户端硬盘的人都可以读取Cookie。</li>
-<li>每当用户进行身份验证时，服务器端都应重新生成并重新发送会话 Cookie，甚至是已经存在的会话 Cookie。这样有助于防止<a href="#33-%e4%bc%9a%e8%af%9d%e5%9b%ba%e5%ae%9a%e6%94%bb%e5%87%bbsession-fixation-attacks" rel="">会话劫持</a>，在该攻击中第三方可以重用用户的会话。</li>
+<li>每当用户进行身份验证时，服务器端都应重新生成并重新发送会话 Cookie，甚至是已经存在的会话 Cookie。这样有助于防止<a href="#32-%e4%bc%9a%e8%af%9d%e6%94%bb%e5%87%bb" rel="">会话劫持</a>，在该攻击中第三方可以重用用户的会话。</li>
 <li>当指定domain时，实际上会在domain值前面加点（.），例如domain=yangyixuan.icu，事實上值是.yangyixuan.icu，那么cookie对yangyixuan.icu和其子域名（如二级域名.www.yangyixuan.icu）都是有效的，如果使用默认值，则不会加点，那么cookie只对当前域名生效。</li>
 </ol>
 <h2 id="2-cookie与其他存储方式的区别">2. Cookie与其他存储方式的区别</h2>
@@ -253,7 +253,7 @@ Cookie 和 Session的区别：</p>
 <p>跨站脚本攻击（Cross-site scripting，XSS）是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码。</p>
 <p>当被攻击者登陆网站时就会自动运行这些恶意代码，从而将 cookies 或其他隐私信息（如sessionID）发送给攻击者，攻击者可以突破网站的访问权限，冒充受害者。</p>
 <p>设置HttpOnly属性可以防止Cookie 通过 JavaScript 经由 Document.cookie 属性、XMLHttpRequest 和 Request APIs 进行访问后泄漏。</p>
-<p>XSS更多细节，详见<a href="https://yangyixuan.icu/posts/XSS%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreffer">XSS实战</a></p>
+<p>XSS更多细节，详见<a href="http://yangyixuan.icu/posts/xss%E5%AE%9E%E6%88%98/" target="_blank" rel="noopener noreffer">XSS实战</a></p>
 <h3 id="32-会话攻击">3.2. 会话攻击</h3>
 <p>在Session会话中，为了维持来自同一个用户的不同请求之间的状态，客户端必须要给服务器端发送一个唯一的身份标识符(Session ID)点， 而这就给了攻击者可乘之机。</p>
 <p>通过session的攻击有很多种方式。大部分的手段都是首先通过捕获合法用户的session, 然后冒充该用户来访问系统，进而对系统进行攻击，而攻击者首先要做的就是至少必须要获取到一个有效的sessionID，用于接下来的身份验证。　</p>

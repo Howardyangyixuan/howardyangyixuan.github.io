@@ -2,9 +2,11 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://howardyangyixuan.github.io/posts/</loc><lastmod>2022-04-06T08:50:34&#43;08:00</lastmod></url><url>
+            <loc>http://howardyangyixuan.github.io/posts/</loc><lastmod>2022-04-11T16:15:54&#43;08:00</lastmod></url><url>
+            <loc>http://howardyangyixuan.github.io/</loc><lastmod>2022-04-11T16:15:54&#43;08:00</lastmod></url><url>
+            <loc>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3csrf/</loc><lastmod>2022-04-11T16:15:54&#43;08:00</lastmod></url><url>
+            <loc>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90csp/</loc><lastmod>2022-04-10T09:59:38&#43;08:00</lastmod></url><url>
             <loc>http://howardyangyixuan.github.io/posts/xss%E5%AE%9E%E6%88%98/</loc><lastmod>2022-04-06T08:50:34&#43;08:00</lastmod></url><url>
-            <loc>http://howardyangyixuan.github.io/</loc><lastmod>2022-04-06T08:50:34&#43;08:00</lastmod></url><url>
             <loc>http://howardyangyixuan.github.io/categories/</loc><lastmod>2022-04-04T19:13:28&#43;08:00</lastmod></url><url>
             <loc>http://howardyangyixuan.github.io/posts/cookie%E5%85%A8%E8%A7%A3/</loc><lastmod>2022-04-04T19:13:28&#43;08:00</lastmod></url><url>
             <loc>http://howardyangyixuan.github.io/tags/js/</loc><lastmod>2022-04-04T19:13:28&#43;08:00</lastmod></url><url>
