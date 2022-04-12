@@ -16,7 +16,7 @@
     <pubDate>Sun, 10 Apr 2022 09:59:38 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90csp/</guid>
-    <description><![CDATA[浅析CSP 上文XSS实战我们提到CSP是内容安全策略是一种系统性预防XSS攻击的手段，下面就来具体了解一下CSP以及具体如何设置CSP 什么是]]></description>
+    <description><![CDATA[浅析CSP 上文XSS实战我们提到CSP是内容安全策略是一种系统性预防XSS攻击的手段，下面就来具体了解一下CSP以及具体如何设置CSP 浅析C]]></description>
 </item><item>
     <title>XSS实战</title>
     <link>http://howardyangyixuan.github.io/posts/xss%E5%AE%9E%E6%88%98/</link>
