@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90csp\/"
-        },"genre": "posts","wordcount":  2372 ,
+        },"genre": "posts","wordcount":  2361 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90csp\/","datePublished": "2022-04-10T09:59:38+08:00","dateModified": "2022-04-10T09:59:38+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -76,7 +76,7 @@
         </div><article class="page single"><h1 class="single-title animated flipInX">浅析CSP</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-04-10>2022-04-10</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 2372 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2361 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 5 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -163,8 +163,7 @@
 	report-uri &lt;<span style="color:#f92672">url</span>&gt;;
 </code></pre></div><p>源 <code>&lt;source&gt;</code>可以为以下值</p>
 <ol>
-<li>
-<p><code>&lt;host-source&gt;</code>：</p>
+<li><code>&lt;host-source&gt;</code>：
 <ol>
 <li>
 <p>主机：以域名或者 IP 地址表示的主机名，外加可选的协议名和端口号。站点地址中可能会包含一个可选的前置通配符（星号 '*'），同时也可以将通配符（也是'*'）应用于端口号，表示在这个源中可以使用任意合法的端口号。</p>
@@ -174,33 +173,40 @@ http://*.yangyixuan.com: 匹配从使用 http: 的 yangyixuan.com 的任意子�
 yangyixuan.com:*:匹配对 yangyixuan.com 上的任意端口的访问。
 
 https://yangyixuan.com: 匹配对使用了 https协议 的 yangyixuan.com 的访问。
-</code></pre></div><p>``</p>
-</li>
+</code></pre></div></li>
 <li>
 <p>路径：以/结尾的路径，匹配该目录下所有路径，否则只匹配当前路径</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">例如：
 yangyixuan.com/api/ 可以匹配 yangyixuan.com/api/posts/getPost.js
 而 yangyixuan.com/api/posts/getPost.js只会匹配该路径
-</code></pre></div><p>``</p>
-</li>
+</code></pre></div></li>
 </ol>
+</li>
+<li><code>&lt;scheme-source&gt;</code>：协议名。必须带有冒号，不要有单引号
+<ol>
+<li>
+<p>http:</p>
 </li>
 <li>
-<p><code>&lt;scheme-source&gt;</code>：协议名。必须带有冒号，不要有单引号</p>
-<ol>
-<li>http:</li>
-<li>https:</li>
-<li>data: URIs 但不推荐使用，因为攻击者可以注入任意 data: URI。</li>
-<li>mediastream: URIs</li>
-<li>blob: URIs</li>
-<li>filesystem: URIs</li>
-</ol>
+<p>https:</p>
+</li>
+<li>
+<p>data: URIs 但不推荐使用，因为攻击者可以注入任意 data: URI。</p>
+</li>
+<li>
+<p>mediastream: URIs</p>
+</li>
+<li>
+<p>blob: URIs</p>
+</li>
+<li>
+<p>filesystem: URIs</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">例如： 只允许通过https协议加载图片资源
 Content-Security-Policy: img-src https: 
-</code></pre></div><pre><code>
-</code></pre></li>
-<li>
-<p>关键字</p>
+</code></pre></div></li>
+</ol>
+</li>
+<li>关键字
 <ol>
 <li>
 <p>&lsquo;self&rsquo;：指向与要保护的文件所在的源，包括相同的协议与端口号。</p>
@@ -212,43 +218,43 @@ Content-Security-Policy: img-src https:
 <p>&lsquo;strict-dynamic&rsquo;：strict-dynamic 信任含有指定标记的内联脚本(一个附加的随机数或散列)，并且由该脚本加载的所有脚本也被标记并允许加载。与此同时，任何白名单以及源表达式中（例如 &lsquo;self&rsquo;和&rsquo;unsafe-inline&rsquo; 不包含该值的内联脚本都会都会被拒绝执行。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">例如：同时设置strict-dynamic和某一源 
 Content-Security-Policy: script-src &#39;strict-dynamic&#39; &#39;nonce-R4nd0m&#39; http://yangyixuan.com
-</code></pre></div><pre><code>```html
-允许执行loader.js和其加载的其他脚本
+</code></pre></div><pre><code>允许执行loader.js和其加载的其他脚本
 &lt;script nonce=&quot;R4nd0m&quot; src=&quot;http://other.com/loader.js&quot;&gt;
 拒绝执行来自指定源没有nonce的脚本
 &lt;script src=&quot;http://yangyixuan.com/loader.js&quot;&gt;
-
-</code></pre><pre><code></code></pre></li>
+</code></pre></li>
 </ol>
 </li>
-<li>
-<p>不安全的关键字：</p>
+<li>不安全的关键字：
 <ol>
 <li>&lsquo;unsafe-inline&rsquo;： 允许使用内联资源，例如内联 <code>&lt;script&gt;</code>  元素（javascript: URL）、内联事件处理器以及内联 <code>&lt;style&gt;</code> 元素。</li>
 <li>&lsquo;unsafe-eval&rsquo;：允许使用 eval() 以及相似的函数来从字符串创建代码。</li>
 </ol>
 </li>
-<li>
-<p>不得已要使用内联脚本时，较为安全的方式</p>
+<li>不得已要使用内联脚本时，较为安全的方式
 <ol>
-<li>&lsquo;nonce-&lt;base64值&gt;&rsquo;：特定使用一次性加密内联脚本的白名单。服务器必须在每一次传输政策时生成唯一的一次性值。否则将存在绕过资源政策的可能。</li>
-</ol>
+<li>
+<p>&lsquo;nonce-&lt;base64值&gt;&rsquo;：特定使用一次性加密内联脚本的白名单。服务器必须在每一次传输政策时生成唯一的一次性值。否则将存在绕过资源政策的可能。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">例如： 只允许特定内联脚本加载
 Content-Security-Policy: script-src &#39;nonce-2726c7f26c&#39;
-</code></pre></div><pre><code> ```js
- 那么该内联脚本可以执行
- &lt;script nonce=&quot;2726c7f26c&quot;&gt;
- var inline = 1;
- &lt;/script&gt;
-</code></pre><pre><code>2. ``&lt;hash-source&gt;``： 使用 sha256、sha384 或 sha512 编码过的内联脚本或样式。其由用短划线分隔的两部分组成: 用于创建哈希的加密算法, 以及脚本或样式base64编码的哈希值。当生成哈希值的时候，不要包含 ``&lt;script&gt;`` 或 ``&lt;style&gt;`` 标签，同时注意字母大小写与空格（包括首尾空格）都是会影响生成的结果的。 
- ```text
- 例如： 只允许特定内联脚本加载：首先对特定脚本&quot;var inline = 1;&quot;使用加密算法编码，然后写入CSP配置
- Content-Security-Policy: script-src 'sha256-B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=c'
-</code></pre><pre><code> ```js
- 那么该内联脚本可以执行
- &lt;script&gt;var inline = 1;&lt;/script&gt;
-</code></pre><pre><code>
+
+那么该内联脚本可以执行
+&lt;script nonce=&#34;2726c7f26c&#34;&gt;
+var inline = 1;
+&lt;/script&gt;
+</code></pre></div><pre><code></code></pre></li>
+<li>
+<p><code>&lt;hash-source&gt;</code>： 使用 sha256、sha384 或 sha512 编码过的内联脚本或样式。
+其由用短划线分隔的两部分组成: 用于创建哈希的加密算法, 以及脚本或样式base64编码的哈希值。
+当生成哈希值的时候，不要包含 <code>&lt;script&gt;</code> 或 <code>&lt;style&gt;</code> 标签，同时注意字母大小写与空格（包括首尾空格）都是会影响生成的结果的。</p>
+<pre><code>例如： 只允许特定内联脚本加载：首先对特定脚本&quot;var inline = 1;&quot;使用加密算法编码，然后写入CSP配置
+Content-Security-Policy: script-src 'sha256-B2yPHKaXnvFWtRChIbabYmUBFZdVfKKXHbWtWidDVF8=c'
+         
+那么该内联脚本可以执行
+&lt;script&gt;var inline = 1;&lt;/script&gt; 
 </code></pre></li>
+</ol>
+</li>
 </ol>
 <h3 id="注意事项">注意事项</h3>
 <ol>
@@ -261,14 +267,14 @@ Content-Security-Policy: script-src &#39;nonce-2726c7f26c&#39;
 <p>一些常用的安全策略方案示例如下：</p>
 <h3 id="示例-1">示例 1</h3>
 <p>一个网站管理者想要所有内容均来自站点的同一个源 (不包括其子域名)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">Content-Security-Policy: default-src &#39;self&#39;
-</span></code></pre></div><h3 id="示例-2">示例 2</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Content-Security-Policy: default-src &#39;self&#39;
+</code></pre></div><h3 id="示例-2">示例 2</h3>
 <p>一个网站管理者允许内容来自信任的域名及其子域名 (域名不必须与CSP设置所在的域名相同)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">Content-Security-Policy: default-src &#39;self&#39; *.trusted.com
-</span></code></pre></div><h3 id="示例-3">示例 3</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Content-Security-Policy: default-src &#39;self&#39; *.trusted.com
+</code></pre></div><h3 id="示例-3">示例 3</h3>
 <p>一个网站管理者允许网页应用的用户在他们自己的内容中包含来自任何源的图片, 但是限制音频或视频需从信任的资源提供者(获得)，所有脚本必须从特定主机服务器获取可信的代码.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">Content-Security-Policy: default-src &#39;self&#39;; img-src *; media-src media1.com media2.com; script-src userscripts.example.com
-</span></code></pre></div><p>具体解释如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Content-Security-Policy: default-src &#39;self&#39;; img-src *; media-src media1.com media2.com; script-src userscripts.example.com
+</code></pre></div><p>具体解释如下：</p>
 <ol>
 <li>图片可以从任何地方加载(注意 &ldquo;*&rdquo; 通配符)。</li>
 <li>多媒体文件仅允许从 media1.com 和 media2.com 加载(不允许从这些站点的子域名)。</li>
@@ -276,8 +282,8 @@ Content-Security-Policy: script-src &#39;nonce-2726c7f26c&#39;
 </ol>
 <h3 id="示例-4">示例 4</h3>
 <p>一个线上银行网站的管理者想要确保网站的所有内容都要通过SSL方式获取，以避免攻击者窃听用户发出的请求。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">Content-Security-Policy: default-src https://onlinebanking.jumbobank.com
-</span></code></pre></div><p>该服务器仅允许通过HTTPS方式并仅从onlinebanking.jumbobank.com域名来访问文档。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Content-Security-Policy: default-src https://onlinebanking.jumbobank.com
+</code></pre></div><p>该服务器仅允许通过HTTPS方式并仅从onlinebanking.jumbobank.com域名来访问文档。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
