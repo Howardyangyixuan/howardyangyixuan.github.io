@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90babel\/"
-        },"genre": "posts","wordcount":  1598 ,
+        },"genre": "posts","wordcount":  1621 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90babel\/","datePublished": "2022-04-12T19:55:47+08:00","dateModified": "2022-04-12T19:55:47+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -76,7 +76,7 @@
         </div><article class="page single"><h1 class="single-title animated flipInX">浅析Babel</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-04-12>2022-04-12</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 1598 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1621 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -190,7 +190,7 @@
 <li>&lsquo;entry&rsquo;。根据 targets 中的浏览器版本，只引入浏览器不支持的 API。</li>
 <li>false 或 不设置（默认）。不通过 preset-env 启用 polyfill。</li>
 </ol>
-<p>另一种方式是按需加载的方法是使用<code>@babel/plugin-transform-runtime</code>插件</p>
+<p>另一种避免全局范围污染的方法是使用<code>@babel/plugin-transform-runtime</code>插件，它依赖core-js-pure实现此功能。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;presets&#34;</span>: [
     [
