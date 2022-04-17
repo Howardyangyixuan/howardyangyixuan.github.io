@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>浅析Babel - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="浅析Babel" />
+<meta property="og:description" content="浅析 Babel 实例文中实例详见本文完整代码 背景 由于不同浏览器实现的js各有不同，开发者为了使开发的应用在各个浏览器上都能够正常使用，产生了将开发时使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90babel/" />
+<meta property="article:published_time" content="2022-04-12T19:55:47+08:00" />
+<meta property="article:modified_time" content="2022-04-12T19:55:47+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="浅析Babel"/>
+<meta name="twitter:description" content="浅析 Babel 实例文中实例详见本文完整代码 背景 由于不同浏览器实现的js各有不同，开发者为了使开发的应用在各个浏览器上都能够正常使用，产生了将开发时使"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90babel/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3csrf/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "浅析Babel",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90babel\/"
+        },"genre": "posts","wordcount":  1598 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B5%85%E6%9E%90babel\/","datePublished": "2022-04-12T19:55:47+08:00","dateModified": "2022-04-12T19:55:47+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">浅析Babel</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-04-12>2022-04-12</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1598 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#babel-工作流程">Babel 工作流程</a></li>
+    <li><a href="#babel-转换规则plugin-和-presets">Babel 转换规则：Plugin 和 Presets</a></li>
+    <li><a href="#babelpreset-env-与-babelpolyfill">@babel/preset-env 与 @babel/polyfill</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="浅析-babel">浅析 Babel</h1>
+<p>实例文中实例详见<a href="https://github.com/Howardyangyixuan/my-webpack-demo-1" target="_blank" rel="noopener noreffer">本文完整代码</a></p>
+<h2 id="背景">背景</h2>
+<p>由于不同浏览器实现的js各有不同，开发者为了使开发的应用在各个浏览器上都能够正常使用，产生了将开发时使用的js代码转换为更具兼容性的代码的需求。</p>
+<p>而Babel就是为此而生的，Babel最主要的功能就是将es6代码转化为es5，使低版本浏览器兼容最新的es6语法。Babel是由ts和js实现的。</p>
+<h2 id="babel-工作流程">Babel 工作流程</h2>
+<p>Babel的功能是将代码进行转译，因此Babel本质上就是一个编译器。 因此Babel的原理自然也逃不出编译的五个阶段。</p>
+<ol>
+<li>词法分析</li>
+<li>语法分析</li>
+<li>语义分析与中间代码产生</li>
+<li>代码优化</li>
+<li>目标代码生成</li>
+</ol>
+<p>具体而言，Babel将整个编译流程简化为三大部分，并定义对应的API</p>
+<ol>
+<li>@babel/parser：将原代码经过词法分析和语法分析，变为抽象语法树（AST）
+<ol>
+<li>背景：原名Babylon，基于acorn（一个基于JS的小而快的JS语法分析器）</li>
+<li>抽象语法树 Abstract Syntax Tree（AST）：用树形结构抽象表示源代码的语法结构，树上的每个节点（node）都表示源代码中的一种结构。</li>
+</ol>
+</li>
+<li>@babel/traverse：遍历AST上的节点，根据plugin和presets中的转换规则，进行增删改查操作</li>
+<li>@babel/generator：将AST转换为目标代码</li>
+</ol>
+<p>以下是一个将所有let声明转换为var声明的例子：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">parse</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@babel/parser&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">traverse</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@babel/traverse&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">generate</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@babel/generator&#39;</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`let a = &#39;let&#39;; let b = 1`</span>;
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ast</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">code</span>, {<span style="color:#a6e22e">sourceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;module&#39;</span>});
+<span style="color:#a6e22e">traverse</span>(<span style="color:#a6e22e">ast</span>, {
+  <span style="color:#a6e22e">enter</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">item</span> =&gt; {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;VariableDeclaration&#39;</span>) {
+      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">kind</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#39;let&#39;</span>) {
+        <span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">node</span>.<span style="color:#a6e22e">kind</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;var&#39;</span>;
+      }
+    }
+  }
+});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">generate</span>(<span style="color:#a6e22e">ast</span>,{},<span style="color:#a6e22e">code</span>);
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">code</span>);
+</code></pre></div><h2 id="babel-转换规则plugin-和-presets">Babel 转换规则：Plugin 和 Presets</h2>
+<p>为了将代码进行转换，可以对比不同版本规范，像上述例子一样制定规则进行代码转译，官方提供的插件被称为plugin，如<code>@babel/plugin-transform-arrow-functions</code>用于转换箭头函数，为了方便的转换所有规则，官方提供了<code>@babel/preset-env</code>，这是一个预设的插件集合，这组插件包含了es6到es5的所有翻译规则，避免一个个手动引入插件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">babel</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@babel/core&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">as</span> <span style="color:#a6e22e">fs</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;fs&#39;</span>;
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">readFileSync</span>(<span style="color:#e6db74">&#39;./test.js&#39;</span>).<span style="color:#a6e22e">toString</span>()
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ast</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">babel</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">code</span>, {<span style="color:#a6e22e">sourceType</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;module&#39;</span>});
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">babel</span>.<span style="color:#a6e22e">transformFromAstSync</span>(<span style="color:#a6e22e">ast</span>, <span style="color:#a6e22e">code</span>, {
+  <span style="color:#a6e22e">presets</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;@babel/preset-env&#39;</span>]
+});
+<span style="color:#a6e22e">fs</span>.<span style="color:#a6e22e">writeFileSync</span>(<span style="color:#e6db74">&#39;./test.es5.js&#39;</span>,<span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">code</span>)
+</code></pre></div><p>当然也可以通过配置文件babel.config.json/.babelrc.json/package.json进行配置，详见<a href="https://www.babeljs.cn/docs/configuration" target="_blank" rel="noopener noreffer">文档</a>，对于配置文件，一般情况直接复制粘贴，如有额外需求再自行定制，没必要背诵默写。</p>
+<h2 id="babelpreset-env-与-babelpolyfill">@babel/preset-env 与 @babel/polyfill</h2>
+<p>然而并非使用了preset-env就万事大吉，虽然经过preset-env的语法规则转译，语法均符合规范，但对于新标准引入的各种函数（包括新的内置组件/静态方法/实例方法/生成器函数等）则仍需提供其具体实现才能够使代码正常运行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">es5未实现的函数
+1. 内置组件：如Promise和WeakMap
+2. 静态方法：如Array.from和Object.assign
+3. 实例方法：如Array.prototype.includes
+4. 生成器函数(generator functions)的构造函数和方法
+</code></pre></div><p>@babel/polyfill 模块包含两部分来模拟完整的 ES2015+ 环境</p>
+<ol>
+<li>core-js/stable 用于模拟 ECMAScript 的功能</li>
+<li>regenerator-runtime/runtime 用于模拟生成器特性</li>
+</ol>
+<blockquote>
+<p>从 Babel 7.4.0 版本开始，建议直接包含 core-js/stable 和 regenerator-runtime/runtime</p>
+</blockquote>
+<p>但如果直接引入两个模块会造成两个问题</p>
+<ol>
+<li>因为直接引入 @babel/polyfill 的方式会对全局范围造成污染</li>
+<li>可能会将未使用的内容一并加载，从而使得编译后的文件存在冗余。</li>
+</ol>
+<p>可以通过babel.config.json中对useBuildIns进行配置可以实现按需加载</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;presets&#34;</span>: [
+    [
+      <span style="color:#e6db74">&#34;@babel/preset-env&#34;</span>,
+      {
+        <span style="color:#f92672">&#34;targets&#34;</span>: {
+          <span style="color:#f92672">&#34;edge&#34;</span>: <span style="color:#e6db74">&#34;17&#34;</span>,
+          <span style="color:#f92672">&#34;firefox&#34;</span>: <span style="color:#e6db74">&#34;60&#34;</span>,
+          <span style="color:#f92672">&#34;chrome&#34;</span>: <span style="color:#e6db74">&#34;67&#34;</span>,
+          <span style="color:#f92672">&#34;safari&#34;</span>: <span style="color:#e6db74">&#34;11.1&#34;</span>
+        },
+				<span style="color:#960050;background-color:#1e0010">//核心配置</span>
+        <span style="color:#f92672">&#34;useBuiltIns&#34;</span>: <span style="color:#e6db74">&#34;usage&#34;</span>
+      }
+    ]
+  ]
+}
+</code></pre></div><p>useBuiltIns属性取值:</p>
+<ol>
+<li>&lsquo;usage&rsquo;。根据 targets 中的浏览器版本，只引入浏览器不支持并且有在代码中使用到的 API。</li>
+<li>&lsquo;entry&rsquo;。根据 targets 中的浏览器版本，只引入浏览器不支持的 API。</li>
+<li>false 或 不设置（默认）。不通过 preset-env 启用 polyfill。</li>
+</ol>
+<p>另一种方式是按需加载的方法是使用<code>@babel/plugin-transform-runtime</code>插件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;presets&#34;</span>: [
+    [
+      <span style="color:#e6db74">&#34;@babel/preset-env&#34;</span>,
+      {
+        <span style="color:#f92672">&#34;targets&#34;</span>: {
+          <span style="color:#f92672">&#34;edge&#34;</span>: <span style="color:#e6db74">&#34;17&#34;</span>,
+          <span style="color:#f92672">&#34;firefox&#34;</span>: <span style="color:#e6db74">&#34;60&#34;</span>,
+          <span style="color:#f92672">&#34;chrome&#34;</span>: <span style="color:#e6db74">&#34;67&#34;</span>,
+          <span style="color:#f92672">&#34;safari&#34;</span>: <span style="color:#e6db74">&#34;11.1&#34;</span>
+        },
+      }
+    ]
+  ],
+ <span style="color:#f92672">&#34;plugins&#34;</span>: [
+    [
+      <span style="color:#e6db74">&#34;@babel/plugin-transform-runtime&#34;</span>, 
+       {
+         <span style="color:#f92672">&#34;corejs&#34;</span>: <span style="color:#ae81ff">3</span>
+       }
+    ] 
+  ]
+}
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2022-04-12 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E7%90%86%E8%A7%A3csrf/" class="prev" rel="prev" title="理解CSRF"><i class="fas fa-angle-left fa-fw"></i>理解CSRF</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
