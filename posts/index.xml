@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 12 Apr 2022 19:55:47 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Apr 2022 20:36:43 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>深入理解webpack</title>
+    <link>http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3webpack/</link>
+    <pubDate>Wed, 20 Apr 2022 20:36:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3webpack/</guid>
+    <description><![CDATA[深入理解webpack 深入理解webpack 从功能上理解webpack webpack两大功能 webpack核心思路 从架构上理解webpack]]></description>
+</item><item>
     <title>浅析Babel</title>
     <link>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90babel/</link>
     <pubDate>Tue, 12 Apr 2022 19:55:47 &#43;0800</pubDate>
@@ -53,25 +60,18 @@
     <guid>http://howardyangyixuan.github.io/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[TS范型的使用 软件工程中，我们不仅要创建一致的定义良好的 API，同时也要考虑可重用性。 组件不仅能够支持当前的数据类型，同时也能支持未来的数据]]></description>
 </item><item>
+    <title>Vue数据响应式原理</title>
+    <link>http://howardyangyixuan.github.io/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</link>
+    <pubDate>Sun, 28 Feb 2021 10:22:16 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</guid>
+    <description><![CDATA[Vue数据响应式原理 TLDR: Vue数据响应式指的是，Vue通过创建Vue实例对数据进行【监听】和【代理】，使得在数据发生变化时，UI可以对数据变化]]></description>
+</item><item>
     <title>软件工程4：课程总结</title>
     <link>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/</link>
     <pubDate>Sun, 24 Jan 2021 17:35:17 &#43;0800</pubDate>
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/</guid>
     <description><![CDATA[软件工程：4.课程总结 0.作业要求 请各位同学围绕课程理论学习和课程项目实践，总结自己的学习心得体会，并对照第一篇博客所写的期望，整理自己的收]]></description>
-</item><item>
-    <title>软件工程3：设计也可以按图索骥</title>
-    <link>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5/</link>
-    <pubDate>Thu, 07 Jan 2021 17:59:13 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B3%E8%AE%BE%E8%AE%A1%E4%B9%9F%E5%8F%AF%E4%BB%A5%E6%8C%89%E5%9B%BE%E7%B4%A2%E9%AA%A5/</guid>
-    <description><![CDATA[软件工程：3.设计也可以按图索骥 1. 前言： 如果说需求分析是画饼，设计分析就是把我们画的这个饼的制作过程细化，最起码也是让它看起来是能做出来，可]]></description>
-</item><item>
-    <title>软件工程2：从需求分析看软件开发的挑战</title>
-    <link>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B2%E4%BB%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9C%8B%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%8C%91%E6%88%98/</link>
-    <pubDate>Mon, 14 Dec 2020 22:02:30 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B2%E4%BB%8E%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9C%8B%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%9A%84%E6%8C%91%E6%88%98/</guid>
-    <description><![CDATA[软件工程：2.从需求分析看软件开发的挑战 1. 背景： 从第一节课带着本科时对软件工程的三脚猫功夫，选题：基于家庭工厂的订单协作系统，随缘的组队，到]]></description>
 </item></channel>
 </rss>
