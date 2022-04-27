@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>再谈Vue数据响应式 - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="再谈Vue数据响应式" />
+<meta property="og:description" content="再谈Vue数据响应式 上文Vue数据响应式介绍了Vue通过代理和监听实现对数据的监控，从而进行响应式的渲染和更新操作。 然而变更数据时，具体又是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/" />
+<meta property="article:published_time" content="2022-04-27T10:23:33+08:00" />
+<meta property="article:modified_time" content="2022-04-27T10:23:33+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="再谈Vue数据响应式"/>
+<meta name="twitter:description" content="再谈Vue数据响应式 上文Vue数据响应式介绍了Vue通过代理和监听实现对数据的监控，从而进行响应式的渲染和更新操作。 然而变更数据时，具体又是"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3webpack/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "再谈Vue数据响应式",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F\/"
+        },"genre": "posts","wordcount":  1784 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F\/","datePublished": "2022-04-27T10:23:33+08:00","dateModified": "2022-04-27T10:23:33+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">再谈Vue数据响应式</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-04-27>2022-04-27</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 1784 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 4 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#核心架构">核心架构</a></li>
+    <li><a href="#发布订阅模式">发布订阅模式</a></li>
+    <li><a href="#具体实现">具体实现</a>
+      <ul>
+        <li><a href="#dep">dep</a></li>
+        <li><a href="#targetstack">targetStack</a></li>
+        <li><a href="#watcher">watcher</a></li>
+        <li><a href="#reactive方法实现数据响应式核心逻辑">reactive方法实现数据响应式核心逻辑</a></li>
+      </ul>
+    </li>
+    <li><a href="#测试接口">测试接口</a></li>
+    <li><a href="#封装为极简版vue">封装为极简版Vue</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="再谈vue数据响应式">再谈Vue数据响应式</h1>
+<p>上文<a href="http://yangyixuan.icu/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener noreffer">Vue数据响应式</a>介绍了Vue通过代理和监听实现对数据的监控，从而进行响应式的渲染和更新操作。</p>
+<p>然而变更数据时，具体又是如何进行渲染和更新的呢？本文将通过实现一个极简版的Vue响应式系统来一探究竟。</p>
+<p>本文完整代码详见<a href="https://github.com/Howardyangyixuan/vue-reactive-demo-1" target="_blank" rel="noopener noreffer">Vue数据响应式核心原理实现</a>并附上<a href="http://yangyixuan.icu/vue-reactive-demo-1/" target="_blank" rel="noopener noreffer">效果预览链接</a></p>
+<h2 id="核心架构">核心架构</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/images/vuedata.jpg"
+        data-srcset="/images/vuedata.jpg, /images/vuedata.jpg 1.5x, /images/vuedata.jpg 2x"
+        data-sizes="auto"
+        alt="Vue数据响应式核心原理"
+        title="Vue数据响应式核心原理" />
+Vue通过代理和监听实现对数据的监控，从而进行响应式的渲染和更新操作。而在变更数据时，组件的渲染和更新则是以Dep为核心，通过发布订阅模式实现的，如上图所示。</p>
+<h2 id="发布订阅模式">发布订阅模式</h2>
+<p>这在我们日常生活中十分常见，就以订报纸为例，我们订报纸付钱以后，邮递员会在本子上记录我们的信息（要调用的对象）和要订阅的报纸（需要执行的操作），之后每次有新的报纸（数据改变），他就按本子上的地址（找到要调用的对象），挨家挨户送报纸（执行响应的操作）。这就是发布订阅模式。</p>
+<p>在Vue中Dep对象就是邮递员的小本，而watcher对象就是用户，watcher对象上有响应的方法用来重新渲染。</p>
+<h2 id="具体实现">具体实现</h2>
+<h3 id="dep">dep</h3>
+<p>实现依赖类Dep:发布订阅模式
+Dep实例通过一个去重数组set记录依赖数据的组件（set实际保存的是组件的watcher对象），采用发布订阅模式，在数据被访问时使用depend()方法添加依赖，在数据被修改时使用notify()方法在改变时遍历所有依赖组件，并执行组件watcher的update方法，即执行渲染函数重新渲染。Dep类的静态变量Dep.target记录当前正在执行的组件。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Dep</span> {
+	<span style="color:#75715e">// 需要额外配置webpack进行转译
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// static target = null
+</span><span style="color:#75715e"></span>
+  <span style="color:#a6e22e">constructor</span>() {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deps</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Set</span>()
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deps</span>)
+  }
+
+  <span style="color:#a6e22e">depend</span>() {
+    <span style="color:#75715e">//并非初始化组建时,Dep.target为null
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span>)
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deps</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span>)
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;depend:&#34;</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deps</span>)
+  }
+
+  <span style="color:#a6e22e">notify</span>() {
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">watcher</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">deps</span>) {
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;watcher:&#34;</span>,<span style="color:#a6e22e">watcher</span>)
+      <span style="color:#a6e22e">watcher</span>.<span style="color:#a6e22e">update</span>()
+    }
+  }
+}
+<span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span>
+
+<span style="color:#66d9ef">export</span> {<span style="color:#a6e22e">Dep</span>}
+</code></pre></div><h3 id="targetstack">targetStack</h3>
+<p>每个组件都有一个watcher对象，全局变量targetStack是一个运行栈，记录未完成加载的组件（父组件），使用Dep.target存储当前watcher，表示当前运行的组件。使用两个函数维护运行栈，push和pop，作用更新targetStack以及更新Dep.target。（targetStack在组件嵌套时体现作用）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Dep</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./dep.js&#34;</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">targetStack</span> <span style="color:#f92672">=</span> []
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">popTarget</span>() {
+  <span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">targetStack</span>.<span style="color:#a6e22e">pop</span>()
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">pushTarget</span>(<span style="color:#a6e22e">target</span>) {
+  <span style="color:#75715e">// 不会为空，不用额外检测
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// if (Dep.target)
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">targetStack</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span>)
+  <span style="color:#a6e22e">Dep</span>.<span style="color:#a6e22e">target</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">target</span>
+}
+
+<span style="color:#66d9ef">export</span> {<span style="color:#a6e22e">targetStack</span>, <span style="color:#a6e22e">popTarget</span>, <span style="color:#a6e22e">pushTarget</span>}
+</code></pre></div><h3 id="watcher">watcher</h3>
+<p>watcher对象，保存当前组件渲染函数render，该对象有一个get方法，首先pushTarget，将当前组件设置为运行组件，然后调用数据render方法进行渲染，最后popTarget。在更新数据时，调用update方法，此处简化update方法内部仍是调用get方法。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">popTarget</span>, <span style="color:#a6e22e">pushTarget</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./targetStack&#34;</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Watcher</span> {
+  <span style="color:#a6e22e">constructor</span>(<span style="color:#a6e22e">render</span>) {
+    <span style="color:#75715e">//组件渲染函数
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">render</span>
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">get</span>()
+  }
+
+  <span style="color:#a6e22e">get</span>() {
+    <span style="color:#a6e22e">pushTarget</span>(<span style="color:#66d9ef">this</span>)
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>()
+    <span style="color:#a6e22e">popTarget</span>()
+  }
+
+  <span style="color:#a6e22e">update</span>() {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">get</span>()
+  }
+}
+
+<span style="color:#66d9ef">export</span> {<span style="color:#a6e22e">Watcher</span>}
+</code></pre></div><h3 id="reactive方法实现数据响应式核心逻辑">reactive方法实现数据响应式核心逻辑</h3>
+<p>对每个数据，通过setter和getter覆盖原先的属性，实现监听，并且使用Dep记录依赖该数据的组件，在get时记录（第一次渲染时记录），在set时，即改变数据时，通知依赖该数据的组件，触发重新执行渲染函数。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Dep</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./dep&#34;</span>
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">isObject</span>(<span style="color:#a6e22e">data</span>) {
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;object&#34;</span>;
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">defineReactive</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">key</span>) {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dep</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Dep</span>()
+  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>[<span style="color:#a6e22e">key</span>]
+  <span style="color:#75715e">//用getter/setter覆盖原属性实现监听
+</span><span style="color:#75715e"></span>  Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">key</span>, {
+    <span style="color:#a6e22e">get</span>() {
+      <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">depend</span>()
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">value</span>
+    },
+    <span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">newVal</span>) {
+      <span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newVal</span>
+      <span style="color:#a6e22e">dep</span>.<span style="color:#a6e22e">notify</span>()
+    }
+  })
+  <span style="color:#75715e">//如果值是对象，则递归调用reactive使其内部数据均为响应式数据
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isObject</span>(<span style="color:#a6e22e">value</span>)) {
+    <span style="color:#a6e22e">reactive</span>(<span style="color:#a6e22e">value</span>)
+  }
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reactive</span>(<span style="color:#a6e22e">data</span>) {
+  <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isObject</span>(<span style="color:#a6e22e">data</span>)){
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">data</span>)) {
+      <span style="color:#a6e22e">defineReactive</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">key</span>)
+    }
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">data</span>
+}
+
+<span style="color:#66d9ef">export</span> {<span style="color:#a6e22e">reactive</span>}
+</code></pre></div><h2 id="测试接口">测试接口</h2>
+<p>将data暴露给window.data，可以通过控制台修改对象和数组，查看数据响应式效果，测试各个接口是否正常工作。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">...
+&lt;<span style="color:#f92672">h1</span>&gt;data&lt;/<span style="color:#f92672">h1</span>&gt;
+&lt;<span style="color:#f92672">h2</span>&gt;data已暴露给window.data，可以通过控制台修改对象和数组，查看数据响应式效果&lt;/<span style="color:#f92672">h2</span>&gt;
+&lt;<span style="color:#f92672">label</span>&gt;
+	data.msg
+	&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msg&#34;</span>&gt;
+&lt;/<span style="color:#f92672">label</span>&gt;
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;app&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+...
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">reactive</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../src/reactive&#34;</span>
+<span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Watcher</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;../src/watcher&#34;</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reactive</span>({
+  <span style="color:#a6e22e">msg</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Hello World&#34;</span>,
+  <span style="color:#a6e22e">arr</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+  <span style="color:#a6e22e">obj</span><span style="color:#f92672">:</span>{<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;howard&#39;</span>}
+})
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Watcher</span>(() =&gt; {
+  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;app&#34;</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    msg is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">msg</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    arr is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">arr</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">    obj is </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">obj</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">     &lt;br&gt;
+</span><span style="color:#e6db74">  `</span>
+})
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;msg&#34;</span>)
+<span style="color:#a6e22e">input</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;keyup&#34;</span>, (<span style="color:#a6e22e">event</span>) =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)
+  <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>
+})
+
+
+window.<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+
+
+</code></pre></div><h2 id="封装为极简版vue">封装为极简版Vue</h2>
+<p>最后为了让我们的数据响应式系统和Vue有类似的使用方式和体验，我们对接口进行封装，形成极简版的Vue。</p>
+<p>注意，这里实现Vue类，对接口进行封装，模仿Vue2语法，其中template使用正则替换简化实现，未实现真正的编译。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">reactive</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./reactive&#34;</span>
+<span style="color:#66d9ef">import</span> {<span style="color:#a6e22e">Watcher</span>} <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;./watcher&#34;</span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Vue</span> {
+  <span style="color:#a6e22e">constructor</span>({<span style="color:#a6e22e">el</span>, <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">template</span>}) {
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">el</span>)
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">data</span>)
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">template</span>)
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">el</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">el</span>
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">val</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reactive</span>(<span style="color:#a6e22e">data</span>)
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">template</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">template</span>
+    <span style="color:#75715e">//代理data
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">of</span> Object.<span style="color:#a6e22e">keys</span>(<span style="color:#a6e22e">data</span>)) {
+      <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">key</span>)
+      Object.<span style="color:#a6e22e">defineProperty</span>(<span style="color:#66d9ef">this</span>, <span style="color:#a6e22e">key</span>, {
+        <span style="color:#a6e22e">get</span>() {
+          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;proxy&#34;</span>)
+          <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">val</span>[<span style="color:#a6e22e">key</span>]
+        },
+        <span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">newVal</span>) {
+          <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">newVal</span>)
+          <span style="color:#a6e22e">val</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">newVal</span>
+        }
+      })
+      <span style="color:#75715e">// console.log(this[key])
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>
+  }
+
+  <span style="color:#a6e22e">render</span>() {
+    <span style="color:#75715e">//编译器的简化，目的是能够使用template
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">template</span>
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reg</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/{{([a-z]+)}}/g</span>
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matches</span> <span style="color:#f92672">=</span> [...<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">template</span>.<span style="color:#a6e22e">matchAll</span>(<span style="color:#a6e22e">reg</span>)]
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">matches</span>)
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">match</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">matches</span>) {
+      <span style="color:#a6e22e">str</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>.<span style="color:#a6e22e">replace</span>(<span style="color:#a6e22e">match</span>[<span style="color:#ae81ff">0</span>], <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#66d9ef">this</span>[<span style="color:#a6e22e">match</span>[<span style="color:#ae81ff">1</span>]]))
+    }
+    document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">el</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">str</span>
+  }
+
+  <span style="color:#a6e22e">$mount</span>() {
+    <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Watcher</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">render</span>.<span style="color:#a6e22e">bind</span>(<span style="color:#66d9ef">this</span>))
+    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>
+  }
+}
+
+<span style="color:#66d9ef">export</span> {<span style="color:#a6e22e">Vue</span>}
+
+</code></pre></div><!-- raw HTML omitted -->
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2022-04-27 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3webpack/" class="prev" rel="prev" title="深入理解webpack"><i class="fas fa-angle-left fa-fw"></i>深入理解webpack</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

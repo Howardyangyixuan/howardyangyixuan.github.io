@@ -3,7 +3,14 @@
         <title>Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/</link>
         <description>Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 20 Apr 2022 20:36:43 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Apr 2022 10:23:33 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/" rel="self" type="application/rss+xml" /><item>
+    <title>再谈Vue数据响应式</title>
+    <link>http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/</link>
+    <pubDate>Wed, 27 Apr 2022 10:23:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/</guid>
+    <description><![CDATA[再谈Vue数据响应式 上文Vue数据响应式介绍了Vue通过代理和监听实现对数据的监控，从而进行响应式的渲染和更新操作。 然而变更数据时，具体又是]]></description>
+</item><item>
     <title>深入理解webpack</title>
     <link>http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3webpack/</link>
     <pubDate>Wed, 20 Apr 2022 20:36:43 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</guid>
     <description><![CDATA[Vue数据响应式原理 TLDR: Vue数据响应式指的是，Vue通过创建Vue实例对数据进行【监听】和【代理】，使得在数据发生变化时，UI可以对数据变化]]></description>
-</item><item>
-    <title>软件工程4：课程总结</title>
-    <link>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/</link>
-    <pubDate>Sun, 24 Jan 2021 17:35:17 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B4%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93/</guid>
-    <description><![CDATA[软件工程：4.课程总结 0.作业要求 请各位同学围绕课程理论学习和课程项目实践，总结自己的学习心得体会，并对照第一篇博客所写的期望，整理自己的收]]></description>
 </item></channel>
 </rss>
