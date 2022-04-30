@@ -1,0 +1,28 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>web安全 - 分类 - Y-y_x&#39;s Blog</title>
+        <link>http://howardyangyixuan.github.io/categories/web%E5%AE%89%E5%85%A8/</link>
+        <description>web安全 - 分类 - Y-y_x&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Apr 2022 16:15:54 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/categories/web%E5%AE%89%E5%85%A8/" rel="self" type="application/rss+xml" /><item>
+    <title>理解CSRF</title>
+    <link>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3csrf/</link>
+    <pubDate>Mon, 11 Apr 2022 16:15:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E7%90%86%E8%A7%A3csrf/</guid>
+    <description><![CDATA[理解CSRF 理解CSRF 什么是CSRF 与XSS攻击的区别 防护策略 1. 拒绝不安全的跨域访问 同源检测 设置Cookie的Samesite属性 2. 附加第]]></description>
+</item><item>
+    <title>浅析CSP</title>
+    <link>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90csp/</link>
+    <pubDate>Sun, 10 Apr 2022 09:59:38 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E6%B5%85%E6%9E%90csp/</guid>
+    <description><![CDATA[浅析CSP 上文XSS实战我们提到CSP是内容安全策略是一种系统性预防XSS攻击的手段，下面就来具体了解一下CSP以及具体如何设置CSP 浅析C]]></description>
+</item><item>
+    <title>XSS实战</title>
+    <link>http://howardyangyixuan.github.io/posts/xss%E5%AE%9E%E6%88%98/</link>
+    <pubDate>Wed, 06 Apr 2022 08:50:34 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/xss%E5%AE%9E%E6%88%98/</guid>
+    <description><![CDATA[XSS实战 看了美团安全系列一：如何防止XSS之后，根据指引去XSS Challenge 和 XSS Game实战了一下，然后来总结一下到底什么是XSS攻击以及常见的攻击]]></description>
+</item></channel>
+</rss>
