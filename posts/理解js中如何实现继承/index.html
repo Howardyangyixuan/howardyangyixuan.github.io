@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/"
-        },"genre": "posts","keywords": "JS, 前端","wordcount":  3103 ,
+        },"genre": "posts","keywords": "JS, 前端","wordcount":  3056 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/","datePublished": "2022-01-01T13:50:09+08:00","dateModified": "2022-01-01T13:50:09+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -79,7 +79,7 @@
                                 <i class="far fa-folder fa-fw"></i>JS
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-01-01>2022-01-01</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 3103 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 3056 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -252,7 +252,7 @@
 <li>问题2: 无法向父类型传参生成独享的属性,传参都会使子类型所有实例发生改变</li>
 </ol>
 <h3 id="22-盗用构造函数经典继承">2.2 盗用构造函数——经典继承</h3>
-<p>原型链是实现继承的一种方式，具体思路如下：A和B是两个构造函数,通过让一个对象同时拥有两个身份,既是B的原型对象,又是A的实例对象,连接两个构造函数,实现B的实例继承A原型上的属性和方法。</p>
+<p>为了独享数据，可以在子类型构造函数中，调用父类型构造函数，实现继承并独享父类型的实例对象属性。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">   <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;2.盗用构造函数——经典继承&#39;</span>);
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 在子类型构造函数中，调用父类型构造函数，实现继承并独享父类型的实例对象属性&#39;</span>);
     <span style="color:#a6e22e">Grandpa</span> <span style="color:#f92672">=</span>  <span style="color:#66d9ef">function</span>(){
