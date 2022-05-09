@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/"
-        },"genre": "posts","keywords": "JS, 前端","wordcount":  3056 ,
+        },"genre": "posts","keywords": "JS, 前端","wordcount":  3115 ,
         "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E7%90%86%E8%A7%A3js%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF\/","datePublished": "2022-01-01T13:50:09+08:00","dateModified": "2022-01-01T13:50:09+08:00","author": {
                 "@type": "Person",
                 "name": "Y-y_x"
@@ -79,7 +79,7 @@
                                 <i class="far fa-folder fa-fw"></i>JS
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-01-01>2022-01-01</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>约 3056 字&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 3115 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
@@ -127,6 +127,7 @@
 <li><a href="#132-%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e5%ae%9e%e7%8e%b0%e5%b7%a5%e5%8e%82%e6%a8%a1%e5%bc%8f" rel="">1.3.2 构造函数实现工厂模式</a></li>
 <li><a href="#133-%e8%a7%a3%e5%86%b3%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e6%a8%a1%e5%bc%8f%e6%97%a0%e6%b3%95%e5%a4%8d%e7%94%a8%e5%87%bd%e6%95%b0" rel="">1.3.3 解决构造函数模式,无法复用函数;</a></li>
 <li><a href="#134-%e5%8e%9f%e5%9e%8b%e6%a8%a1%e5%bc%8f" rel="">1.3.4 原型模式</a></li>
+<li><a href="#135-%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" rel="">1.3.5 最佳实践</a></li>
 </ul>
 </li>
 </ul>
@@ -218,7 +219,17 @@
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- 问题: 属性也会复用,没有独立的实例属性&#39;</span>);
     <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">bool</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">protoPerson1</span>.<span style="color:#a6e22e">friend</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">protoPerson2</span>.<span style="color:#a6e22e">friend</span>;
     <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;- protoPerson1.friend === protoPerson2.friend&#39;</span>,<span style="color:#a6e22e">bool</span>);
-
+</code></pre></div><h4 id="135-最佳实践">1.3.5 最佳实践</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">    <span style="color:#75715e">//将私有属性放到构造函数上
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">name</span>,<span style="color:#a6e22e">age</span>){
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">name</span>;
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">age</span>;
+    }
+    <span style="color:#75715e">//将共有属性放到原型上
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">sayName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sayName</span>;
+    <span style="color:#a6e22e">Person</span>.<span style="color:#a6e22e">prototype</span>.<span style="color:#a6e22e">description</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;person&#39;</span>;
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Person</span>(<span style="color:#e6db74">&#39;howard&#39;</span>,<span style="color:#ae81ff">24</span>)
+    <span style="color:#a6e22e">person</span>.<span style="color:#a6e22e">sayName</span>();
 </code></pre></div><p>下面结合示例代码，JS中实现继承的6种模式。</p>
 <h2 id="2-js中实现继承的6种模式">2. JS中实现继承的6种模式</h2>
 <blockquote>
