@@ -3,7 +3,14 @@
         <title>所有文章 - Y-y_x&#39;s Blog</title>
         <link>http://howardyangyixuan.github.io/posts/</link>
         <description>所有文章 | Y-y_x&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 27 Apr 2022 10:23:33 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 14 May 2022 01:14:26 &#43;0800</lastBuildDate><atom:link href="http://howardyangyixuan.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>深入理解Redux</title>
+    <link>http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux/</link>
+    <pubDate>Sat, 14 May 2022 01:14:26 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux/</guid>
+    <description><![CDATA[深入理解Redux 本文代码详见我的 GitHub 源码链接 Redux 和 React-Redux Redux是一个状态管理库，用于解决组件间状态共享/通信的问题。 Redux的整体思路是通过]]></description>
+</item><item>
     <title>再谈Vue数据响应式</title>
     <link>http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/</link>
     <pubDate>Wed, 27 Apr 2022 10:23:33 &#43;0800</pubDate>
@@ -66,12 +73,5 @@
     <author>作者</author>
     <guid>http://howardyangyixuan.github.io/posts/ts%E6%B3%9B%E5%9E%8B%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[TS范型的使用 TS范型的使用 1. 泛型是什么？有什么意义？ 1.1 定义 1.2 意义 1.3 TS中的泛型 2. TS泛型基本元素 2.1 泛型变量 2.2 泛型函数 2.3 泛型接口 2.3 泛型类 2.4 泛]]></description>
-</item><item>
-    <title>Vue数据响应式原理</title>
-    <link>http://howardyangyixuan.github.io/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</link>
-    <pubDate>Sun, 28 Feb 2021 10:22:16 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://howardyangyixuan.github.io/posts/vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86/</guid>
-    <description><![CDATA[Vue数据响应式原理 TLDR: Vue数据响应式指的是，Vue通过创建Vue实例对数据进行【监听】和【代理】，使得在数据发生变化时，UI可以对数据变化]]></description>
 </item></channel>
 </rss>

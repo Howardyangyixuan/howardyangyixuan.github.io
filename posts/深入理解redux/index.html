@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>深入理解Redux - Y-y_x&#39;s Blog</title>
+        <meta name="Description" content=""><meta property="og:title" content="深入理解Redux" />
+<meta property="og:description" content="深入理解Redux 本文代码详见我的 GitHub 源码链接 Redux 和 React-Redux Redux是一个状态管理库，用于解决组件间状态共享/通信的问题。 Redux的整体思路是通过" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux/" />
+<meta property="article:published_time" content="2022-05-14T01:14:26+08:00" />
+<meta property="article:modified_time" content="2022-05-14T01:14:26+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="深入理解Redux"/>
+<meta name="twitter:description" content="深入理解Redux 本文代码详见我的 GitHub 源码链接 Redux 和 React-Redux Redux是一个状态管理库，用于解决组件间状态共享/通信的问题。 Redux的整体思路是通过"/>
+<meta name="application-name" content="Y-y_x&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Y-y_x&#39;s Blog"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://howardyangyixuan.github.io/posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux/" /><link rel="prev" href="http://howardyangyixuan.github.io/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "深入理解Redux",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux\/"
+        },"genre": "posts","wordcount":  2559 ,
+        "url": "http:\/\/howardyangyixuan.github.io\/posts\/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3redux\/","datePublished": "2022-05-14T01:14:26+08:00","dateModified": "2022-05-14T01:14:26+08:00","author": {
+                "@type": "Person",
+                "name": "Y-y_x"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Y-y_x&#39;s Blog">Y-y_x&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">深入理解Redux</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Y-y_x</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2022-05-14>2022-05-14</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>约 2559 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#redux-和-react-redux">Redux 和 React-Redux</a></li>
+    <li><a href="#基本概念">基本概念</a>
+      <ul>
+        <li><a href="#store仓库用来存储状态及更新状态所需的发布订阅系统">store：仓库，用来存储状态及更新状态所需的发布订阅系统</a></li>
+        <li><a href="#state状态用于存储状态信息数据">state：状态，用于存储状态信息（数据）</a></li>
+        <li><a href="#setstate状态变更方法用于更新状态并发布数据变更信息">setState：状态变更方法，用于更新状态，并发布数据变更信息</a></li>
+      </ul>
+    </li>
+    <li><a href="#核心概念">核心概念</a>
+      <ul>
+        <li><a href="#action-操作包括操作类型type和更新的数据payload">action： 操作，包括操作类型（type）和更新的数据（payload）</a></li>
+        <li><a href="#reducer规范state状态数据确保更新数据时生成一个新的对象">reducer：规范state状态（数据），确保更新数据时，生成一个新的对象</a></li>
+        <li><a href="#dispatch派发函数用来派发操作action">dispatch：派发函数，用来派发操作（action）。</a></li>
+        <li><a href="#connect将组件与全局状态state连接起来">connect：将组件与全局状态（state）连接起来。</a></li>
+        <li><a href="#provider-全局状态state由provider提供给子组件connect获取后包装好后新的组件即可使用">Provider: 全局状态（state）由Provider提供给子组件，connect获取后包装好后，新的组件即可使用。</a></li>
+      </ul>
+    </li>
+    <li><a href="#动手实践手写redux">动手实践！手写Redux</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="深入理解redux">深入理解Redux</h1>
+<blockquote>
+<p>本文代码详见我的 GitHub <a href="https://github.com/Howardyangyixuan/redux-demo-1" target="_blank" rel="noopener noreffer">源码链接</a></p>
+</blockquote>
+<h2 id="redux-和-react-redux">Redux 和 React-Redux</h2>
+<p>Redux是一个状态管理库，用于解决组件间状态共享/通信的问题。</p>
+<p>Redux的整体思路是通过仓库（Store）存储状态（state）和更新状态（setState），并通过发布订阅模式在状态更新时，重新渲染依赖状态组件。</p>
+<p>React Redux则是将仓库(Store)和组件进行连接的工具，让React组件可以使用注入其中的读写状态接口。</p>
+<h2 id="基本概念">基本概念</h2>
+<h3 id="store仓库用来存储状态及更新状态所需的发布订阅系统">store：仓库，用来存储状态及更新状态所需的发布订阅系统</h3>
+<h3 id="state状态用于存储状态信息数据">state：状态，用于存储状态信息（数据）</h3>
+<h3 id="setstate状态变更方法用于更新状态并发布数据变更信息">setState：状态变更方法，用于更新状态，并发布数据变更信息</h3>
+<h2 id="核心概念">核心概念</h2>
+<p>Redux及React Redux有以下核心概念：</p>
+<h3 id="action-操作包括操作类型type和更新的数据payload">action： 操作，包括操作类型（type）和更新的数据（payload）</h3>
+<h3 id="reducer规范state状态数据确保更新数据时生成一个新的对象">reducer：规范state状态（数据），确保更新数据时，生成一个新的对象</h3>
+<h3 id="dispatch派发函数用来派发操作action">dispatch：派发函数，用来派发操作（action）。</h3>
+<p>是写接口的封装，简化setState(reducer(旧数据state，操作action))</p>
+<h3 id="connect将组件与全局状态state连接起来">connect：将组件与全局状态（state）连接起来。</h3>
+<p>输入一个组件，返回一个包装好的组件（为原组件提供读接口state和写接口dispatch）。这样直接使用包装好的组件即可。 connect是React Redux实现的</p>
+<p>除此之外connect还是一个经过柯里化(currying)的函数，connect提供MapStateToProps（类似selector）功能，只在选中的数据发生变化时进行更新（提供读接口封装）。提供MapDispatchToProps功能，对dispatcher进行封装简化 (提供写接口的封装)</p>
+<blockquote>
+<p>柯里化是一种函数的转换，它是指将一个函数从可调用的 f(a, b, c) 转换为可调用的 f(a)(b)(c)。
+<a href="https://zh.javascript.info/currying-partials" target="_blank" rel="noopener noreffer">详见链接</a></p>
+</blockquote>
+<h3 id="provider-全局状态state由provider提供给子组件connect获取后包装好后新的组件即可使用">Provider: 全局状态（state）由Provider提供给子组件，connect获取后包装好后，新的组件即可使用。</h3>
+<h2 id="动手实践手写redux">动手实践！手写Redux</h2>
+<blockquote>
+<p>分步详解，可通过每一个commit及代码注释获取。详见 <a href="https://github.com/Howardyangyixuan/redux-demo-1/commits/main" target="_blank" rel="noopener noreffer">Commits</a></p>
+</blockquote>
+<ol>
+<li>store:仓库，用来存储状态及更新状态所需的发布订阅系统</li>
+</ol>
+<p>将数据及操作单独存储为store变量，state/setState读写数据，并提供订阅发布接口，在setState数据变动时，调用组件传入的函数（发布）。所有依赖数据的组件都需要订阅，因此在connect中提供数据给组建时，可以同时进行订阅（由于只需订阅一次，因此使用useEffect）。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//用于初始化redux（reducer和state）
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">createStore</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">reducer</span>, <span style="color:#a6e22e">initState</span>) =&gt; {
+  <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">initState</span>
+  <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">reducer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reducer</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">store</span>
+}
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>,
+  <span style="color:#a6e22e">reducer</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">undefined</span>,
+  <span style="color:#a6e22e">listeners</span><span style="color:#f92672">:</span> [],
+  <span style="color:#a6e22e">subscribe</span>(<span style="color:#a6e22e">fn</span>) {
+    <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">listeners</span>.<span style="color:#a6e22e">push</span>(<span style="color:#a6e22e">fn</span>)
+	<span style="color:#75715e">//返回取消订阅函数
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> () =&gt; {
+      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">idx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">listeners</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#a6e22e">fn</span>)
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">listeners</span>.<span style="color:#a6e22e">splice</span>(<span style="color:#a6e22e">idx</span>, <span style="color:#ae81ff">1</span>)
+    }
+  },
+  <span style="color:#a6e22e">update</span>() {
+    <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">listeners</span>.<span style="color:#a6e22e">map</span>(<span style="color:#a6e22e">fn</span> =&gt; <span style="color:#a6e22e">fn</span>({}))
+  },
+  <span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">newValue</span>) {
+    <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">newValue</span>
+    <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">update</span>()
+  }
+}
+</code></pre></div><ol start="2">
+<li>reducer：规范state状态（数据），确保更新数据时，生成一个新的对象。封装reducer函数，输入旧对象和操作（操作类型type+新数据payload），输出一个新的对象，避免因引用相同，Hooks不触发重新渲染。</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">initState</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;howard&#34;</span>, <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">23</span>}}
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reducer</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">action</span>) =&gt; {
+  <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">type</span>, <span style="color:#a6e22e">payload</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">action</span>
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">type</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;updateUser&#34;</span>) {
+    <span style="color:#66d9ef">return</span> {
+      ...<span style="color:#a6e22e">state</span>,
+      <span style="color:#a6e22e">user</span><span style="color:#f92672">:</span> {
+        ...<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">user</span>,
+        ...<span style="color:#a6e22e">payload</span>
+      }
+    }
+  } <span style="color:#66d9ef">else</span> {
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>
+  }
+}
+</code></pre></div><ol start="2">
+<li>dispatch：用来简化setState(reducer(旧数据，操作))，组件通过props获取dispatch。封装dispatch函数名，输入操作action（type+payload），执行操作。因为只有操作action会变化，其他都不会，算是一个语法糖。
+dispatch需要通过props提供给组件，即需要对组件进行一层包装。这样直接使用包装好的组件即可。</li>
+<li>connect：将组件与全局状态连接起来。输入一个组件，返回一个包装好的组件（为原组件提供dispatch）。这样直接使用包装好的组件即可。</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//connect中
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">connect</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">Component</span>)=&gt;{
+	...
+	<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dispatch</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">action</span>) =&gt; {
+				<span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">reducer</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">action</span>))
+	}
+	...
+	<span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Component</span> {...<span style="color:#a6e22e">props</span>} {<span style="color:#a6e22e">dispatcher</span>} {<span style="color:#a6e22e">state</span>}<span style="color:#f92672">/&gt;</span>
+}
+</code></pre></div><p>注意：</p>
+<ol>
+<li>此时可以通过三种方式访问数据，似乎接口不统一，目前统一使用connect传入的props获取。
+<ol>
+<li>全局state，因为要提供给provider value，所以必须引入</li>
+<li>通过useContext获取</li>
+<li>通过connect封装时传入的dispatch和appState获取（本质上也是使用useContext）</li>
+</ol>
+</li>
+<li>增加测试，发现所有通过connect依赖store的组件，在任何数据产生变化时都会渲染，不论自己依赖的数据是否变化，需要优化</li>
+</ol>
+<p>通过柯里化(currying)为connect提供MapStateToProps（selector）功能，只在选中的数据发生变化时进行更新。</p>
+<p>MapStateToProps封装读功能：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//所有用到store数据的组件都应该用connect包裹
+</span><span style="color:#75715e">//通过柯里化增加selector细化组件依赖的数据
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">connect</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">MapStateToProps</span>, <span style="color:#a6e22e">MapDispatchToProps</span>) =&gt; (<span style="color:#a6e22e">Component</span>) =&gt; {
+  <span style="color:#75715e">//返回一个对Component进行了包装的新函数组件
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">props</span>) =&gt; {
+    <span style="color:#75715e">//使用一个setState，在dispatch变更数据时，进行渲染
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> [, <span style="color:#a6e22e">update</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>({})
+    <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">setState</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">store</span>
+    <span style="color:#75715e">//每个依赖state的组件订阅数据变动
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//每次产生新数据时（包括第一次生成），connect都会记下数据，监听器发布时，数据已经变化，对比store的数据和记录的数据即可，然后connect会重新执行，记下新的数据。
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MapStateToProps</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">MapStateToProps</span>(<span style="color:#a6e22e">state</span>) <span style="color:#f92672">:</span> {<span style="color:#a6e22e">state</span>}
+		...
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Component</span> {...<span style="color:#a6e22e">props</span>} {...<span style="color:#a6e22e">dispatchers</span>} {...<span style="color:#a6e22e">data</span>}<span style="color:#f92672">/&gt;</span>
+  }
+}
+</code></pre></div><p>疑问：如何获取旧数据以确认是否更新？</p>
+<ol>
+<li>每次产生新数据时（包括第一次生成），connect都会记下数据，监听器发布时，数据已经变化，对比store的数据和记录的数据即可，然后connect会重新执行，记下新的数据。</li>
+</ol>
+<p>为防止重复订阅，useEffect中返回取消订阅的函数，在下次调用useEffect之前取消订阅。
+useEffect返回的函数是在组件卸载的时候执行/执行当前 effect 之前对上一个 effect 进行清除</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//同样在connect函数中
+</span><span style="color:#75715e"></span>...
+<span style="color:#a6e22e">useEffect</span>(() =&gt; {
+	<span style="color:#75715e">//subscribe的返回值是取消该订阅的函数，在下次调用useEffect时执行
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">subscribe</span>(() =&gt; {
+		<span style="color:#75715e">//更新订阅中调用的函数，如果依赖的数据变化了，再更新。
+</span><span style="color:#75715e"></span>		<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">newData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MapStateToProps</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">MapStateToProps</span>(<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span>) <span style="color:#f92672">:</span> {<span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">state</span>}
+		<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">hasChanged</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">newData</span>)) {
+			<span style="color:#a6e22e">update</span>({})
+		}
+	})
+}, [<span style="color:#a6e22e">MapStateToProps</span>])
+...
+</code></pre></div><p>同样通过柯里化为connect提供MapDispatchToProps(提供写接口的封装)功能</p>
+<p>MapDispatchToProps对dispatcher进行封装简化：封装写功能</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//同样在connect函数中
+</span><span style="color:#75715e"></span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dispatch</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">action</span>) =&gt; {
+      <span style="color:#a6e22e">setState</span>(<span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">reducer</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">action</span>))
+      <span style="color:#a6e22e">update</span>({})
+    }
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dispatchers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MapDispatchToProps</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">MapDispatchToProps</span>(<span style="color:#a6e22e">dispatch</span>) <span style="color:#f92672">:</span> {<span style="color:#a6e22e">dispatch</span>}
+<span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Component</span> {...<span style="color:#a6e22e">props</span>} {...<span style="color:#a6e22e">dispatchers</span>} {...<span style="color:#a6e22e">data</span>}<span style="color:#f92672">/&gt;</span>
+</code></pre></div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>本文于 2022-05-14 更新</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/%E5%86%8D%E8%B0%88vue%E6%95%B0%E6%8D%AE%E5%93%8D%E5%BA%94%E5%BC%8F/" class="prev" rel="prev" title="再谈Vue数据响应式"><i class="fas fa-angle-left fa-fw"></i>再谈Vue数据响应式</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.69.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.4"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Y-y_x</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"headerMode":{"desktop":null,"mobile":null}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=Element.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
